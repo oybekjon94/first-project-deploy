@@ -1,47 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oybek Kholikov - UI/UX Designer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
         }
+
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+
+        ::-webkit-scrollbar-track {
+            background: #F8FAFC;
+        }
+
+
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 4px;
+        }
+
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }
+
+
+        /* Timeline vertical line */
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 7px;
+            height: 100%;
+            width: 1px;
+            background: #E2E8F0;
+        }
+
+
+        /* Section spacing and transitions */
+        .section-content {
+            scroll-margin-top: 90px;
+            margin-bottom: 80px;
+            border-bottom: 1px dashed #E2E8F0;
+            padding-bottom: 40px;
+        }
+
+
+        .section-content:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+
+        .nav-link.active {
+            color: #0f172a;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+
+        .nav-link.active {
+            color: #111;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+
+        /* Industrial Tech Minimalist Styles */
+        body {
+            background-color: #F2F2F2;
+        }
+
+
+        /* High Contrast Tactile Button */
+        .btn-tactile {
+            background-color: #FFF04B;
+            color: #111;
+            box-shadow: 0 4px 0 #111;
+            transition: all 0.1s ease-in-out;
+            border: 2px solid #111;
+        }
+
+
+        .btn-tactile:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #111;
+        }
+
+
+        .btn-tactile:hover {
+            background-color: #fce819;
+        }
+
+
+        /* Subtle Nav Pill */
+        .glass-pill-minimal {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
     </style>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        background: '#ffffff',
-                        foreground: '#09090b',
-                        card: '#ffffff',
-                        'card-foreground': '#09090b',
-                        popover: '#ffffff',
-                        'popover-foreground': '#09090b',
-                        primary: '#18181b',
-                        'primary-foreground': '#fafafa',
-                        secondary: '#f4f4f5',
-                        'secondary-foreground': '#18181b',
-                        muted: '#f4f4f5',
-                        'muted-foreground': '#71717a',
-                        accent: '#f4f4f5',
-                        'accent-foreground': '#18181b',
-                        border: '#e4e4e7',
-                        input: '#e4e4e7',
-                        ring: '#18181b',
-                    },
-                    borderRadius: {
-                        xl: '0.75rem',
-                        lg: '0.5rem',
-                        md: 'calc(0.5rem - 2px)',
-                        sm: 'calc(0.5rem - 4px)'
+                        amber: {
+                            500: '#F59E0B',
+                            600: '#D97706',
+                        }
                     }
                 }
             }
@@ -49,132 +131,1043 @@
     </script>
 </head>
 
+
 <body
-    class="bg-background text-foreground min-h-screen py-12 px-5 flex flex-col items-center selection:bg-primary selection:text-primary-foreground">
-    <div class="w-full max-w-lg flex flex-col gap-8">
+    class="bg-[#F2F2F2] text-slate-600 min-h-screen p-4 sm:p-8 flex justify-center items-start lg:items-stretch overflow-x-hidden">
 
-        <!-- Profile & Header -->
-        <div class="flex flex-col items-center text-center space-y-5">
-            <div class="h-24 w-24 rounded-full border border-border overflow-hidden bg-muted">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop"
-                    class="h-full w-full object-cover grayscale-[20%]" alt="Oybek Kholikov" />
+
+    <div class="max-w-[1200px] w-full flex flex-col lg:flex-row gap-6 relative z-10">
+
+
+        <!-- Sidebar -->
+        <aside
+            class="w-full lg:w-[320px] shrink-0 bg-white rounded-[48px] p-8 h-max lg:sticky top-8 flex flex-col items-center border border-slate-200">
+
+
+            <!-- Profile Image Container -->
+            <div
+                class="relative w-full aspect-square rounded-[36px] overflow-hidden bg-slate-100 flex items-center justify-center mb-8">
+                <!-- Using placeholder for now since original image might be cropped differently -->
+                <img src="profile.jpg" alt="Oybek Kholikov"
+                    onerror="this.src='https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&q=80&w=400';"
+                    class="w-full h-full object-cover">
             </div>
 
-            <div class="space-y-2">
-                <h1 class="text-3xl font-bold tracking-tight">Oybek Kholikov</h1>
-                <div class="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                    <span
-                        class="inline-flex items-center rounded-full border border-border px-2.5 py-0.5 text-xs font-semibold text-foreground">
-                        UI/UX Designer
-                    </span>
-                    <span>•</span>
-                    <span class="flex items-center gap-1"><i data-lucide="map-pin" class="h-3.5 w-3.5"></i>
-                        Tashkent</span>
-                </div>
-            </div>
 
-            <p class="text-sm text-muted-foreground max-w-sm mt-2 leading-relaxed">
-                Creating minimalist, modern, and product-focused designs that tell a story. Transforming ideas through
-                clean interfaces.
-            </p>
+            <!-- Name and Title -->
+            <h1 class="text-3xl font-black tracking-tighter text-center text-[#111] mb-1">Oybek Kholikov</h1>
+            <p class="text-slate-500 font-medium mb-1">UI/UX & Product Designer</p>
+            <p class="text-slate-500 font-medium text-sm mb-6">Seoul, South Korea</p>
 
-            <div class="flex items-center gap-3 pt-2">
-                <a href="#"
-                    class="inline-flex items-center justify-center rounded-md border border-border bg-background p-2 text-foreground hover:bg-accent hover:text-accent-foreground transition-colors h-10 w-10">
-                    <i data-lucide="github" class="h-4 w-4"></i>
+
+            <!-- Social Links -->
+            <div class="flex items-center justify-between w-full border border-slate-200 rounded-[20px] p-4 mb-8 px-8">
+                <a href="https://www.linkedin.com/in/oybek-kholikov-b354b6258/" target="_blank"
+                    rel="noopener noreferrer" title="LinkedIn"
+                    class="text-slate-500 hover:text-[#111] transition-colors"><i data-lucide="linkedin"
+                        class="w-5 h-5"></i></a>
+                <a href="https://x.com/kh_oybee" target="_blank" rel="noopener noreferrer" title="X (Twitter)"
+                    class="text-slate-500 hover:text-[#111] transition-colors flex items-center justify-center">
+                    <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                        </path>
+                    </svg>
                 </a>
-                <a href="#"
-                    class="inline-flex items-center justify-center rounded-md border border-border bg-background p-2 text-foreground hover:bg-accent hover:text-accent-foreground transition-colors h-10 w-10">
-                    <i data-lucide="linkedin" class="h-4 w-4"></i>
+                <a href="https://www.instagram.com/kh_oybee?igsh=eThkNnIyanIyNWpl&amp;utm_source=qr" target="_blank"
+                    rel="noopener noreferrer" title="Instagram"
+                    class="text-slate-500 hover:text-[#111] transition-colors"><i data-lucide="instagram"
+                        class="w-5 h-5"></i></a>
+                <a href="https://www.behance.net/oybekkholikov" target="_blank" rel="noopener noreferrer"
+                    title="Behance"
+                    class="text-slate-500 hover:text-[#111] transition-colors flex items-center justify-center">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M4 7v10h5.5c2 0 3.5-1.5 3.5-3.5 0-1-.5-2-1.5-2.5 1-.5 1.5-1.5 1.5-2.5 0-2-1.5-3.5-3.5-3.5H4Z">
+                        </path>
+                        <path d="M4 12h5.5"></path>
+                        <path d="M15 9h5"></path>
+                        <path d="M14 14.5c0 .5.5 1.5 2 1.5s2-1 2-1.5v-1h-4v1Z"></path>
+                        <path d="M14 12c0-1.5 1-2.5 2.5-2.5s2.5 1 2.5 2.5h-5Z"></path>
+                    </svg>
                 </a>
-                <a href="#"
-                    class="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors h-10 px-4 py-2 text-sm font-medium">
-                    Contact me
-                </a>
+                <a href="https://t.me/oybeKholikov" target="_blank" rel="noopener noreferrer" title="Telegram"
+                    class="text-slate-500 hover:text-[#111] transition-colors"><i data-lucide="send"
+                        class="w-5 h-5"></i></a>
             </div>
-        </div>
 
-        <!-- Quick Links Grid -->
-        <div class="grid grid-cols-2 gap-4">
-            <a href="#"
-                class="rounded-xl border border-border bg-card p-4 flex flex-col gap-3 hover:bg-accent/40 transition-colors group">
-                <div
-                    class="h-8 w-8 rounded-md border border-border bg-muted flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-colors">
-                    <i data-lucide="folder-git-2" class="h-4 w-4"></i>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-sm">Latest Projects</h3>
-                    <p class="text-xs text-muted-foreground mt-1">View my design portfolio</p>
-                </div>
+
+            <!-- Let's Talk Button -->
+            <a href="#contact" class="w-full btn-tactile rounded-2xl py-4 font-bold text-center block mt-2">
+                Let's Talk
             </a>
 
-            <a href="#"
-                class="rounded-xl border border-border bg-card p-4 flex flex-col gap-3 hover:bg-accent/40 transition-colors group">
-                <div
-                    class="h-8 w-8 rounded-md border border-border bg-muted flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-colors">
-                    <i data-lucide="file-down" class="h-4 w-4"></i>
-                </div>
-                <div>
-                    <h3 class="font-semibold text-sm">Resume</h3>
-                    <p class="text-xs text-muted-foreground mt-1">Download PDF</p>
-                </div>
-            </a>
-        </div>
 
-        <!-- Connect Links -->
-        <div class="flex flex-col gap-3">
-            <h2 class="text-sm font-medium text-muted-foreground mb-1 ml-1">Socials</h2>
+        </aside>
 
-            <a href="#"
-                class="flex items-center justify-between p-4 rounded-xl border border-border bg-card hover:bg-accent/40 transition-colors group">
-                <div class="flex items-center gap-3">
-                    <div class="h-8 w-8 rounded bg-muted border border-border flex items-center justify-center">
-                        <i data-lucide="instagram" class="h-4 w-4 text-foreground"></i>
+
+        <!-- Main Content Menu & Wrapper -->
+        <main
+            class="flex-1 bg-white rounded-[48px] border border-slate-200 relative min-h-[800px] flex flex-col items-center lg:items-stretch pt-24 pb-28 lg:pt-0 lg:pb-0 z-10">
+
+
+            <!-- Navbar -->
+            <nav
+                class="fixed bottom-6 left-1/2 -translate-x-1/2 lg:absolute lg:top-8 lg:bottom-auto lg:left-auto lg:translate-x-0 lg:right-10 glass-pill-minimal rounded-full flex items-center justify-start lg:justify-center p-1 sm:p-1.5 z-[100] w-max max-w-[95vw] overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] shadow-lg lg:shadow-none">
+                <a href="#about"
+                    class="nav-link active px-3 py-2 sm:px-5 sm:py-2.5 text-[11px] sm:text-[13px] font-bold text-slate-500 hover:text-slate-900 transition-colors whitespace-nowrap rounded-full shrink-0"
+                    id="nav-about">About</a>
+                <a href="#resume"
+                    class="nav-link px-3 py-2 sm:px-5 sm:py-2.5 text-[11px] sm:text-[13px] font-bold text-slate-500 hover:text-slate-900 transition-colors whitespace-nowrap rounded-full shrink-0"
+                    id="nav-resume">Resume</a>
+                <a href="#portfolio"
+                    class="nav-link px-3 py-2 sm:px-5 sm:py-2.5 text-[11px] sm:text-[13px] font-bold text-slate-500 hover:text-slate-900 transition-colors whitespace-nowrap rounded-full shrink-0"
+                    id="nav-portfolio">Portfolio</a>
+                <a href="#socials"
+                    class="nav-link px-3 py-2 sm:px-5 sm:py-2.5 text-[11px] sm:text-[13px] font-bold text-slate-500 hover:text-slate-900 transition-colors whitespace-nowrap rounded-full shrink-0"
+                    id="nav-socials">Socials</a>
+                <a href="#contact"
+                    class="nav-link px-3 py-2 sm:px-5 sm:py-2.5 text-[11px] sm:text-[13px] font-bold text-slate-500 hover:text-slate-900 transition-colors whitespace-nowrap rounded-full shrink-0"
+                    id="nav-contact">Contact</a>
+            </nav>
+
+
+            <div class="p-8 lg:p-12 xl:p-16 relative z-10 w-full font-inter lg:mt-12">
+
+
+                <!-- About Section -->
+                <section id="about" class="section-content active border-slate-200/50">
+                    <h2
+                        class="text-[52px] sm:text-[72px] lg:text-[88px] font-black tracking-tighter leading-[0.9] mb-8 relative text-[#111] uppercase">
+                        UI/UX
+                        <span class="block text-slate-300 relative -mt-1 sm:-mt-2">DESIGNER</span>
+                    </h2>
+
+
+                    <p class="text-slate-500 text-base sm:text-lg leading-relaxed mb-14 font-medium max-w-2xl">
+                        I'm a UI/UX designer focused on ensuring great user experience and meeting business needs of
+                        designed products. My philosophy is to make products understandable, useful and long lasting at
+                        the same time recognizing they're never finished and constantly changing. I'm always excited to
+                        face new challenges and problems.
+                    </p>
+
+
+                    <div class="grid grid-cols-3 gap-4 sm:gap-6 mb-14 max-w-2xl">
+                        <div>
+                            <h3 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-2 text-[#111]">+1,5</h3>
+                            <p class="text-[10px] sm:text-xs tracking-wider text-slate-500 font-bold uppercase">
+                                Years of<br>Experience</p>
+                        </div>
+                        <div>
+                            <h3 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-2 text-[#111]">+15</h3>
+                            <p class="text-[10px] sm:text-xs tracking-wider text-slate-500 font-bold uppercase">
+                                Projects<br>Completed</p>
+                        </div>
+                        <div>
+                            <h3 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-2 text-[#111]">+10</h3>
+                            <p class="text-[10px] sm:text-xs tracking-wider text-slate-500 font-bold uppercase">
+                                Worldwide<br>Clients</p>
+                        </div>
                     </div>
-                    <span class="text-sm font-medium">Instagram</span>
-                </div>
-                <i data-lucide="arrow-up-right"
-                    class="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors"></i>
-            </a>
 
-            <a href="#"
-                class="flex items-center justify-between p-4 rounded-xl border border-border bg-card hover:bg-accent/40 transition-colors group">
-                <div class="flex items-center gap-3">
-                    <div class="h-8 w-8 rounded bg-muted border border-border flex items-center justify-center">
-                        <i data-lucide="dribbble" class="h-4 w-4 text-foreground"></i>
+
+                    <h3 class="text-[22px] font-bold mb-6 text-slate-800">Skills</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div
+                            class="bg-slate-50 rounded-[32px] p-8 sm:p-10 flex flex-col items-start h-auto group hover:-translate-y-1 hover:shadow-sm transition-all cursor-pointer border border-slate-200">
+                            <div
+                                class="mb-8 rounded-2xl w-14 h-14 bg-white flex items-center justify-center shadow-sm border border-slate-200 group-hover:bg-[#FFF04B] transition-colors shrink-0">
+                                <i data-lucide="layers" class="w-7 h-7 text-[#111]"></i>
+                            </div>
+                            <h4
+                                class="text-[#111] font-black text-lg sm:text-lg uppercase tracking-tight w-full leading-[1.6]">
+                                User Interviewing<br>
+                                User Research<br>
+                                Usability Testing<br>
+                                A/B Testing<br>
+                                User Flow / Wireframing<br>
+                                Design Styles</h4>
+                        </div>
+                        <div
+                            class="bg-slate-50 rounded-[32px] p-8 sm:p-10 flex flex-col items-start h-auto group hover:-translate-y-1 hover:shadow-sm transition-all cursor-pointer border border-slate-200">
+                            <div
+                                class="mb-8 rounded-2xl w-14 h-14 bg-white flex items-center justify-center shadow-sm border border-slate-200 group-hover:bg-[#FFF04B] transition-colors shrink-0">
+                                <i data-lucide="layout-template" class="w-7 h-7 text-[#111]"></i>
+                            </div>
+                            <h4
+                                class="text-[#111] font-black text-lg sm:text-lg uppercase tracking-tight w-full leading-[1.6]">
+                                Figma<br>
+                                Sketch<br>
+                                Adobe XD<br>
+                                Vibe Coding<br>
+                                Notion<br>
+                                AI tools</h4>
+                        </div>
                     </div>
-                    <span class="text-sm font-medium">Dribbble</span>
-                </div>
-                <i data-lucide="arrow-up-right"
-                    class="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors"></i>
-            </a>
 
-            <a href="#"
-                class="flex items-center justify-between p-4 rounded-xl border border-border bg-card hover:bg-accent/40 transition-colors group">
-                <div class="flex items-center gap-3">
-                    <div class="h-8 w-8 rounded bg-muted border border-border flex items-center justify-center">
-                        <i data-lucide="send" class="h-4 w-4 text-foreground"></i>
+
+                    <hr class="w-full border-slate-200 my-10">
+                    <h3 class="text-[22px] font-bold mb-6 text-slate-800">Contact Information</h3>
+
+
+                    <div class="flex flex-col gap-5 sm:flex-row sm:gap-10">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-[#FFF04B] flex items-center justify-center shrink-0 text-[#111] shadow-sm">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div class="overflow-hidden">
+                                <p class="text-xs text-slate-500 font-bold tracking-wider mb-0.5 uppercase">Email</p>
+                                <a href="mailto:x.oybek94@gmail.com"
+                                    class="text-base font-black tracking-tight truncate block hover:text-[#111] transition-colors text-slate-700">x.oybek94@gmail.com</a>
+                            </div>
+                        </div>
+
+
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-[#FFF04B] flex items-center justify-center shrink-0 text-[#111] shadow-sm">
+                                <i data-lucide="smartphone" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 font-bold tracking-wider mb-0.5 uppercase">Phone</p>
+                                <p class="text-base font-black tracking-tight text-slate-700">010 8210 9978</p>
+                            </div>
+                        </div>
+
+
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-[#FFF04B] flex items-center justify-center shrink-0 text-[#111] shadow-sm">
+                                <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 font-bold tracking-wider mb-0.5 uppercase">Location</p>
+                                <p class="text-base font-black tracking-tight text-slate-700">Seoul, South Korea</p>
+                            </div>
+                        </div>
                     </div>
-                    <span class="text-sm font-medium">Telegram Channel</span>
-                </div>
-                <i data-lucide="arrow-up-right"
-                    class="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors"></i>
-            </a>
-        </div>
 
-        <!-- Footer -->
-        <div class="mt-4 pb-8 text-center opacity-50 hover:opacity-100 transition-opacity">
-            <div class="inline-flex items-center justify-center h-8 w-8 rounded border border-border bg-transparent">
-                <i data-lucide="command" class="h-4 w-4 text-foreground"></i>
+
+                </section>
+
+
+                <!-- Resume Section -->
+                <section id="resume" class="section-content border-slate-200">
+                    <h2
+                        class="text-[52px] sm:text-[72px] lg:text-[88px] font-black leading-[0.9] mb-16 relative tracking-tighter text-[#111] uppercase">
+                        MY
+                        <span class="block text-slate-300 relative -mt-1 sm:-mt-2">RESUME</span>
+                    </h2>
+
+
+                    <div class="flex flex-col gap-16 max-w-3xl">
+
+
+                        <!-- Work Experience -->
+                        <div>
+                            <h3 class="text-3xl font-black text-[#111] mb-8 tracking-tight flex items-center gap-3">
+                                <i data-lucide="briefcase" class="w-7 h-7"></i>
+                                Work Experience
+                            </h3>
+                            <div class="flex flex-col gap-6">
+
+
+                                <a href="#uzbrain-ai"
+                                    class="group relative block p-8 rounded-[32px] bg-slate-50 border border-transparent hover:border-slate-200 hover:-translate-y-1 hover:shadow-sm transition-all">
+                                    <i data-lucide="arrow-up-right"
+                                        class="w-6 h-6 text-slate-400 group-hover:text-[#111] absolute top-8 right-8 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all"></i>
+                                    <h4 class="text-2xl font-black text-[#111] mb-1 tracking-tight">UzbrainAI</h4>
+                                    <p class="text-[15px] font-bold text-[#111] mb-3">UI/UX Designer</p>
+                                    <p class="text-slate-500 font-medium leading-relaxed mb-4 text-[15px] line-clamp-2">
+                                        Focused on creating a clear and structured user experience to help businesses
+                                        easily understand AI solutions and services.
+                                    </p>
+                                    <p class="text-sm text-slate-400 font-bold uppercase tracking-wider">Aug 2025 -
+                                        Present</p>
+                                </a>
+
+
+                                <a href="#growth"
+                                    class="group relative block p-8 rounded-[32px] bg-slate-50 border border-transparent hover:border-slate-200 hover:-translate-y-1 hover:shadow-sm transition-all">
+                                    <i data-lucide="arrow-up-right"
+                                        class="w-6 h-6 text-slate-400 group-hover:text-[#111] absolute top-8 right-8 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all"></i>
+                                    <h4 class="text-2xl font-black text-[#111] mb-1 tracking-tight">Growth</h4>
+                                    <p class="text-[15px] font-bold text-[#111] mb-3">UI/UX Designer</p>
+                                    <p class="text-slate-500 font-medium leading-relaxed mb-4 text-[15px] line-clamp-2">
+                                        Designed the Growth app to help users improve productivity through habit
+                                        tracking and task management features.
+                                    </p>
+                                    <p class="text-sm text-slate-400 font-bold uppercase tracking-wider">May 2025 - Aug
+                                        2025</p>
+                                </a>
+
+
+                                <a href="#noted-ai"
+                                    class="group relative block p-8 rounded-[32px] bg-slate-50 border border-transparent hover:border-slate-200 hover:-translate-y-1 hover:shadow-sm transition-all">
+                                    <i data-lucide="arrow-up-right"
+                                        class="w-6 h-6 text-slate-400 group-hover:text-[#111] absolute top-8 right-8 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all"></i>
+                                    <h4 class="text-2xl font-black text-[#111] mb-1 tracking-tight">NotedAI</h4>
+                                    <p class="text-[15px] font-bold text-[#111] mb-3">UI/UX Designer</p>
+                                    <p class="text-slate-500 font-medium leading-relaxed mb-4 text-[15px] line-clamp-2">
+                                        Designed the Noted AI platform to help users automatically generate meeting
+                                        summaries using AI.
+                                    </p>
+                                    <p class="text-sm text-slate-400 font-bold uppercase tracking-wider">Oct 2025 - Dec
+                                        2025</p>
+                                </a>
+
+
+                                <a href="#jiwoo-interior"
+                                    class="group relative block p-8 rounded-[32px] bg-slate-50 border border-transparent hover:border-slate-200 hover:-translate-y-1 hover:shadow-sm transition-all">
+                                    <i data-lucide="arrow-up-right"
+                                        class="w-6 h-6 text-slate-400 group-hover:text-[#111] absolute top-8 right-8 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all"></i>
+                                    <h4 class="text-2xl font-black text-[#111] mb-1 tracking-tight">Jiwoo Interior film
+                                    </h4>
+                                    <p class="text-[15px] font-bold text-[#111] mb-3">Product Designer <span
+                                            class="text-slate-400 font-normal">| Seoul, South Korea</span></p>
+                                    <p class="text-slate-500 font-medium leading-relaxed mb-4 text-[15px] line-clamp-2">
+                                        (Key responsibilities and achievements in this role here.)
+                                    </p>
+                                    <p class="text-sm text-slate-400 font-bold uppercase tracking-wider">Dec 2024 -
+                                        Present</p>
+                                </a>
+
+
+                                <a href="#mockchi-bola"
+                                    class="group relative block p-8 rounded-[32px] bg-slate-50 border border-transparent hover:border-slate-200 hover:-translate-y-1 hover:shadow-sm transition-all">
+                                    <i data-lucide="arrow-up-right"
+                                        class="w-6 h-6 text-slate-400 group-hover:text-[#111] absolute top-8 right-8 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all"></i>
+                                    <h4 class="text-2xl font-black text-[#111] mb-1 tracking-tight">Mockchi bola</h4>
+                                    <p class="text-[15px] font-bold text-[#111] mb-3">UI/UX Designer</p>
+                                    <p class="text-slate-500 font-medium leading-relaxed mb-4 text-[15px] line-clamp-2">
+                                        We are building a smarter way to prepare for exams. Our team designs realistic
+                                        mock tests, structured evaluations, and user-friendly experiences that help
+                                        students improve step by step.
+                                    </p>
+                                    <p class="text-sm text-slate-400 font-bold uppercase tracking-wider">Jan 2026 ~
+                                        Present</p>
+                                </a>
+
+
+                                <a href="#gostans"
+                                    class="group relative block p-8 rounded-[32px] bg-slate-50 border border-transparent hover:border-slate-200 hover:-translate-y-1 hover:shadow-sm transition-all">
+                                    <i data-lucide="arrow-up-right"
+                                        class="w-6 h-6 text-slate-400 group-hover:text-[#111] absolute top-8 right-8 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all"></i>
+                                    <h4 class="text-2xl font-black text-[#111] mb-1 tracking-tight">GoStans</h4>
+                                    <p class="text-[15px] font-bold text-[#111] mb-3">UI/UX Designer (Part-time) <span
+                                            class="text-slate-400 font-normal">| Seoul, South Korea | Hybrid</span></p>
+                                    <p class="text--slate-500 font-medium leading-relaxed mb-4 text-[15px] line-clamp-2">
+                                        Designing the GoStans platform from the ground up with a strong emphasis on
+                                        intuitive UX, clean UI, and accessibility. Collaborating with developers and
+                                        stakeholders to build wireframes, interactive prototypes, and a scalable design
+                                        system.
+                                    </p>
+                                    <p class="text-sm text-slate-400 font-bold uppercase tracking-wider">Jul 2025 -
+                                        Present</p>
+                                </a>
+
+
+                                <a href="#crewbe-app"
+                                    class="group relative block p-8 rounded-[32px] bg-slate-50 border border-transparent hover:border-slate-200 hover:-translate-y-1 hover:shadow-sm transition-all">
+                                    <i data-lucide="arrow-up-right"
+                                        class="w-6 h-6 text-slate-400 group-hover:text-[#111] absolute top-8 right-8 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all"></i>
+                                    <h4 class="text-2xl font-black text-[#111] mb-1 tracking-tight">Crewbe App (Team
+                                        Sky)</h4>
+                                    <p class="text-[15px] font-bold text-[#111] mb-3">UI/UX Designer</p>
+                                    <p class="text-slate-500 font-medium leading-relaxed mb-4 text-[15px] line-clamp-2">
+                                        Designing the Crewbe app as part of Team Sky, focusing on enhancing usability
+                                        for flight attendants. Conducting user research to understand needs and improve
+                                        user experience. Adding new features to streamline workflows and address the
+                                        specific challenges of flight attendants.
+                                    </p>
+                                    <p class="text-sm text-slate-400 font-bold uppercase tracking-wider">Sep 2024 - Dec
+                                        2024</p>
+                                </a>
+
+
+                                <a href="#kodj-website"
+                                    class="group relative block p-8 rounded-[32px] bg-slate-50 border border-transparent hover:border-slate-200 hover:-translate-y-1 hover:shadow-sm transition-all">
+                                    <i data-lucide="arrow-up-right"
+                                        class="w-6 h-6 text-slate-400 group-hover:text-[#111] absolute top-8 right-8 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all"></i>
+                                    <h4 class="text-2xl font-black text-[#111] mb-1 tracking-tight">KO'DJ Website (Uzbek
+                                        Developers Community)</h4>
+                                    <p class="text-[15px] font-bold text-[#111] mb-3">UI/UX Designer</p>
+                                    <p class="text-slate-500 font-medium leading-relaxed mb-4 text-[15px] line-clamp-2">
+                                        Designed the KO'DJ website to establish an engaging platform for the developer
+                                        community in Uzbekistan. Supported KO'DJ's mission to empower developers,
+                                        inspire creativity, and foster collaboration through impactful digital design.
+                                    </p>
+                                    <p class="text-sm text-slate-400 font-bold uppercase tracking-wider">Oct 2024 -
+                                        Present</p>
+                                </a>
+
+
+                                <a href="#mizan-qr"
+                                    class="group relative block p-8 rounded-[32px] bg-slate-50 border border-transparent hover:border-slate-200 hover:-translate-y-1 hover:shadow-sm transition-all">
+                                    <i data-lucide="arrow-up-right"
+                                        class="w-6 h-6 text-slate-400 group-hover:text-[#111] absolute top-8 right-8 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all"></i>
+                                    <h4 class="text-2xl font-black text-[#111] mb-1 tracking-tight">Mizan Qr Code Menu
+                                        System (Team member)</h4>
+                                    <p class="text-[15px] font-bold text-[#111] mb-3">UI/UX Designer</p>
+                                    <p class="text-slate-500 font-medium leading-relaxed mb-4 text-[15px] line-clamp-2">
+                                        Designed the Mizan QR code menu project, enhancing restaurant operations and
+                                        user experiences. Created a web app for customers to access menus seamlessly and
+                                        an admin panel for restaurant owners to manage operations. Developed the Mizan
+                                        website to promote the project and improve online accessibility.
+                                    </p>
+                                    <p class="text-sm text-slate-400 font-bold uppercase tracking-wider">Oct 2024 -
+                                        Present</p>
+                                </a>
+
+
+                                <a href="#halal-compass"
+                                    class="group relative block p-8 rounded-[32px] bg-slate-50 border border-transparent hover:border-slate-200 hover:-translate-y-1 hover:shadow-sm transition-all">
+                                    <i data-lucide="arrow-up-right"
+                                        class="w-6 h-6 text-slate-400 group-hover:text-[#111] absolute top-8 right-8 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all"></i>
+                                    <h4 class="text-2xl font-black text-[#111] mb-1 tracking-tight">Halal Compass</h4>
+                                    <p class="text-[15px] font-bold text-[#111] mb-3">UI/UX Designer</p>
+                                    <p class="text-slate-500 font-medium leading-relaxed mb-4 text-[15px] line-clamp-2">
+                                        Contributed to the latest version of Halal Compass as a UI/UX Designer. Halal
+                                        Compass helps foreigners in South Korea, especially the Muslim community, easily
+                                        find halal restaurants, stores, mosques, prayer times, and essential services.
+                                        Focused on improving usability, simplifying user flows, and creating a clean,
+                                        intuitive experience.
+                                    </p>
+                                    <p class="text-sm text-slate-400 font-bold uppercase tracking-wider">Mar 2025 - Feb
+                                        2026</p>
+                                </a>
+
+
+                                <a href="#help-foreigner"
+                                    class="group relative block p-8 rounded-[32px] bg-slate-50 border border-transparent hover:border-slate-200 hover:-translate-y-1 hover:shadow-sm transition-all">
+                                    <i data-lucide="arrow-up-right"
+                                        class="w-6 h-6 text-slate-400 group-hover:text-[#111] absolute top-8 right-8 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all"></i>
+                                    <h4 class="text-2xl font-black text-[#111] mb-1 tracking-tight">helpForeigner App
+                                        (my project)</h4>
+                                    <p class="text-[15px] font-bold text-[#111] mb-3">UI/UX Designer</p>
+                                    <p class="text-slate-500 font-medium leading-relaxed mb-4 text-[15px] line-clamp-2">
+                                        Designed seamless experiences for foreigners to solve language and information
+                                        barriers. Bridged physical and digital space to connect users with interpreters,
+                                        tutors, and universities. Facilitated operational efficiency by enabling instant
+                                        access to interpreters and learning resources.
+                                    </p>
+                                    <p class="text-sm text-slate-400 font-bold uppercase tracking-wider">Sep 2024 - Oct
+                                        2024</p>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-12">
+                            <!-- Left Column: Education & Hobbies -->
+                            <div class="flex flex-col gap-12">
+                                <!-- Education -->
+                                <div>
+                                    <h3
+                                        class="text-2xl font-black text-[#111] mb-6 tracking-tight flex items-center gap-2">
+                                        <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                                        Education
+                                    </h3>
+                                    <div class="flex flex-col gap-6 border-l-2 border-slate-100 pl-4 py-1">
+                                        <div class="relative">
+                                            <div
+                                                class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-slate-200 border-2 border-white">
+                                            </div>
+                                            <h4 class="text-lg font-black text-[#111] tracking-tight">개신대학원대학교 (Korean
+                                                School)</h4>
+                                            <p class="text-sm text-slate-400 font-bold uppercase tracking-wider mt-1">
+                                                2018 ~ 2020</p>
+                                        </div>
+                                        <div class="relative">
+                                            <div
+                                                class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-slate-200 border-2 border-white">
+                                            </div>
+                                            <h4 class="text-lg font-black text-[#111] tracking-tight">서울과학기술대학교</h4>
+                                            <p class="text-sm text-slate-400 font-bold uppercase tracking-wider mt-1">
+                                                2020 ~ 2025</p>
+                                        </div>
+                                        <div class="relative">
+                                            <div
+                                                class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-slate-200 border-2 border-white">
+                                            </div>
+                                            <h4 class="text-lg font-black text-[#111] tracking-tight">Express UX
+                                                (Academy)</h4>
+                                            <p class="text-sm text-slate-400 font-bold uppercase tracking-wider mt-1">
+                                                05.2024 ~ 08.2024</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Hobbies -->
+                                <div>
+                                    <h3
+                                        class="text-2xl font-black text-[#111] mb-6 tracking-tight flex items-center gap-2">
+                                        <i data-lucide="heart" class="w-6 h-6"></i>
+                                        Hobbies
+                                    </h3>
+                                    <div class="flex flex-wrap gap-3">
+                                        <span
+                                            class="px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold text-[#111]">Running</span>
+                                        <span
+                                            class="px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold text-[#111]">Reading
+                                            Book</span>
+                                        <span
+                                            class="px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold text-[#111]">Drawing</span>
+                                        <span
+                                            class="px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold text-[#111]">Basketball</span>
+                                        <span
+                                            class="px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold text-[#111]">Cycling</span>
+                                        <span
+                                            class="px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl font-bold text-[#111]">Hiking</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="flex flex-col gap-12">
+                                <!-- Languages -->
+                                <div>
+                                    <h3
+                                        class="text-2xl font-black text-[#111] mb-6 tracking-tight flex items-center gap-2">
+                                        <i data-lucide="languages" class="w-6 h-6"></i>
+                                        Languages
+                                    </h3>
+                                    <div class="flex flex-col gap-3">
+                                        <div
+                                            class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                                            <span class="font-bold text-[#111]">English</span>
+                                        </div>
+                                        <div
+                                            class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                                            <span class="font-bold text-[#111]">Uzbek</span>
+                                        </div>
+                                        <div
+                                            class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                                            <span class="font-bold text-[#111]">Korean</span>
+                                            <span class="text-sm text-slate-500 font-medium">Topik 6급</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Activities -->
+                                <div>
+                                    <h3
+                                        class="text-2xl font-black text-[#111] mb-6 tracking-tight flex items-center gap-2">
+                                        <i data-lucide="award" class="w-6 h-6"></i>
+                                        Activities
+                                    </h3>
+                                    <div class="flex flex-col gap-3">
+                                        <div
+                                            class="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                                            <i data-lucide="check-circle-2"
+                                                class="w-5 h-5 text-slate-400 shrink-0 mt-0.5"></i>
+                                            <span class="font-medium text-slate-600">우수자비 장학생 2020~2022</span>
+                                        </div>
+                                        <div
+                                            class="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                                            <i data-lucide="check-circle-2"
+                                                class="w-5 h-5 text-slate-400 shrink-0 mt-0.5"></i>
+                                            <span class="font-medium text-slate-600">방축도 플러깅 (봉사활동)</span>
+                                        </div>
+                                        <div
+                                            class="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                                            <i data-lucide="check-circle-2"
+                                                class="w-5 h-5 text-slate-400 shrink-0 mt-0.5"></i>
+                                            <span class="font-medium text-slate-600">제21회 새벽강변마라톤대회(봉사활동)</span>
+                                        </div>
+                                        <div
+                                            class="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                                            <i data-lucide="check-circle-2"
+                                                class="w-5 h-5 text-slate-400 shrink-0 mt-0.5"></i>
+                                            <span class="font-medium text-slate-600">2024 Global Trade Academy
+                                                Enrollment Intensive Program</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </section>
+
+
+                <!-- Portfolio Section -->
+                <section id="portfolio" class="section-content border-slate-200">
+                    <h2
+                        class="text-[52px] sm:text-[72px] lg:text-[88px] font-black leading-[0.9] mb-12 relative tracking-tighter text-[#111] uppercase">
+                        MY
+                        <span class="block text-slate-300 relative -mt-1 sm:-mt-2">PROJECTS</span>
+                    </h2>
+
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl">
+                        <!-- Project 1: Halal Compass -->
+                        <div class="flex flex-col gap-4 group">
+                            <div
+                                class="w-full aspect-[4/3] rounded-[32px] bg-slate-50 border border-slate-200 overflow-hidden relative transition-colors group-hover:border-slate-300 flex items-center justify-center p-2">
+                                <img src="images/halal-compass.png"
+                                    class="w-full h-full object-cover rounded-[24px] transition-transform duration-500 group-hover:scale-105"
+                                    alt="Halal Compass">
+                            </div>
+                            <div class="px-2">
+                                <h3 class="text-2xl font-black text-[#111] tracking-tight mb-1">Halal Compass</h3>
+                                <p class="text-[14px] font-bold text-slate-400 capitalize tracking-wider mb-4">
+                                    Application</p>
+                                <div class="flex items-center gap-2 w-full">
+                                    <a href="https://play.google.com/store/apps/details?id=com.urconhalalcompass.app"
+                                        target="_blank"
+                                        class="flex-1 justify-center py-2.5 px-2 rounded-2xl bg-slate-100 hover:bg-[#111] hover:text-[#FFF04B] text-[#111] text-xs font-bold flex items-center gap-1.5 transition-colors shrink-0">
+                                        <i data-lucide="smartphone" class="w-4 h-4"></i> Android
+                                    </a>
+                                    <a href="https://apps.apple.com/kr/app/halal-compass/id6738576003?l=en-GB"
+                                        target="_blank"
+                                        class="flex-1 justify-center py-2.5 px-2 rounded-2xl bg-slate-100 hover:bg-[#111] hover:text-[#FFF04B] text-[#111] text-xs font-bold flex items-center gap-1.5 transition-colors shrink-0">
+                                        <i data-lucide="apple" class="w-4 h-4"></i> iPhone
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Project 2: Mockchi bola -->
+                        <a href="https://scintillating-cassata-02dd83.netlify.app/" target="_blank"
+                            class="flex flex-col gap-4 group block relative">
+                            <div
+                                class="w-full aspect-[4/3] rounded-[32px] bg-slate-50 border border-slate-200 overflow-hidden relative transition-colors group-hover:border-slate-300 flex items-center justify-center p-2">
+                                <img src="images/mockchi-bola.png"
+                                    class="w-full h-full object-cover rounded-[24px] transition-transform duration-500 group-hover:scale-105"
+                                    alt="Mockchi bola">
+                                <div
+                                    class="absolute top-6 right-6 w-12 h-12 bg-white/90 backdrop-blur-md shadow-sm rounded-full flex items-center justify-center opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all text-[#111]">
+                                    <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+                            <div class="px-2">
+                                <h3 class="text-2xl font-black text-[#111] tracking-tight mb-1">Mockchi bola</h3>
+                                <p class="text-[14px] font-bold text-slate-400 capitalize tracking-wider">Website</p>
+                            </div>
+                        </a>
+
+
+                        <!-- Project 3: 반장수첩 -->
+                        <div class="flex flex-col gap-4 group">
+                            <div
+                                class="w-full aspect-[4/3] rounded-[32px] bg-slate-50 border border-slate-200 overflow-hidden relative transition-colors group-hover:border-slate-300 flex items-center justify-center p-2">
+                                <img src="images/banjang.png"
+                                    class="w-full h-full object-cover rounded-[24px] transition-transform duration-500 group-hover:scale-105"
+                                    alt="반장수첩">
+                            </div>
+                            <div class="px-2">
+                                <h3 class="text-2xl font-black text-[#111] tracking-tight mb-1">반장수첩</h3>
+                                <p class="text-[14px] font-bold text-slate-400 capitalize tracking-wider mb-4">
+                                    Application</p>
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <span
+                                        class="px-5 py-2.5 rounded-2xl bg-slate-100 text-slate-400 text-xs font-bold flex items-center gap-2">
+                                        <i data-lucide="clock" class="w-4 h-4"></i> Coming Soon
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Project 4: Gostans -->
+                        <a href="https://gostans.com/" target="_blank" class="flex flex-col gap-4 group block relative">
+                            <div
+                                class="w-full aspect-[4/3] rounded-[32px] bg-slate-50 border border-slate-200 overflow-hidden relative transition-colors group-hover:border-slate-300 flex items-center justify-center p-2">
+                                <img src="images/gostans.png"
+                                    class="w-full h-full object-cover rounded-[24px] transition-transform duration-500 group-hover:scale-105"
+                                    alt="Gostans">
+                                <div
+                                    class="absolute top-6 right-6 w-12 h-12 bg-white/90 backdrop-blur-md shadow-sm rounded-full flex items-center justify-center opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all text-[#111]">
+                                    <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+         </div>
+                            </div>
+                            <div class="px-2">
+                                <h3 class="text-2xl font-black text-[#111] tracking-tight mb-1">Gostans</h3>
+                                <p class="text-[14px] font-bold text-slate-400 capitalize tracking-wider">Website</p>
+                            </div>
+                        </a>
+
+
+                        <!-- Project 5: KO'DJ -->
+                        <a href="https://www.behance.net/gallery/229552261/KODJ-app" target="_blank"
+                            class="flex flex-col gap-4 group block relative">
+                            <div
+                                class="w-full aspect-[4/3] rounded-[32px] bg-slate-50 border border-slate-200 overflow-hidden relative transition-colors group-hover:border-slate-300 flex items-center justify-center p-2">
+                                <img src="images/kodj.png"
+                                    class="w-full h-full object-cover rounded-[24px] transition-transform duration-500 group-hover:scale-105"
+                                    alt="KO'DJ">
+                                <div
+                                    class="absolute top-6 right-6 w-12 h-12 bg-white/90 backdrop-blur-md shadow-sm rounded-full flex items-center justify-center opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all text-[#111]">
+                                    <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+                            <div class="px-2">
+                                <h3 class="text-2xl font-black text-[#111] tracking-tight mb-1">KO'DJ</h3>
+                                <p class="text-[14px] font-bold text-slate-400 capitalize tracking-wider">Application
+                                </p>
+                            </div>
+                        </a>
+
+
+                        <!-- Project 6: KO'DJ Website -->
+                        <a href="https://www.behance.net/gallery/214782365/KODJ-Website" target="_blank"
+                            class="flex flex-col gap-4 group block relative">
+                            <div
+                                class="w-full aspect-[4/3] rounded-[32px] bg-slate-50 border border-slate-200 overflow-hidden relative transition-colors group-hover:border-slate-300 flex items-center justify-center p-2">
+                                <img src="images/kodj-web.png"
+                                    class="w-full h-full object-cover rounded-[24px] transition-transform duration-500 group-hover:scale-105"
+                                    alt="KO'DJ Website">
+                                <div
+                                    class="absolute top-6 right-6 w-12 h-12 bg-white/90 backdrop-blur-md shadow-sm rounded-full flex items-center justify-center opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all text-[#111]">
+                                    <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+                            <div class="px-2">
+                                <h3 class="text-2xl font-black text-[#111] tracking-tight mb-1">KO'DJ</h3>
+                                <p class="text-[14px] font-bold text-slate-400 capitalize tracking-wider">Website</p>
+                            </div>
+                        </a>
+
+
+                        <!-- Project 7: HelpForeigner -->
+                        <a href="https://www.behance.net/gallery/210842143/helpForeigner" target="_blank"
+                            class="flex flex-col gap-4 group block relative">
+                            <div
+                                class="w-full aspect-[4/3] rounded-[32px] bg-slate-50 border border-slate-200 overflow-hidden relative transition-colors group-hover:border-slate-300 flex items-center justify-center p-2">
+                                <img src="images/helpforeigner.png"
+                                    class="w-full h-full object-cover rounded-[24px] transition-transform duration-500 group-hover:scale-105"
+                                    alt="HelpForeigner">
+                                <div
+                                    class="absolute top-6 right-6 w-12 h-12 bg-white/90 backdrop-blur-md shadow-sm rounded-full flex items-center justify-center opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all text-[#111]">
+                                    <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+                            <div class="px-2">
+                                <h3 class="text-2xl font-black text-[#111] tracking-tight mb-1">HelpForeigner</h3>
+                                <p class="text-[14px] font-bold text-slate-400 capitalize tracking-wider">Application
+                                </p>
+                            </div>
+                        </a>
+
+
+                        <!-- Project 8: Mizan -->
+                        <a href="https://www.behance.net/gallery/211569235/UIUX-Case-Study-Qr-code-menu" target="_blank"
+                            class="flex flex-col gap-4 group block relative">
+                            <div
+                                class="w-full aspect-[4/3] rounded-[32px] bg-slate-50 border border-slate-200 overflow-hidden relative transition-colors group-hover:border-slate-300 flex items-center justify-center p-2">
+                                <img src="images/mizan.png"
+                                    class="w-full h-full object-cover rounded-[24px] transition-transform duration-500 group-hover:scale-105"
+                                    alt="Mizan">
+                                <div
+                                    class="absolute top-6 right-6 w-12 h-12 bg-white/90 backdrop-blur-md shadow-sm rounded-full flex items-center justify-center opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all text-[#111]">
+                                    <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+                            <div class="px-2">
+                                <h3 class="text-2xl font-black text-[#111] tracking-tight mb-1">Mizan</h3>
+                                <p class="text-[14px] font-bold text-slate-400 capitalize tracking-wider">WebApp</p>
+                            </div>
+                        </a>
+
+
+                        <!-- Project 9: Growth -->
+                        <div class="flex flex-col gap-4 group">
+                            <div
+                                class="w-full aspect-[4/3] rounded-[32px] bg-slate-50 border border-slate-200 overflow-hidden relative transition-colors group-hover:border-slate-300 flex items-center justify-center p-2">
+                                <img src="images/growth.png"
+                                    class="w-full h-full object-cover rounded-[24px] transition-transform duration-500 group-hover:scale-105"
+                                    alt="Growth">
+                            </div>
+                            <div class="px-2">
+                                <h3 class="text-2xl font-black text-[#111] tracking-tight mb-1">Growth</h3>
+                                <p class="text-[14px] font-bold text-slate-400 capitalize tracking-wider mb-4">
+                                    Application</p>
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <span
+                                        class="px-5 py-2.5 rounded-2xl bg-slate-100 text-slate-400 text-xs font-bold flex items-center gap-2">
+                                        <i data-lucide="clock" class="w-4 h-4"></i> Coming Soon
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Project 10: NotedAI -->
+                        <a href="https://notedai.co/" target="_blank" class="flex flex-col gap-4 group block relative">
+                            <div
+                                class="w-full aspect-[4/3] rounded-[32px] bg-slate-50 border border-slate-200 overflow-hidden relative transition-colors group-hover:border-slate-300 flex items-center justify-center p-2">
+                                <img src="images/notedai.png"
+                                    class="w-full h-full object-cover rounded-[24px] transition-transform duration-500 group-hover:scale-105"
+                                    alt="NotedAI">
+                                <div
+                                    class="absolute top-6 right-6 w-12 h-12 bg-white/90 backdrop-blur-md shadow-sm rounded-full flex items-center justify-center opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all text-[#111]">
+                                    <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+                            <div class="px-2">
+                                <h3 class="text-2xl font-black text-[#111] tracking-tight mb-1">NotedAI</h3>
+                                <p class="text-[14px] font-bold text-slate-400 capitalize tracking-wider">Website</p>
+                            </div>
+                        </a>
+
+
+                        <!-- Project 11: UzbrainAI -->
+                        <a href="https://www.uzbrainai.uz/" target="_blank"
+                            class="flex flex-col gap-4 group block relative">
+                            <div
+                                class="w-full aspect-[4/3] rounded-[32px] bg-slate-50 border border-slate-200 overflow-hidden relative transition-colors group-hover:border-slate-300 flex items-center justify-center p-2">
+                                <img src="images/uzbrainai.png"
+                                    class="w-full h-full object-cover rounded-[24px] transition-transform duration-500 group-hover:scale-105"
+                                    alt="UzbrainAI">
+                                <div
+                                    class="absolute top-6 right-6 w-12 h-12 bg-white/90 backdrop-blur-md shadow-sm rounded-full flex items-center justify-center opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-all text-[#111]">
+                                    <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+                            <div class="px-2">
+                                <h3 class="text-2xl font-black text-[#111] tracking-tight mb-1">UzbrainAI</h3>
+                                <p class="text-[14px] font-bold text-slate-400 capitalize tracking-wider">Website</p>
+                            </div>
+                        </a>
+
+
+                    </div>
+                </section>
+
+
+                <!-- Socials Section -->
+                <section id="socials" class="section-content border-slate-200">
+                    <h2
+                        class="text-[52px] sm:text-[72px] lg:text-[88px] font-black leading-[0.9] mb-12 relative tracking-tighter text-[#111] uppercase">
+                        CONNECT
+                        <span class="block text-slate-300 relative -mt-1 sm:-mt-2">WITH ME</span>
+                    </h2>
+
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl">
+
+
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/in/oybek-kholikov-b354b6258/" target="_blank"
+                            rel="noopener noreferrer"
+                            class="p-8 rounded-[32px] bg-slate-50 border border-transparent hover:border-slate-200 hover:-translate-y-1 hover:shadow-sm transition-all group flex flex-col gap-6 relative">
+                            <i data-lucide="arrow-up-right"
+                                class="w-5 h-5 text-[#111] absolute top-8 right-8 opacity-80 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"></i>
+                            <div
+                                class="w-16 h-16 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 group-hover:bg-[#FFF04B] group-hover:text-[#111] transition-colors shadow-sm">
+                                <i data-lucide="linkedin" class="w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-black text-2xl text-[#111] transition-colors mb-2 tracking-tight">
+                                    LinkedIn</h3>
+                                <p class="text-[15px] text-slate-500 font-medium">Connect with me professionally.</p>
+                            </div>
+                        </a>
+
+
+                        <!-- Twitter (X) -->
+                        <a href="https://x.com/kh_oybee" target="_blank" rel="noopener noreferrer"
+                            class="p-8 rounded-[32px] bg-slate-50 border border-transparent hover:border-slate-200 hover:-translate-y-1 hover:shadow-sm transition-all group flex flex-col gap-6 relative">
+                            <i data-lucide="arrow-up-right"
+                                class="w-5 h-5 text-[#111] absolute top-8 right-8 opacity-80 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"></i>
+                            <div
+                                class="w-16 h-16 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 group-hover:bg-[#FFF04B] group-hover:text-[#111] transition-colors shadow-sm">
+                                <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-black text-2xl text-[#111] transition-colors mb-2 tracking-tight">
+                                    Twitter</h3>
+                                <p class="text-[15px] text-slate-500 font-medium">Follow my latest updates.</p>
+                            </div>
+                        </a>
+
+
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/kh_oybee?igsh=eThkNnIyanIyNWpl&amp;utm_source=qr"
+                            target="_blank" rel="noopener noreferrer"
+                            class="p-8 rounded-[32px] bg-slate-50 border border-transparent hover:border-slate-200 hover:-translate-y-1 hover:shadow-sm transition-all group flex flex-col gap-6 relative">
+                            <i data-lucide="arrow-up-right"
+                                class="w-5 h-5 text-[#111] absolute top-8 right-8 opacity-80 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"></i>
+                            <div
+                                class="w-16 h-16 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 group-hover:bg-[#FFF04B] group-hover:text-[#111] transition-colors shadow-sm">
+                                <i data-lucide="instagram" class="w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-black text-2xl text-[#111] transition-colors mb-2 tracking-tight">
+                                    Instagram</h3>
+                                <p class="text-[15px] text-slate-500 font-medium">Follow my creative journey.</p>
+                            </div>
+                        </a>
+
+
+                        <!-- Behance -->
+                        <a href="https://www.behance.net/oybekkholikov" target="_blank" rel="noopener noreferrer"
+                            class="p-8 rounded-[32px] bg-slate-50 border border-transparent hover:border-slate-200 hover:-translate-y-1 hover:shadow-sm transition-all group flex flex-col gap-6 relative">
+                            <i data-lucide="arrow-up-right"
+                                class="w-5 h-5 text-[#111] absolute top-8 right-8 opacity-80 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"></i>
+                            <div
+                                class="w-16 h-16 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 group-hover:bg-[#FFF04B] group-hover:text-[#111] transition-colors shadow-sm">
+                                <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M4 7v10h5.5c2 0 3.5-1.5 3.5-3.5 0-1-.5-2-1.5-2.5 1-.5 1.5-1.5 1.5-2.5 0-2-1.5-3.5-3.5-3.5H4Z">
+                                    </path>
+                                    <path d="M4 12h5.5"></path>
+                                    <path d="M15 9h5"></path>
+                                    <path d="M14 14.5c0 .5.5 1.5 2 1.5s2-1 2-1.5v-1h-4v1Z"></path>
+                                    <path d="M14 12c0-1.5 1-2.5 2.5-2.5s2.5 1 2.5 2.5h-5Z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-black text-2xl text-[#111] transition-colors mb-2 tracking-tight">
+                                    Behance</h3>
+                                <p class="text-[15px] text-slate-500 font-medium">Discover my design portfolio.</p>
+                            </div>
+                        </a>
+
+
+                        <!-- Telegram -->
+                        <a href="https://t.me/oybeKholikov" target="_blank" rel="noopener noreferrer"
+                            class="p-8 rounded-[32px] bg-slate-50 border border-transparent hover:border-slate-200 hover:-translate-y-1 hover:shadow-sm transition-all group flex flex-col gap-6 relative">
+                            <i data-lucide="arrow-up-right"
+                                class="w-5 h-5 text-[#111] absolute top-8 right-8 opacity-80 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"></i>
+                            <div
+                                class="w-16 h-16 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 group-hover:bg-[#FFF04B] group-hover:text-[#111] transition-colors shadow-sm">
+                                <i data-lucide="send" class="w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-black text-2xl text-[#111] transition-colors mb-2 tracking-tight">
+                                    Telegram</h3>
+                                <p class="text-[15px] text-slate-500 font-medium">Reach out for quick chats.</p>
+                            </div>
+                        </a>
+
+
+                        <!-- Github -->
+                        <a href="https://github.com/oybekjon94" target="_blank" rel="noopener noreferrer"
+                            class="p-8 rounded-[32px] bg-slate-50 border border-transparent hover:border-slate-200 hover:-translate-y-1 hover:shadow-sm transition-all group flex flex-col gap-6 relative">
+                            <i data-lucide="arrow-up-right"
+                                class="w-5 h-5 text-[#111] absolute top-8 right-8 opacity-80 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"></i>
+                            <div
+                                class="w-16 h-16 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 group-hover:bg-[#FFF04B] group-hover:text-[#111] transition-colors shadow-sm">
+                                <i data-lucide="github" class="w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-black text-2xl text-[#111] transition-colors mb-2 tracking-tight">
+                                    Github</h3>
+                                <p class="text-[15px] text-slate-500 font-medium">Explore my open-source projects.</p>
+                            </div>
+                        </a>
+
+
+                    </div>
+                </section>
+
+
+                <!-- Contact Section -->
+                <section id="contact" class="section-content border-slate-200">
+                    <h2
+                        class="text-[52px] sm:text-[72px] lg:text-[88px] font-black leading-[0.9] mb-12 relative tracking-tighter text-[#111] uppercase">
+                        LET'S WORK
+                        <span class="block text-slate-300 relative -mt-1 sm:-mt-2">TOGETHER</span>
+                    </h2>
+
+
+                    <!-- Contact Form -->
+                    <form action="https://formsubmit.co/x.oybek94@gmail.com" method="POST"
+                        class="flex flex-col gap-6 max-w-4xl">
+
+
+                        <!-- Optionally hide reCAPTCHA for cleaner look, handled by formsubmit -->
+                        <input type="hidden" name="_captcha" value="false">
+
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="flex flex-col gap-2">
+                                <label class="text-sm font-semibold text-slate-500">Name</label>
+                                <input type="text" name="name" placeholder="Your Name" required
+                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-amber-500 hover:border-slate-300 transition-all text-[15px] font-medium text-slate-900 placeholder-slate-400 shadow-sm">
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label class="text-sm font-semibold text-slate-500">Email</label>
+                                <input type="email" name="email" placeholder="Your@email.com" required
+                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-amber-500 hover:border-slate-300 transition-all text-[15px] font-medium text-slate-900 placeholder-slate-400 shadow-sm">
+                            </div>
+                        </div>
+
+
+                        <div class="flex flex-col gap-2">
+                            <label class="text-sm font-semibold text-slate-500">Message</label>
+                            <textarea name="message" rows="6" placeholder="Message" required
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-amber-500 hover:border-slate-300 transition-all text-[15px] font-medium text-slate-900 placeholder-slate-400 resize-none shadow-sm"></textarea>
+                        </div>
+
+
+                        <button type="submit" class="w-full btn-tactile rounded-2xl py-5 font-bold mt-2 text-lg">
+                            Submit Form
+                        </button>
+                    </form>
+
+
+                </section>
+
+
             </div>
-            <p class="text-xs mt-3 uppercase tracking-widest font-semibold text-muted-foreground">Oybek Kholikov © 2026
-            </p>
-        </div>
 
+
+        </main>
     </div>
+
+
+    <!-- Script to handle scroll spy -->
     <script>
         lucide.createIcons();
+
+
+        const sections = document.querySelectorAll('.section-content');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+
+        // Intersection Observer for highlighting active nav link
+        const observerOptions = {
+            root: null,
+            rootMargin: '-100px 0px -60% 0px', // Adjust depending on layout and sticky header height
+            threshold: 0
+        };
+
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Remove active class from all links
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        // Add active class to corresponding link
+                        if (link.getAttribute('href') === '#' + entry.target.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
     </script>
 </body>
+
 
 </html>
