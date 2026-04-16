@@ -232,17 +232,17 @@
 
                     <div class="grid grid-cols-3 gap-4 sm:gap-6 mb-14 max-w-2xl">
                         <div>
-                            <h3 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-2 text-[#111]">+1,5</h3>
+                            <h3 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-2 text-[#111] stat-number" data-target="1.5">+0</h3>
                             <p class="text-[10px] sm:text-xs tracking-wider text-slate-500 font-bold uppercase">
                                 Years of<br>Experience</p>
                         </div>
                         <div>
-                            <h3 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-2 text-[#111]">+15</h3>
+                            <h3 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-2 text-[#111] stat-number" data-target="15">+0</h3>
                             <p class="text-[10px] sm:text-xs tracking-wider text-slate-500 font-bold uppercase">
                                 Projects<br>Completed</p>
                         </div>
                         <div>
-                            <h3 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-2 text-[#111]">+10</h3>
+                            <h3 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-2 text-[#111] stat-number" data-target="10">+0</h3>
                             <p class="text-[10px] sm:text-xs tracking-wider text-slate-500 font-bold uppercase">
                                 Worldwide<br>Clients</p>
                         </div>
@@ -1129,6 +1129,51 @@
         sections.forEach(section => {
             observer.observe(section);
         });
+
+        // Count Up Animation
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const countUpObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    const finalValue = parseFloat(target.getAttribute('data-target'));
+                    const duration = 1500; // 1.5 seconds
+                    const startTime = performance.now();
+
+                    const animate = (currentTime) => {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        
+                        // Ease out quad
+                        const t = progress;
+                        const easeOut = t * (2 - t);
+                        
+                        const currentValue = 0 + (finalValue) * easeOut;
+                        
+                        // Format value: +1,5 or +15
+                        let formattedValue;
+                        if (finalValue % 1 === 0) {
+                            formattedValue = Math.floor(currentValue).toString();
+                        } else {
+                            formattedValue = currentValue.toFixed(1).replace('.', ',');
+                        }
+                        
+                        target.textContent = '+' + formattedValue;
+
+                        if (progress < 1) {
+                            requestAnimationFrame(animate);
+                        } else {
+                            // Ensure final value is exact
+                            target.textContent = '+' + finalValue.toString().replace('.', ',');
+                        }
+                    };
+                    requestAnimationFrame(animate);
+                    countUpObserver.unobserve(target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        statNumbers.forEach(stat => countUpObserver.observe(stat));
     </script>
 </body>
 
