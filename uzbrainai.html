@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UzbrainAI - Automate Intelligence | Oybek Kholikov</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #111;
+        }
+
+        .hero-gradient {
+            background-color: #F8FAFC;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        @media (min-width: 1024px) {
+            .section-container {
+                padding-left: 5rem;
+                padding-right: 5rem;
+            }
+        }
+
+        .problem-box {
+            background-color: #F8FAFC;
+            border-radius: 40px;
+        }
+
+        .mockup-card {
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .mockup-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .floating-info-card {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+            border-radius: 32px;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-max">
+        <div class="glass-nav rounded-full px-6 py-3 flex items-center gap-4 shadow-sm">
+            <a href="index.html#resume" class="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-[#111] transition-colors group">
+                <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-1 transition-transform"></i>
+                Back to Projects
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-40 pb-24 overflow-hidden">
+        <div class="section-container flex flex-col lg:flex-row items-center gap-16">
+            <!-- Left Side Content -->
+            <div class="lg:w-7/12">
+                <h1 class="text-4xl lg:text-5xl font-black tracking-tight leading-[1.1] mb-8">
+                    Automate Intelligence. <br>Accelerate Growth.
+                </h1>
+                <p class="text-xl text-slate-500 font-medium leading-relaxed mb-12 max-w-xl">
+                    Leading solutions in Conversational AI, Autonomous Agents, and Secure Voice Intelligence. Empowering businesses with smart automation.
+                </p>
+                <a href="https://www.uzbrainai.uz/" target="_blank" 
+                    class="inline-flex items-center gap-2 px-8 py-4.5 bg-[#111] text-white rounded-2xl font-bold text-lg hover:bg-slate-800 transition-all shadow-xl hover:shadow-2xl">
+                    View Live Site
+                    <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                </a>
+            </div>
+
+            <!-- Right Side Floating Card -->
+            <div class="lg:w-5/12 w-full">
+                <div class="floating-info-card p-10 flex flex-col gap-8">
+                    <div class="flex flex-col gap-1">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Year</span>
+                        <span class="text-xl font-black text-[#111]">2025</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Duration</span>
+                        <span class="text-xl font-black text-[#111]">Ongoing</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Role</span>
+                        <span class="text-xl font-black text-[#111]">Lead UI/UX Designer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Image Showcase -->
+    <div class="section-container -mt-12 relative z-10">
+        <div class="w-full aspect-[16/10] bg-[#6366F1] rounded-[48px] overflow-hidden flex items-center justify-center relative group shadow-2xl">
+            <img src="images/uzbrain01.png" alt="UzbrainAI Home Page" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105">
+        </div>
+    </div>
+
+    <!-- The Problem Section -->
+    <section class="pt-32 pb-8">
+        <div class="section-container">
+            <div class="problem-box p-12 lg:p-20">
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-8 block">The Problem</span>
+                <h2 class="text-xl lg:text-2xl font-bold leading-relaxed max-w-4xl text-slate-700">
+                    Modern enterprises struggle to integrate AI into their existing workflows due to complex interfaces and security concerns. Businesses need a way to deploy autonomous agents and voice intelligence that are both powerful and easy for non-technical teams to manage without compromising data privacy.
+                </h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discovery & Strategy Section -->
+    <section class="py-8">
+        <div class="section-container">
+            <div class="problem-box p-12 lg:p-20">
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-8 block">Discovery</span>
+                <p class="text-xl lg:text-2xl font-bold text-slate-600 leading-relaxed">
+                    We analyzed B2B workflows and found that users are overwhelmed by 'black-box' AI. The discovery phase focused on transparency: how to show the AI’s reasoning process and ensure users feel in control of autonomous agents.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Solution & Features Section -->
+    <section class="py-8">
+        <div class="section-container">
+            <div class="problem-box p-12 lg:p-20">
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-8 block">The Solution</span>
+                <h3 class="text-2xl lg:text-4xl font-black mb-12 tracking-tight leading-tight">
+                    UzbrainAI: A Unified Ecosystem for Agentic and Conversational AI
+                </h3>
+                
+                <!-- Feature Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex flex-col gap-6 p-8 bg-white rounded-[32px] border border-slate-100 shadow-sm">
+                        <div class="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center shadow-sm">
+                            <i data-lucide="bot" class="w-7 h-7 text-[#6366F1]"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-3">Autonomous Agents</h4>
+                            <p class="text-slate-500 font-medium leading-relaxed">
+                                Self-operating AI workers that handle repetitive tasks with minimal human intervention.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-6 p-8 bg-white rounded-[32px] border border-slate-100 shadow-sm">
+                        <div class="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center shadow-sm">
+                            <i data-lucide="mic" class="w-7 h-7 text-[#6366F1]"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-3">Voice Intelligence</h4>
+                            <p class="text-slate-500 font-medium leading-relaxed">
+                                Secure, real-time STT and TTS solutions for seamless human-machine communication.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-6 p-8 bg-white rounded-[32px] border border-slate-100 shadow-sm">
+                        <div class="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center shadow-sm">
+                            <i data-lucide="message-square" class="w-7 h-7 text-[#6366F1]"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-3">Conversational Bots</h4>
+                            <p class="text-slate-500 font-medium leading-relaxed">
+                                Advanced NLP-driven bots that provide human-like support and complex data retrieval.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-6 p-8 bg-white rounded-[32px] border border-slate-100 shadow-sm">
+                        <div class="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center shadow-sm">
+                            <i data-lucide="shield-check" class="w-7 h-7 text-[#6366F1]"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-3">Enterprise Security</h4>
+                            <p class="text-slate-500 font-medium leading-relaxed">
+                                Private cloud deployments ensuring all AI interactions remain within the company's firewall.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Showcase -->
+    <section class="py-32 bg-[#F8FAFC]">
+        <div class="section-container">
+            <div class="mb-16">
+                <h2 class="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">High Fidelity Interface</h2>
+                <p class="text-slate-500 font-medium">Designing a futuristic yet functional dashboard for AI management.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="mockup-card bg-white p-6">
+                    <div class="aspect-[4/3] overflow-hidden rounded-xl mb-6">
+                        <img src="images/uzbrain02.png" alt="APUSBOT Landing page" class="w-full h-full object-cover object-top">
+                    </div>
+                    <p class="text-sm font-bold text-[#111] uppercase tracking-widest">APUSBOT Landing page</p>
+                </div>
+                <div class="mockup-card bg-white p-6">
+                    <div class="aspect-[4/3] overflow-hidden rounded-xl mb-6">
+                        <img src="images/uzbrain06.png" alt="APUSBOT Dashboard" class="w-full h-full object-cover object-top">
+                    </div>
+                    <p class="text-sm font-bold text-[#111] uppercase tracking-widest">APUSBOT Dashboard</p>
+                </div>
+                <div class="mockup-card bg-white p-6">
+                    <div class="aspect-[4/3] overflow-hidden rounded-xl mb-6">
+                        <img src="images/uzbrain07.png" alt="APUSBOT Bot Create page" class="w-full h-full object-cover object-top">
+                    </div>
+                    <p class="text-sm font-bold text-[#111] uppercase tracking-widest">APUSBOT Bot Create page</p>
+                </div>
+                <div class="mockup-card bg-white p-6">
+                    <div class="aspect-[4/3] overflow-hidden rounded-xl mb-6">
+                        <img src="images/uzbrain04.png" alt="Speech-to-Text Landing page" class="w-full h-full object-cover object-top">
+                    </div>
+                    <p class="text-sm font-bold text-[#111] uppercase tracking-widest">Speech-to-Text Landing page</p>
+                </div>
+                <div class="mockup-card bg-white p-6">
+                    <div class="aspect-[4/3] overflow-hidden rounded-xl mb-6">
+                        <img src="images/uzbrain08.png" alt="Text-to-Speech" class="w-full h-full object-cover object-top">
+                    </div>
+                    <p class="text-sm font-bold text-[#111] uppercase tracking-widest">Text-to-Speech</p>
+                </div>
+                <div class="mockup-card bg-white p-6">
+                    <div class="aspect-[4/3] overflow-hidden rounded-xl mb-6">
+                        <img src="images/uzbrain03.png" alt="Tablet and Mobile UI" class="w-full h-full object-cover object-top">
+                    </div>
+                    <p class="text-sm font-bold text-[#111] uppercase tracking-widest">Tablet and Mobile UI (01)</p>
+                </div>
+                <div class="mockup-card bg-white p-6">
+                    <div class="aspect-[4/3] overflow-hidden rounded-xl mb-6">
+                        <img src="images/uzbrain05.png" alt="Tablet and Mobile UI" class="w-full h-full object-cover object-top">
+                    </div>
+                    <p class="text-sm font-bold text-[#111] uppercase tracking-widest">Tablet and Mobile UI (02)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <footer class="py-40 bg-white">
+        <div class="section-container flex flex-col items-center text-center">
+            <h2 class="text-4xl lg:text-6xl font-black mb-12 tracking-tight">LIKE WHAT YOU SEE?<br>Let's Connect!</h2>
+            
+            <div class="flex flex-col sm:flex-row gap-6 mb-24 w-full justify-center">
+                <a href="index.html#contact" class="px-10 py-5 bg-[#111] text-white rounded-2xl font-bold text-lg hover:bg-slate-800 transition-all shadow-xl hover:shadow-2xl">
+                    Let's Talk
+                </a>
+                <a href="https://www.linkedin.com/in/oybek-kholikov-b354b6258/" target="_blank" 
+                    class="px-10 py-5 bg-white border-2 border-slate-200 text-[#111] rounded-2xl font-bold text-lg hover:border-[#111] transition-all">
+                    LinkedIn
+                </a>
+            </div>
+
+            <div class="flex flex-col items-center gap-4">
+                <div class="flex items-center gap-3 text-slate-500 font-bold tracking-tight">
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                    <a href="mailto:x.oybek94@gmail.com" class="hover:text-[#111] transition-colors">x.oybek94@gmail.com</a>
+                </div>
+                <p class="text-slate-300 text-sm font-medium mt-8">© 2025 Oybek Kholikov. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
