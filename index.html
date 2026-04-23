@@ -104,29 +104,30 @@
         /* Dynamic Skill Pills */
         .skill-pill {
             display: inline-block;
-            padding: 10px 20px;
-            border-radius: 20px;
+            padding: 14px 28px;
+            border-radius: 24px;
             color: white;
             font-weight: 800;
             text-transform: uppercase;
-            font-size: 13px;
+            font-size: 16px;
             letter-spacing: -0.01em;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             cursor: default;
             user-select: none;
+            white-space: nowrap;
         }
 
         .skill-pill:hover {
-            transform: scale(1.1) !important;
+            transform: scale(1.08) !important;
             z-index: 10;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
         }
 
         @media (max-width: 640px) {
             .skill-pill {
-                padding: 8px 16px;
-                font-size: 11px;
+                padding: 12px 24px;
+                font-size: 14px;
             }
         }
     </style>
@@ -280,11 +281,11 @@
                     <h3 class="text-[22px] font-bold mb-6 text-slate-800">Skills</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Card 1: Research & UX -->
-                        <div class="bg-slate-50 rounded-[40px] p-8 sm:p-10 border border-slate-200 hover:shadow-sm transition-shadow">
-                            <div class="mb-10 rounded-2xl w-14 h-14 bg-white flex items-center justify-center shadow-sm border border-slate-200">
+                        <div class="bg-slate-50 rounded-[40px] p-6 border border-slate-200 hover:shadow-sm transition-shadow overflow-hidden">
+                            <div class="mb-8 rounded-2xl w-14 h-14 bg-white flex items-center justify-center shadow-sm border border-slate-200">
                                 <i data-lucide="layers" class="w-7 h-7 text-[#111]"></i>
                             </div>
-                            <div class="flex flex-wrap gap-3">
+                            <div class="flex flex-wrap gap-4 -mx-2">
                                 <span class="skill-pill bg-[#111] rotate-[-2deg]">User Interviewing</span>
                                 <span class="skill-pill bg-[#64748B] rotate-[3deg]">User Research</span>
                                 <span class="skill-pill bg-[#2D68FF] rotate-[-3deg]">Usability Testing</span>
@@ -295,11 +296,11 @@
                         </div>
 
                         <!-- Card 2: Tools & Tech -->
-                        <div class="bg-slate-50 rounded-[40px] p-8 sm:p-10 border border-slate-200 hover:shadow-sm transition-shadow">
-                            <div class="mb-10 rounded-2xl w-14 h-14 bg-white flex items-center justify-center shadow-sm border border-slate-200">
+                        <div class="bg-slate-50 rounded-[40px] p-6 border border-slate-200 hover:shadow-sm transition-shadow overflow-hidden">
+                            <div class="mb-8 rounded-2xl w-14 h-14 bg-white flex items-center justify-center shadow-sm border border-slate-200">
                                 <i data-lucide="layout-template" class="w-7 h-7 text-[#111]"></i>
                             </div>
-                            <div class="flex flex-wrap gap-3">
+                            <div class="flex flex-wrap gap-4 -mx-2">
                                 <span class="skill-pill bg-[#FF6B00] rotate-[-3deg]">Figma</span>
                                 <span class="skill-pill bg-[#2D68FF] rotate-[2deg]">Sketch</span>
                                 <span class="skill-pill bg-[#111] rotate-[-2deg]">Adobe XD</span>
