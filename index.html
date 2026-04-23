@@ -101,26 +101,27 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
         }
 
-        /* Skill Pile Layout - Refined for "Wall-to-Wall" look */
+        /* Skill Pile Layout - Refined for Responsiveness */
         .skill-pile-container {
             position: relative;
             width: 100%;
-            height: 480px;
+            height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-top: 20px;
         }
 
         .skill-pill {
             position: absolute;
-            padding: 28px 52px;
-            border-radius: 54px;
+            padding: 18px 36px;
+            border-radius: 40px;
             color: white;
             font-weight: 900;
             text-transform: uppercase;
-            font-size: 24px;
+            font-size: 18px;
             letter-spacing: -0.02em;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             user-select: none;
@@ -135,30 +136,29 @@
 
         .skill-pill i {
             position: absolute;
-            width: 64px;
-            height: 64px;
+            width: 50px;
+            height: 50px;
             opacity: 0.1;
-            right: -10px;
-            bottom: -10px;
+            right: -5px;
+            bottom: -5px;
             transform: rotate(-15deg);
         }
 
         .skill-pill:hover {
             transform: scale(1.1) rotate(0deg) !important;
             z-index: 100 !important;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+        }
+
+        @media (max-width: 1024px) {
+            .skill-pile-container { height: 350px; }
+            .skill-pill { padding: 14px 28px; font-size: 15px; border-radius: 30px; }
         }
 
         @media (max-width: 640px) {
-            .skill-pile-container {
-                height: 500px;
-            }
-            .skill-pill {
-                padding: 18px 32px;
-                font-size: 16px;
-                border-radius: 36px;
-            }
-            .skill-pill i { width: 48px; height: 48px; }
+            .skill-pile-container { height: 320px; }
+            .skill-pill { padding: 12px 24px; font-size: 13px; border-radius: 24px; }
+            .skill-pill i { width: 40px; height: 40px; }
         }
     </style>
     <script>
@@ -308,42 +308,41 @@
                         </div>
                     </div>
 
-                    <h3 class="text-[22px] font-bold mb-6 text-slate-800">Skills</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <h3 class="text-[22px] font-bold mb-8 text-slate-800">Skills</h3>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
                         <!-- Card 1: Research & UX Pile -->
-                        <div class="bg-slate-50 rounded-[48px] p-8 border border-slate-200 hover:shadow-sm transition-shadow overflow-hidden flex flex-col">
-                            <div class="mb-4 rounded-2xl w-14 h-14 bg-white flex items-center justify-center shadow-sm border border-slate-200 shrink-0">
-                                <i data-lucide="layers" class="w-7 h-7 text-[#111]"></i>
-                            </div>
-                    <h3 class="text-[22px] font-bold mb-6 text-slate-800">Skills</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Card 1: Research & UX Pile -->
-                        <div class="bg-slate-50 rounded-[48px] p-6 border border-slate-200 hover:shadow-sm transition-shadow overflow-hidden flex flex-col">
-                            <div class="mb-4 rounded-2xl w-14 h-14 bg-white flex items-center justify-center shadow-sm border border-slate-200 shrink-0">
-                                <i data-lucide="layers" class="w-7 h-7 text-[#111]"></i>
+                        <div class="bg-slate-100 rounded-[48px] p-8 border border-slate-200 hover:shadow-sm transition-shadow overflow-hidden flex flex-col">
+                            <div class="flex items-center gap-5 mb-4 shrink-0">
+                                <div class="rounded-2xl w-14 h-14 bg-white flex items-center justify-center shadow-sm border border-slate-200">
+                                    <i data-lucide="layers" class="w-7 h-7 text-[#111]"></i>
+                                </div>
+                                <div class="text-lg font-black text-slate-800 uppercase tracking-tighter leading-tight">Research<br>& UX Design</div>
                             </div>
                             <div class="skill-pile-container">
-                                <span class="skill-pill bg-[#111]" style="transform: rotate(-12deg) translate(-60px, -140px); z-index: 1;">User Interviewing<i data-lucide="users"></i></span>
+                                <span class="skill-pill bg-[#111]" style="transform: rotate(-10deg) translate(-40px, -140px); z-index: 1;">User Interviewing<i data-lucide="users"></i></span>
                                 <span class="skill-pill bg-[#64748B]" style="transform: rotate(8deg) translate(80px, -80px); z-index: 2;">User Research<i data-lucide="search"></i></span>
-                                <span class="skill-pill bg-[#2D68FF]" style="transform: rotate(-5deg) translate(-85px, -15px); z-index: 3;">Usability Testing<i data-lucide="check-circle"></i></span>
-                                <span class="skill-pill bg-[#FF6B00]" style="transform: rotate(10deg) translate(65px, 55px); z-index: 4;">A/B Testing<i data-lucide="zap"></i></span>
-                                <span class="skill-pill bg-[#8B5CF6]" style="transform: rotate(-10deg) translate(-45px, 125px); z-index: 5;">User Flow<i data-lucide="git-branch"></i></span>
-                                <span class="skill-pill bg-[#0D9488]" style="transform: rotate(6deg) translate(90px, 160px); z-index: 6;">Design Styles<i data-lucide="palette"></i></span>
+                                <span class="skill-pill bg-[#2D68FF]" style="transform: rotate(-6deg) translate(-65px, -20px); z-index: 3;">Usability Testing<i data-lucide="check-circle"></i></span>
+                                <span class="skill-pill bg-[#FF6B00]" style="transform: rotate(10deg) translate(65px, 40px); z-index: 4;">A/B Testing<i data-lucide="zap"></i></span>
+                                <span class="skill-pill bg-[#8B5CF6]" style="transform: rotate(-12deg) translate(-45px, 105px); z-index: 5;">User Flow<i data-lucide="git-branch"></i></span>
+                                <span class="skill-pill bg-[#0D9488]" style="transform: rotate(6deg) translate(75px, 155px); z-index: 6;">Design Styles<i data-lucide="palette"></i></span>
                             </div>
                         </div>
 
                         <!-- Card 2: Tools & Tech Pile -->
-                        <div class="bg-slate-50 rounded-[48px] p-6 border border-slate-200 hover:shadow-sm transition-shadow overflow-hidden flex flex-col">
-                            <div class="mb-4 rounded-2xl w-14 h-14 bg-white flex items-center justify-center shadow-sm border border-slate-200 shrink-0">
-                                <i data-lucide="layout-template" class="w-7 h-7 text-[#111]"></i>
+                        <div class="bg-slate-100 rounded-[48px] p-8 border border-slate-200 hover:shadow-sm transition-shadow overflow-hidden flex flex-col">
+                            <div class="flex items-center gap-5 mb-4 shrink-0">
+                                <div class="rounded-2xl w-14 h-14 bg-white flex items-center justify-center shadow-sm border border-slate-200">
+                                    <i data-lucide="layout-template" class="w-7 h-7 text-[#111]"></i>
+                                </div>
+                                <div class="text-lg font-black text-slate-800 uppercase tracking-tighter leading-tight">Tools<br>& Tech Stack</div>
                             </div>
                             <div class="skill-pile-container">
-                                <span class="skill-pill bg-[#FF6B00]" style="transform: rotate(-10deg) translate(-90px, -145px); z-index: 1;">Figma<i data-lucide="framer"></i></span>
-                                <span class="skill-pill bg-[#2D68FF]" style="transform: rotate(15deg) translate(85px, -85px); z-index: 2;">Sketch<i data-lucide="diamond"></i></span>
-                                <span class="skill-pill bg-[#111]" style="transform: rotate(-5deg) translate(-65px, -10px); z-index: 3;">Adobe XD<i data-lucide="pen-tool"></i></span>
-                                <span class="skill-pill bg-[#8B5CF6]" style="transform: rotate(12deg) translate(75px, 65px); z-index: 4;">Vibe Coding<i data-lucide="code"></i></span>
-                                <span class="skill-pill bg-[#64748B]" style="transform: rotate(-12deg) translate(-35px, 135px); z-index: 5;">Notion<i data-lucide="book-open"></i></span>
-                                <span class="skill-pill bg-[#0D9488]" style="transform: rotate(10deg) translate(80px, 175px); z-index: 6;">AI tools<i data-lucide="cpu"></i></span>
+                                <span class="skill-pill bg-[#FF6B00]" style="transform: rotate(-10deg) translate(-85px, -145px); z-index: 1;">Figma<i data-lucide="framer"></i></span>
+                                <span class="skill-pill bg-[#2D68FF]" style="transform: rotate(15deg) translate(80px, -90px); z-index: 2;">Sketch<i data-lucide="diamond"></i></span>
+                                <span class="skill-pill bg-[#111]" style="transform: rotate(-5deg) translate(-60px, -25px); z-index: 3;">Adobe XD<i data-lucide="pen-tool"></i></span>
+                                <span class="skill-pill bg-[#8B5CF6]" style="transform: rotate(12deg) translate(70px, 45px); z-index: 4;">Vibe Coding<i data-lucide="code"></i></span>
+                                <span class="skill-pill bg-[#64748B]" style="transform: rotate(-12deg) translate(-50px, 115px); z-index: 5;">Notion<i data-lucide="book-open"></i></span>
+                                <span class="skill-pill bg-[#0D9488]" style="transform: rotate(10deg) translate(85px, 165px); z-index: 6;">AI tools<i data-lucide="cpu"></i></span>
                             </div>
                         </div>
                     </div>
