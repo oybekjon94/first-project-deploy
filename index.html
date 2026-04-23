@@ -100,6 +100,86 @@
             border: 1px solid rgba(0, 0, 0, 0.05);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
         }
+
+        /* Dynamic Skill Cards */
+        .skills-dynamic-container {
+            position: relative;
+            width: 100%;
+            height: 480px;
+            background: #F8FAFC;
+            border-radius: 48px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #E2E8F0;
+        }
+
+        .skill-sticker {
+            position: absolute;
+            padding: 24px 32px;
+            border-radius: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+            color: white;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .skill-sticker:hover {
+            transform: scale(1.05) !important;
+            z-index: 50 !important;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-sticker i {
+            width: 32px;
+            height: 32px;
+            opacity: 0.2;
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+        }
+
+        .skill-sticker-black { background: #111111; }
+        .skill-sticker-orange { background: #FF6B00; }
+        .skill-sticker-blue { background: #2D68FF; }
+        .skill-sticker-gray { background: #64748B; }
+        .skill-sticker-purple { background: #8B5CF6; }
+        .skill-sticker-teal { background: #0D9488; }
+
+        .skill-sticker-large {
+            padding: 40px 60px;
+            border-radius: 60px;
+            font-size: 32px;
+        }
+
+        .skill-sticker-medium {
+            padding: 24px 40px;
+            border-radius: 40px;
+            font-size: 20px;
+        }
+
+        .skill-sticker-small {
+            padding: 16px 28px;
+            border-radius: 30px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 640px) {
+            .skills-dynamic-container {
+                height: 600px;
+            }
+            .skill-sticker-large { font-size: 24px; padding: 30px 45px; }
+            .skill-sticker-medium { font-size: 16px; padding: 20px 30px; }
+        }
     </style>
     <script>
         tailwind.config = {
@@ -249,36 +329,47 @@
                     </div>
 
                     <h3 class="text-[22px] font-bold mb-6 text-slate-800">Skills</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div
-                            class="bg-slate-50 rounded-[32px] p-8 sm:p-10 flex flex-col items-start h-auto group hover:-translate-y-1 hover:shadow-sm transition-all cursor-pointer border border-slate-200">
-                            <div
-                                class="mb-8 rounded-2xl w-14 h-14 bg-white flex items-center justify-center shadow-sm border border-slate-200 group-hover:bg-[#FFF04B] transition-colors shrink-0">
-                                <i data-lucide="layers" class="w-7 h-7 text-[#111]"></i>
-                            </div>
-                            <h4
-                                class="text-[#111] font-black text-lg sm:text-lg uppercase tracking-tight w-full leading-[1.6]">
-                                User Interviewing<br>
-                                User Research<br>
-                                Usability Testing<br>
-                                A/B Testing<br>
-                                User Flow / Wireframing<br>
-                                Design Styles</h4>
+                    <div class="skills-dynamic-container mb-14">
+                        <!-- Research Sticker -->
+                        <div class="skill-sticker skill-sticker-black skill-sticker-large" 
+                             style="transform: rotate(-12deg) translate(-110px, -100px); z-index: 10;">
+                            <span>Research</span>
+                            <i data-lucide="search"></i>
+                            <div class="text-[10px] opacity-60 font-bold mt-2">INTERVIEWING • USABILITY • A/B</div>
                         </div>
-                        <div
-                            class="bg-slate-50 rounded-[32px] p-8 sm:p-10 flex flex-col items-start h-auto group hover:-translate-y-1 hover:shadow-sm transition-all cursor-pointer border border-slate-200">
-                            <div
-                                class="mb-8 rounded-2xl w-14 h-14 bg-white flex items-center justify-center shadow-sm border border-slate-200 group-hover:bg-[#FFF04B] transition-colors shrink-0">
-                                <i data-lucide="layout-template" class="w-7 h-7 text-[#111]"></i>
-                            </div>
-                            <h4
-                                class="text-[#111] font-black text-lg sm:text-lg uppercase tracking-tight w-full leading-[1.6]">
-                                Figma<br>
-                                Sketch<br>
-                                Adobe XD<br>
-                                Vibe Coding<br>
-                                Notion<br>
-                                AI tools</h4>
+
+                        <!-- Energetic/UX Sticker -->
+                        <div class="skill-sticker skill-sticker-gray skill-sticker-medium" 
+                             style="transform: rotate(-5deg) translate(-140px, 60px); z-index: 5;">
+                            <span>UX Design</span>
+                            <i data-lucide="users"></i>
+                            <div class="text-[9px] opacity-60 font-bold mt-1">FLOWS • WIREFRAMES • RESEARCH</div>
+                        </div>
+
+                        <!-- Dynamic/Visual Sticker -->
+                        <div class="skill-sticker skill-sticker-orange skill-sticker-large" 
+                             style="transform: rotate(42deg) translate(40px, -20px); z-index: 20;">
+                            <span>Visuals</span>
+                            <i data-lucide="palette"></i>
+                            <div class="text-[10px] opacity-60 font-bold mt-2">FIGMA • SKETCH • ADOBE XD</div>
+                        </div>
+
+                        <!-- Tech/Tools Sticker -->
+                        <div class="skill-sticker skill-sticker-blue skill-sticker-medium" 
+                             style="transform: rotate(-8deg) translate(130px, 120px); z-index: 15;">
+                            <span>Tools</span>
+                            <i data-lucide="cpu"></i>
+                            <div class="text-[9px] opacity-60 font-bold mt-1">NOTION • AI TOOLS • VIBE</div>
+                        </div>
+
+                        <!-- Mini Stickers for detail -->
+                        <div class="skill-sticker skill-sticker-purple skill-sticker-small hidden sm:flex" 
+                             style="transform: rotate(15deg) translate(-220px, -180px); z-index: 1;">
+                            <span>Prototyping</span>
+                        </div>
+                        <div class="skill-sticker skill-sticker-teal skill-sticker-small hidden sm:flex" 
+                             style="transform: rotate(-10deg) translate(200px, -140px); z-index: 1;">
+                            <span>Architecture</span>
                         </div>
                     </div>
 
