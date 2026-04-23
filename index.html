@@ -101,84 +101,33 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
         }
 
-        /* Dynamic Skill Cards */
-        .skills-dynamic-container {
-            position: relative;
-            width: 100%;
-            height: 480px;
-            background: #F8FAFC;
-            border-radius: 48px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #E2E8F0;
-        }
-
-        .skill-sticker {
-            position: absolute;
-            padding: 24px 32px;
-            border-radius: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 12px;
+        /* Dynamic Skill Pills */
+        .skill-pill {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 20px;
             color: white;
-            font-weight: 900;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: -0.02em;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
+            font-size: 13px;
+            letter-spacing: -0.01em;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: default;
             user-select: none;
         }
 
-        .skill-sticker:hover {
-            transform: scale(1.05) !important;
-            z-index: 50 !important;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
-        }
-
-        .skill-sticker i {
-            width: 32px;
-            height: 32px;
-            opacity: 0.2;
-            position: absolute;
-            right: 20px;
-            bottom: 20px;
-        }
-
-        .skill-sticker-black { background: #111111; }
-        .skill-sticker-orange { background: #FF6B00; }
-        .skill-sticker-blue { background: #2D68FF; }
-        .skill-sticker-gray { background: #64748B; }
-        .skill-sticker-purple { background: #8B5CF6; }
-        .skill-sticker-teal { background: #0D9488; }
-
-        .skill-sticker-large {
-            padding: 40px 60px;
-            border-radius: 60px;
-            font-size: 32px;
-        }
-
-        .skill-sticker-medium {
-            padding: 24px 40px;
-            border-radius: 40px;
-            font-size: 20px;
-        }
-
-        .skill-sticker-small {
-            padding: 16px 28px;
-            border-radius: 30px;
-            font-size: 14px;
+        .skill-pill:hover {
+            transform: scale(1.1) !important;
+            z-index: 10;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
         @media (max-width: 640px) {
-            .skills-dynamic-container {
-                height: 600px;
+            .skill-pill {
+                padding: 8px 16px;
+                font-size: 11px;
             }
-            .skill-sticker-large { font-size: 24px; padding: 30px 45px; }
-            .skill-sticker-medium { font-size: 16px; padding: 20px 30px; }
         }
     </style>
     <script>
@@ -329,47 +278,35 @@
                     </div>
 
                     <h3 class="text-[22px] font-bold mb-6 text-slate-800">Skills</h3>
-                    <div class="skills-dynamic-container mb-14">
-                        <!-- Research Sticker -->
-                        <div class="skill-sticker skill-sticker-black skill-sticker-large" 
-                             style="transform: rotate(-12deg) translate(-110px, -100px); z-index: 10;">
-                            <span>Research</span>
-                            <i data-lucide="search"></i>
-                            <div class="text-[10px] opacity-60 font-bold mt-2">INTERVIEWING • USABILITY • A/B</div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Card 1: Research & UX -->
+                        <div class="bg-slate-50 rounded-[40px] p-8 sm:p-10 border border-slate-200 hover:shadow-sm transition-shadow">
+                            <div class="mb-10 rounded-2xl w-14 h-14 bg-white flex items-center justify-center shadow-sm border border-slate-200">
+                                <i data-lucide="layers" class="w-7 h-7 text-[#111]"></i>
+                            </div>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="skill-pill bg-[#111] rotate-[-2deg]">User Interviewing</span>
+                                <span class="skill-pill bg-[#64748B] rotate-[3deg]">User Research</span>
+                                <span class="skill-pill bg-[#2D68FF] rotate-[-3deg]">Usability Testing</span>
+                                <span class="skill-pill bg-[#FF6B00] rotate-[2deg]">A/B Testing</span>
+                                <span class="skill-pill bg-[#8B5CF6] rotate-[-4deg]">User Flow</span>
+                                <span class="skill-pill bg-[#0D9488] rotate-[3deg]">Design Styles</span>
+                            </div>
                         </div>
 
-                        <!-- Energetic/UX Sticker -->
-                        <div class="skill-sticker skill-sticker-gray skill-sticker-medium" 
-                             style="transform: rotate(-5deg) translate(-140px, 60px); z-index: 5;">
-                            <span>UX Design</span>
-                            <i data-lucide="users"></i>
-                            <div class="text-[9px] opacity-60 font-bold mt-1">FLOWS • WIREFRAMES • RESEARCH</div>
-                        </div>
-
-                        <!-- Dynamic/Visual Sticker -->
-                        <div class="skill-sticker skill-sticker-orange skill-sticker-large" 
-                             style="transform: rotate(42deg) translate(40px, -20px); z-index: 20;">
-                            <span>Visuals</span>
-                            <i data-lucide="palette"></i>
-                            <div class="text-[10px] opacity-60 font-bold mt-2">FIGMA • SKETCH • ADOBE XD</div>
-                        </div>
-
-                        <!-- Tech/Tools Sticker -->
-                        <div class="skill-sticker skill-sticker-blue skill-sticker-medium" 
-                             style="transform: rotate(-8deg) translate(130px, 120px); z-index: 15;">
-                            <span>Tools</span>
-                            <i data-lucide="cpu"></i>
-                            <div class="text-[9px] opacity-60 font-bold mt-1">NOTION • AI TOOLS • VIBE</div>
-                        </div>
-
-                        <!-- Mini Stickers for detail -->
-                        <div class="skill-sticker skill-sticker-purple skill-sticker-small hidden sm:flex" 
-                             style="transform: rotate(15deg) translate(-220px, -180px); z-index: 1;">
-                            <span>Prototyping</span>
-                        </div>
-                        <div class="skill-sticker skill-sticker-teal skill-sticker-small hidden sm:flex" 
-                             style="transform: rotate(-10deg) translate(200px, -140px); z-index: 1;">
-                            <span>Architecture</span>
+                        <!-- Card 2: Tools & Tech -->
+                        <div class="bg-slate-50 rounded-[40px] p-8 sm:p-10 border border-slate-200 hover:shadow-sm transition-shadow">
+                            <div class="mb-10 rounded-2xl w-14 h-14 bg-white flex items-center justify-center shadow-sm border border-slate-200">
+                                <i data-lucide="layout-template" class="w-7 h-7 text-[#111]"></i>
+                            </div>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="skill-pill bg-[#FF6B00] rotate-[-3deg]">Figma</span>
+                                <span class="skill-pill bg-[#2D68FF] rotate-[2deg]">Sketch</span>
+                                <span class="skill-pill bg-[#111] rotate-[-2deg]">Adobe XD</span>
+                                <span class="skill-pill bg-[#8B5CF6] rotate-[4deg]">Vibe Coding</span>
+                                <span class="skill-pill bg-[#64748B] rotate-[-3deg]">Notion</span>
+                                <span class="skill-pill bg-[#0D9488] rotate-[2deg]">AI tools</span>
+                            </div>
                         </div>
                     </div>
 
