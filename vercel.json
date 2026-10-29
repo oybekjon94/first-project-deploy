@@ -1,5 +1,5 @@
 {
-  "buildCommand": null,
-  "outputDirectory": ".",
-  "installCommand": null
+  "buildCommand": "npm run build",
+  "outputDirectory": "_site",
+  "installCommand": "npm ci"
 }

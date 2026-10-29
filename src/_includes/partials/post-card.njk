@@ -1,0 +1,24 @@
+{#- One blog post card. Needs `post` (a page from collections.posts) and `lang`. -#}
+{%- set p = post.data[lang] -%}
+{%- set topic = post.data.topic -%}
+<article class="post-card on-scroll">
+    <p class="post-meta">
+        {{ t.blog.topics[topic] }} · <time datetime="{{ post.date.toISOString().slice(0, 10) }}">{{ post.date | formatDate(lang) }}</time>
+    </p>
+    <h3 class="post-title">{{ p.title }}</h3>
+    <p class="post-excerpt">{{ p.excerpt }}</p>
+
+    {#- Cover image; the topic icon underneath shows when a post has no cover yet -#}
+    <div class="post-cover">
+        <span class="post-cover-icon" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            {%- if topic == "research" %}<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>
+            {%- elif topic == "systems" %}<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>
+            {%- elif topic == "process" %}<path d="M4 12h12M12 6l6 6-6 6"/><path d="M4 5v14"/>
+            {%- else %}<path d="M12 3l1.8 4.6L18.5 9l-4.7 1.4L12 15l-1.8-4.6L5.5 9l4.7-1.4z"/><path d="M18 15l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z"/>
+            {%- endif %}
+            </svg>
+        </span>
+        {% image "src/assets/images/blog/" + post.data.cover, p.title, "(min-width: 900px) 540px, 100vw" %}
+    </div>
+</article>

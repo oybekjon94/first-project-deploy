@@ -1,0 +1,14 @@
+{#- One project card. Needs `project` (a page from collections.projects) and `lang`. -#}
+{%- set p = project.data[lang] -%}
+<article class="project-card on-scroll"data-categories="{{ project.data.categories | join(' ') }}">
+    <div class="project-media">
+        {% image "src/assets/images/projects/" + project.data.image, p.title, "(min-width: 900px) 540px, 100vw" %}
+        <ul class="project-labels">
+            {%- for label in p.labels %}
+            <li>{{ label }}</li>
+            {%- endfor %}
+        </ul>
+    </div>
+    <p class="project-meta">{{ p.name }} · {{ p.role }}</p>
+    <h3 class="project-title">{{ p.title }}</h3>
+</article>

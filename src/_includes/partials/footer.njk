@@ -1,0 +1,24 @@
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-wrap">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="{{ t.home }}" class="logo">{{ site.brand }}<span>.</span></a>
+                    <p>{{ t.footer.tagline }}</p>
+                </div>
+
+                <nav class="footer-links" aria-label="{{ t.footer.label }}">
+                    <a href="{{ t.home }}work/">{{ t.nav.work }}</a>
+                    <a href="{{ t.home }}#blog">{{ t.nav.blog }}</a>
+                    <a href="{{ t.home }}#about">{{ t.nav.about }}</a>
+                    <a href="{{ t.home }}#contact">{{ t.footer.contact }}</a>
+                    <a href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="{{ site.behance }}" target="_blank" rel="noopener">Behance</a>
+                </nav>
+            </div>
+
+            <p class="footer-copy">© {{ year }} {{ site.name }}</p>
+        </div>
+    </div>
+</footer>

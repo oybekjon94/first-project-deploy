@@ -1,0 +1,27 @@
+<!-- Top bar -->
+<header class="site-header" id="top">
+    <nav class="container nav" aria-label="Main">
+        <a href="{{ t.home }}" class="logo">{{ site.brand }}<span>.</span></a>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="{{ t.home }}work/" {% if "/work/" in page.url %}aria-current="page"{% endif %}>{{ t.nav.work }}</a></li>
+            <li><a href="{{ t.home }}#blog">{{ t.nav.blog }}</a></li>
+            <li><a href="{{ t.home }}#about">{{ t.nav.about }}</a></li>
+            <li class="nav-cta-mobile"><a href="{{ t.home }}#contact" class="btn btn-primary">{{ t.nav.cta }}</a></li>
+        </ul>
+
+        <div class="lang-switch" role="group" aria-label="{{ t.nav.language }}">
+            <a href="{{ enUrl }}" hreflang="en" lang="en" {% if lang == "en" %}aria-current="true"{% endif %}>EN</a>
+            <span aria-hidden="true">/</span>
+            <a href="{{ koUrl }}" hreflang="ko" lang="ko" {% if lang == "ko" %}aria-current="true"{% endif %}>KO</a>
+        </div>
+
+        <a href="{{ t.home }}#contact" class="btn btn-primary nav-cta">{{ t.nav.cta }}</a>
+
+        <button class="menu-toggle" type="button" aria-label="{{ t.nav.menuOpen }}" aria-expanded="false" aria-controls="nav-links"
+            data-label-open="{{ t.nav.menuOpen }}" data-label-close="{{ t.nav.menuClose }}">
+            <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+    </nav>
+</header>

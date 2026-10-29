@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+pagination:
+    data: languages
+    size: 1
+    alias: lang
+permalink: "{{ i18n[lang].home }}work/"
+eleventyComputed:
+    title: "{{ i18n[lang].workPage.metaTitle }}"
+    description: "{{ i18n[lang].workPage.metaDescription }}"
+---
+{%- set t = i18n[lang] -%}
+<main class="container work work-page">
+    <p class="section-label reveal">{{ t.workPage.label }} — {{ collections.projects | length }}</p>
+    <h1 class="section-title reveal">{{ t.workPage.title }}</h1>
+    <p class="section-desc reveal">{{ t.workPage.desc }}</p>
+
+    {#- Tabs filter cards by `categories`; without JS all projects simply stay visible -#}
+    <div class="filter-tabs reveal" role="group" aria-label="{{ t.workPage.filterLabel }}">
+        {%- for key, label in t.workPage.filters %}
+        <button type="button" data-filter="{{ key }}" aria-pressed="{{ 'true' if key == 'all' else 'false' }}">
+            {{ label }}<sup>{{ collections.projects | inCategory(key) | length }}</sup>
+        </button>
+        {%- endfor %}
+    </div>
+
+    <div class="projects-grid">
+        {#- asyncEach (not for): the card's image shortcode is async -#}
+        {%- asyncEach project in collections.projects %}
+        {% include "partials/project-card.njk" %}
+        {%- endeach %}
+    </div>
+</main>

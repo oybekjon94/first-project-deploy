@@ -1,0 +1,206 @@
+{
+    "en": {
+        "home": "/",
+        "locale": "en_US",
+        "meta": {
+            "title": "Oybek Kholikov — UI/UX & Product Designer",
+            "description": "Oybek Kholikov is a UI/UX and product designer based in Seoul, designing clear, human-centered web and mobile products."
+        },
+        "nav": {
+            "work": "Work",
+            "blog": "Blog",
+            "about": "About",
+            "soon": "Soon",
+            "cta": "Get in touch",
+            "menuOpen": "Open menu",
+            "menuClose": "Close menu",
+            "language": "Language"
+        },
+        "hero": {
+            "eyebrow": "UI/UX &amp; Product Designer — Seoul",
+            "title": "Designing clear, <mark>human-centered</mark> digital products.",
+            "desc": "I'm Oybek, a UI/UX and product designer based in Seoul. I turn complex problems into simple, intuitive experiences for web and mobile — from research to polished UI.",
+            "cta": "Get in touch",
+            "cv": "Download CV",
+            "photoAlt": "Portrait of Oybek Kholikov",
+            "badge": "Hey, I'm Oybek 👋",
+            "facts": [
+                "1.5+ years in product design",
+                "Mobile, web & AI products",
+                "Research → UI → handoff"
+            ]
+        },
+        "services": {
+            "label": "What I do",
+            "title": "Your product designer, from idea to handoff.",
+            "desc": "I work closely with product teams — from discovery and research to polished UI and developer handoff, right inside your Figma and your workflow."
+        },
+        "work": {
+            "label": "Selected work",
+            "title": "Products I've designed",
+            "seeAll": "See all projects"
+        },
+        "blog": {
+            "label": "Blog",
+            "title": "Notes on design and process",
+            "seeAll": "See all posts",
+            "topics": {
+                "research": "UX Research",
+                "systems": "Design Systems",
+                "process": "Process",
+                "ai": "AI"
+            }
+        },
+        "workPage": {
+            "metaTitle": "Work — Oybek Kholikov",
+            "metaDescription": "Mobile apps, websites and AI products designed by Oybek Kholikov, a UI/UX and product designer in Seoul.",
+            "label": "Work",
+            "title": "All projects",
+            "desc": "Products I've designed — from mobile apps and websites to AI tools.",
+            "filterLabel": "Filter projects",
+            "filters": {
+                "all": "All",
+                "mobile": "Mobile app",
+                "web": "Website",
+                "ai": "AI"
+            }
+        },
+        "contact": {
+            "label": "Let's talk",
+            "title": "Let's work together.",
+            "desc": "Hiring or have a project in mind? Send me a message.",
+            "steps": [
+                {
+                    "title": "Send a message",
+                    "text": "A few lines about the role or project."
+                },
+                {
+                    "title": "We talk",
+                    "text": "I reply by email, then we set up a short call."
+                },
+                {
+                    "title": "We get started",
+                    "text": "Research, design and handoff, with regular check-ins."
+                }
+            ],
+            "form": {
+                "name": "Name",
+                "namePlaceholder": "Your name",
+                "email": "Email",
+                "emailPlaceholder": "you@company.com",
+                "message": "Message",
+                "messagePlaceholder": "A role, a project or a question.",
+                "submit": "Send message",
+                "subject": "Portfolio inquiry from",
+                "note": "Or email me directly:"
+            }
+        },
+        "footer": {
+            "tagline": "UI/UX & product designer based in Seoul.",
+            "contact": "Contact",
+            "label": "Footer"
+        }
+    },
+    "ko": {
+        "home": "/ko/",
+        "locale": "ko_KR",
+        "meta": {
+            "title": "Oybek Kholikov — UI/UX & 프로덕트 디자이너",
+            "description": "서울에서 활동하는 UI/UX·프로덕트 디자이너 Oybek Kholikov의 포트폴리오입니다. 명확하고 사람 중심적인 웹·모바일 제품을 디자인합니다."
+        },
+        "nav": {
+            "work": "작업",
+            "blog": "블로그",
+            "about": "소개",
+            "soon": "준비 중",
+            "cta": "연락하기",
+            "menuOpen": "메뉴 열기",
+            "menuClose": "메뉴 닫기",
+            "language": "언어"
+        },
+        "hero": {
+            "eyebrow": "UI/UX &amp; 프로덕트 디자이너 — 서울",
+            "title": "명확하고 <mark>사람 중심적인</mark> 디지털 제품을 디자인합니다.",
+            "desc": "안녕하세요, 서울에서 활동하는 UI/UX·프로덕트 디자이너 오이벡입니다. 복잡한 문제를 웹과 모바일에서 단순하고 직관적인 경험으로 풀어냅니다. 리서치부터 완성도 높은 UI까지 함께합니다.",
+            "cta": "연락하기",
+            "cv": "이력서 다운로드",
+            "photoAlt": "Oybek Kholikov 프로필 사진",
+            "badge": "안녕하세요, 오이벡입니다 👋",
+            "facts": [
+                "1.5년+ 프로덕트 디자인 경력",
+                "모바일·웹·AI 제품 디자인",
+                "리서치 → UI → 개발 핸드오프"
+            ]
+        },
+        "services": {
+            "label": "제가 하는 일",
+            "title": "아이디어부터 핸드오프까지 함께하는 프로덕트 디자이너.",
+            "desc": "프로덕트 팀과 긴밀하게 협업합니다. 디스커버리와 리서치부터 완성도 높은 UI, 개발 핸드오프까지 팀의 Figma와 워크플로 안에서 함께 일합니다."
+        },
+        "work": {
+            "label": "주요 프로젝트",
+            "title": "직접 디자인한 제품들",
+            "seeAll": "전체 프로젝트 보기"
+        },
+        "blog": {
+            "label": "블로그",
+            "title": "디자인과 작업 과정에 대한 기록",
+            "seeAll": "전체 글 보기",
+            "topics": {
+                "research": "UX 리서치",
+                "systems": "디자인 시스템",
+                "process": "작업 과정",
+                "ai": "AI"
+            }
+        },
+        "workPage": {
+            "metaTitle": "프로젝트 — Oybek Kholikov",
+            "metaDescription": "서울에서 활동하는 UI/UX·프로덕트 디자이너 Oybek Kholikov가 디자인한 모바일 앱, 웹사이트, AI 제품입니다.",
+            "label": "프로젝트",
+            "title": "전체 프로젝트",
+            "desc": "모바일 앱과 웹사이트부터 AI 서비스까지, 직접 디자인한 제품들입니다.",
+            "filterLabel": "프로젝트 필터",
+            "filters": {
+                "all": "전체",
+                "mobile": "모바일 앱",
+                "web": "웹사이트",
+                "ai": "AI"
+            }
+        },
+        "contact": {
+            "label": "함께 이야기해요",
+            "title": "함께 일해요.",
+            "desc": "채용이든 프로젝트든, 편하게 메시지를 남겨 주세요.",
+            "steps": [
+                {
+                    "title": "메시지 보내기",
+                    "text": "포지션이나 프로젝트를 몇 줄로 알려 주세요."
+                },
+                {
+                    "title": "이야기 나누기",
+                    "text": "이메일로 답장드리고, 짧은 미팅을 잡습니다."
+                },
+                {
+                    "title": "함께 시작하기",
+                    "text": "리서치, 디자인, 핸드오프까지 꾸준히 소통하며 진행합니다."
+                }
+            ],
+            "form": {
+                "name": "이름",
+                "namePlaceholder": "이름",
+                "email": "이메일",
+                "emailPlaceholder": "you@company.com",
+                "message": "문의 내용",
+                "messagePlaceholder": "포지션, 프로젝트, 질문 등 자유롭게 적어 주세요.",
+                "submit": "메시지 보내기",
+                "subject": "포트폴리오 문의 –",
+                "note": "또는 이메일로 직접 보내 주세요:"
+            }
+        },
+        "footer": {
+            "tagline": "서울에서 활동하는 UI/UX·프로덕트 디자이너.",
+            "contact": "연락",
+            "label": "푸터"
+        }
+    }
+}
