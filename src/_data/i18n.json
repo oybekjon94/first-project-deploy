@@ -24,7 +24,7 @@
             "photoAlt": "Portrait of Oybek Kholikov",
             "badge": "Hey, I'm Oybek 👋",
             "facts": [
-                "1.5+ years in product design",
+                "<strong>2.5+ years</strong> in UI/UX &amp; Product Design",
                 "Mobile, web & AI products",
                 "Research → UI → handoff"
             ]
@@ -126,6 +126,10 @@
                     "value": "Seoul, South Korea"
                 },
                 {
+                    "label": "Experience",
+                    "value": "2.5+ years in UI/UX & Product Design"
+                },
+                {
                     "label": "Focus",
                     "value": "Mobile, web & AI products"
                 },
@@ -191,7 +195,7 @@
             "photoAlt": "Oybek Kholikov 프로필 사진",
             "badge": "안녕하세요, 오이벡입니다 👋",
             "facts": [
-                "1.5년+ 프로덕트 디자인 경력",
+                "<strong>2.5년+</strong> UI/UX·프로덕트 디자인 경력",
                 "모바일·웹·AI 제품 디자인",
                 "리서치 → UI → 개발 핸드오프"
             ]
@@ -291,6 +295,10 @@
                 {
                     "label": "거주지",
                     "value": "서울, 대한민국"
+                },
+                {
+                    "label": "경력",
+                    "value": "2.5년+ UI/UX·프로덕트 디자인"
                 },
                 {
                     "label": "전문 분야",

@@ -1,7 +1,7 @@
 # Oybek portfolio sayti — Claude uchun eslatmalar
 
 ## Foydalanuvchi
-- Oybek — Seulda yashovchi UI/UX va Product dizayner (~1.5 yil tajriba).
+- Oybek — Seulda yashovchi UI/UX va Product dizayner (2.5+ yil tajriba).
 - Kod yozishni bilmaydi; Terminal, Git, HTML/CSS ni endi o'rganyapti.
 - Har doim **o'zbek tilida** gaplash. Har bir qadamni oddiy tilda tushuntir, texnik atamalarni qisqacha izohla.
 
@@ -20,6 +20,9 @@
 - Node.js v24 LTS `~/.local/node` ga o'rnatilgan (parolsiz), PATH `~/.zshrc` da. Claude'ning Bash'ida
   `export PATH="$HOME/.local/node/bin:$PATH"` kerak bo'lishi mumkin.
 - Lokal ko'rish: `npm run dev` → http://localhost:8080 (o'zgarishlar avtomatik yangilanadi). Build: `npm run build`.
+- **Push'ni Oybek o'zi qiladi**: Claude'ning shell'ida GitHub login yo'q. Claude commit qiladi, Oybek VS Code terminalida `git push origin main`.
+- **2026-10-29: yangi dizayn jonli** (commit `705a162`, `main` = `redesign-eleventy`). Navbatdagi ishlar: eski `/mockchi-bola.html` va
+  `/uzbrainai.html` ni yangi sahifalarga yo'naltirish; boshqa loyihalar detail sahifalari; Mockchi sana/rol tasdig'i; Decap CMS.
 
 ## Fayllar
 - `src/index.njk` — bosh sahifa mazmuni (bo'limlar shu yerga qo'shiladi).
@@ -28,7 +31,8 @@
 - `src/assets/css/style.css` — barcha stillar va rang o'zgaruvchilari; `src/assets/js/main.js` — mobil menyu.
 - `src/assets/images/projects/` — loyiha rasmlari; `src/assets/images/case-studies/` — case study rasmlari; `profile.jpg`.
 - `src/mockchi-bola.html`, `src/uzbrainai.html` — eski case study sahifalari, o'zgarishsiz nusxalanadi (manzillar saqlangan).
-- `src/projects/`, `src/blog/` — kelajakdagi `.md` kontent uchun (hozir bo'sh).
+- `src/projects/*.md` — loyihalar; `src/blog/*.md` — blog postlari (rasmlari `src/assets/images/blog/`).
+- Sahifa shablonlari: `src/work.njk`, `src/about.njk`, `src/blog.njk`, `src/project.njk` (case study), `src/post.njk` (blog post).
 - `old-index.html` — eski sayt, `.gitignore` da (GitHub'ga chiqmaydi), faqat solishtirish uchun.
 
 ## Ma'lum muammolar (2026-10-28 tahlili)
@@ -54,7 +58,7 @@
   2. Hero (edjreige uslubi): eyebrow, sarlavha, tavsif, doira rasm, [Get in touch] + [Download CV] — ✅ tayyor
      (profile.jpg 460px — kattaroq rasm (800px+) kelsa almashtirish)
      Hero ostida faktlar qatori (abdulahiroble uslubi, chiziqlar orasida): `i18n.json` → `hero.facts`
-     (Oybek tanlagan: 1.5+ years / Mobile, web & AI / Research → UI → handoff). Faqat haqiqiy faktlar — taxmin qilma.
+     (Oybek tanlagan: **2.5+ years** (accent pill, `<strong>`) / Mobile, web & AI / Research → UI → handoff; About faktlarida ham "Experience 2.5+"). Faqat haqiqiy faktlar — taxmin qilma.
   3. ~~Trusted by~~ — olib tashlandi (2026-10-29, Oybek: hozircha kerak emas)
   4. What I do — ✅ tayyor (edjreige uslubi: qorong'i to'liq kenglikdagi polosa `.section-dark`, 4 ustun 01–04).
      Matnlar `src/_data/services.json` da. Pastga aylantirganda paydo bo'lish: `.on-scroll` (JS yo'q bo'lsa ham matn ko'rinadi).
@@ -92,7 +96,7 @@
   10. Loyiha detail sahifasi (case study) — ✅ faqat **Mockchi bola** uchun (2026-10-29): `/work/mockchi-bola/` va `/ko/work/mockchi-bola/`.
      Reference: edjreige.com/work/mirakl-payout. Tuzilma: Back tugmasi (tarixga qaytaradi, to'g'ridan-to'g'ri kirilgan bo'lsa /work/ ga) →
      pill + sarlavha (bir qismi `<mark>` bilan) + teglar + asosiy rasm → The product (chapda meta jadval — "Client" YO'Q, o'ngda lead/body/3 stat karta) →
-     How I worked (sarlavha, matn, "nimalar dizayn qilindi" kartalari, N qadamli jarayon) → Links. ("Selected screens" galereyasi Oybek so'rovi bilan olib tashlandi.)
+     How I worked (sarlavha, matn, "nimalar dizayn qilindi" kartalari, N qadamli jarayon). Links (View website ↗ va h.k.) chap ustunda, meta jadval ostida, tagi chizilgan havola (Oybek so'rovi). ("Selected screens" galereyasi Oybek so'rovi bilan olib tashlandi.)
      **Hammasi `src/projects/<slug>.md` front matter'dan** (Decap CMS'ga mos, JS-siz tayyor HTML): `detail: true`, `cover`, `links: [{type, url}]`
      (type: website | appstore | googleplay | behance), va har tilda `case:` {category, heading, highlight, meta[{label,value}],
      lead, body, stats[{title,text}], process{title,text,cardsTitle,cards[],steps[]}}. Shablon: `src/project.njk` (pagination: `collections.projectPages`,

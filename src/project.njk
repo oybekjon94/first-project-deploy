@@ -39,14 +39,28 @@ eleventyComputed:
 
     <!-- The product -->
     <section class="container case-product">
-        <dl class="case-meta on-scroll">
-            {%- for row in c.meta %}
-            <div>
-                <dt>{{ row.label }}</dt>
-                <dd>{{ row.value }}</dd>
-            </div>
-            {%- endfor %}
-        </dl>
+        <div class="case-aside on-scroll">
+            <dl class="case-meta">
+                {%- for row in c.meta %}
+                <div>
+                    <dt>{{ row.label }}</dt>
+                    <dd>{{ row.value }}</dd>
+                </div>
+                {%- endfor %}
+            </dl>
+
+            {#- Website / App Store / Google Play / Behance, depending on the project -#}
+            <ul class="case-links" aria-label="{{ t.case.links }}">
+                {%- for link in project.data.links %}
+                <li>
+                    <a href="{{ link.url }}" target="_blank" rel="noopener">
+                        {{ t.case.linkLabels[link.type] }}
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+                    </a>
+                </li>
+                {%- endfor %}
+            </ul>
+        </div>
 
         <div class="case-product-text">
             <p class="section-label on-scroll">{{ t.case.product }}</p>
@@ -94,18 +108,5 @@ eleventyComputed:
             </li>
             {%- endfor %}
         </ol>
-    </section>
-
-    <!-- Links: website / App Store / Google Play / Behance, depending on the project -->
-    <section class="container case-links">
-        <p class="section-label on-scroll">{{ t.case.links }}</p>
-        <div class="case-links-row on-scroll">
-            {%- for link in project.data.links %}
-            <a href="{{ link.url }}" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">
-                {{ t.case.linkLabels[link.type] }}
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
-            </a>
-            {%- endfor %}
-        </div>
     </section>
 </main>

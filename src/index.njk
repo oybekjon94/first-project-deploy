@@ -36,7 +36,7 @@ permalink: "{{ i18n[lang].home }}"
     <div class="container">
         <ul class="facts reveal">
             {%- for fact in t.hero.facts %}
-            <li>{{ fact }}</li>
+            <li>{{ fact | safe }}</li>
             {%- endfor %}
         </ul>
     </div>

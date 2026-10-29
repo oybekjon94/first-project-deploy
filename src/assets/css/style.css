@@ -400,6 +400,16 @@ a {
     border-left: 1px solid var(--line);
 }
 
+/* "2.5+ years": a small accent pill so the number stands out */
+.facts strong {
+    margin-right: 4px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--accent-tint);
+    color: var(--accent);
+    font-weight: 700;
+}
+
 /* Narrow screens: stack facts, short horizontal dividers instead */
 @media (max-width: 860px) {
     .facts {
@@ -1333,9 +1343,9 @@ html[lang="ko"] .case-meta dt {
     line-height: 1.55;
 }
 
-.case-process,
-.case-links {
+.case-process {
     padding-top: 96px;
+    padding-bottom: 120px;
 }
 
 .case-process .section-title {
@@ -1395,14 +1405,37 @@ html[lang="ko"] .case-meta dt {
     line-height: 1.55;
 }
 
+/* Website / App Store / Google Play / Behance: underlined links under the meta table */
 .case-links {
-    padding-bottom: 120px;
-}
-
-.case-links-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 12px 24px;
+    margin: 24px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.case-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--ink);
+    color: var(--ink);
+    font-weight: 600;
+}
+
+.case-links a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.case-links svg {
+    transition: transform .2s var(--ease);
+}
+
+.case-links a:hover svg {
+    transform: translate(2px, -2px);
 }
 
 @media (max-width: 860px) {
@@ -1428,12 +1461,8 @@ html[lang="ko"] .case-meta dt {
         padding-top: 56px;
     }
 
-    .case-process,
-    .case-links {
+    .case-process {
         padding-top: 64px;
-    }
-
-    .case-links {
         padding-bottom: 80px;
     }
 
@@ -1451,11 +1480,6 @@ html[lang="ko"] .case-meta dt {
 
     .steps {
         grid-template-columns: 1fr;
-    }
-
-    .case-links-row .btn {
-        width: 100%;
-        justify-content: center;
     }
 }
 
