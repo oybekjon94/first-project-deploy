@@ -1,0 +1,224 @@
+{
+    "experience": [
+        {
+            "en": {
+                "role": "Product Designer",
+                "company": "Jiwoo Interior film",
+                "type": "Full-time",
+                "period": "Dec 2024 – Present",
+                "location": "Seoul, South Korea",
+                "text": "Designed the 반장수첩 app to improve workforce and task management. Created role-based UX for managers and field workers, streamlined task tracking and communication, and built a scalable design system.",
+                "skills": [
+                    "Figma",
+                    "Prototyping",
+                    "AI tools",
+                    "Illustrator",
+                    "Research",
+                    "Sketching"
+                ]
+            },
+            "ko": {
+                "role": "프로덕트 디자이너",
+                "company": "Jiwoo Interior film",
+                "type": "정규직",
+                "period": "2024.12 – 현재",
+                "location": "서울, 대한민국",
+                "text": "인력 및 작업 관리를 개선하는 반장수첩 앱을 디자인했습니다. 관리자와 현장 작업자를 위한 역할 기반 UX를 설계하고, 작업 추적과 소통 과정을 간소화했으며, 확장 가능한 디자인 시스템을 구축했습니다.",
+                "skills": [
+                    "Figma",
+                    "프로토타이핑",
+                    "AI 도구",
+                    "Illustrator",
+                    "리서치",
+                    "스케칭"
+                ]
+            }
+        },
+        {
+            "en": {
+                "role": "User Experience Designer",
+                "company": "주식회사 아스 (크루비)",
+                "type": "Freelance",
+                "period": "Oct 2024 – Dec 2024",
+                "location": "Seoul, South Korea · On-site",
+                "text": "While designing additional features for the Crewbe app, I focused on enhancing the usability for flight attendants. Through user research, I identified their needs.",
+                "skills": [
+                    "Figma",
+                    "Prototyping",
+                    "Research"
+                ]
+            },
+            "ko": {
+                "role": "UX 디자이너",
+                "company": "주식회사 아스 (크루비)",
+                "type": "프리랜서",
+                "period": "2024.10 – 2024.12",
+                "location": "서울, 대한민국 · 현장 근무",
+                "text": "크루비 앱의 추가 기능을 디자인하면서 승무원의 사용성 개선에 집중했습니다. 사용자 리서치를 통해 승무원의 니즈를 파악했습니다.",
+                "skills": [
+                    "Figma",
+                    "프로토타이핑",
+                    "리서치"
+                ]
+            }
+        }
+    ],
+    "education": [
+        {
+            "en": {
+                "name": "Seoul National University of Science and Technology",
+                "detail": "Computer Science",
+                "period": "2020 – 2025"
+            },
+            "ko": {
+                "name": "서울과학기술대학교",
+                "detail": "컴퓨터공학",
+                "period": "2020 – 2025"
+            }
+        },
+        {
+            "en": {
+                "name": "Express UX (Academy)",
+                "detail": "UX design skills",
+                "period": "May 2024 – Aug 2024"
+            },
+            "ko": {
+                "name": "Express UX (아카데미)",
+                "detail": "UX 디자인 교육",
+                "period": "2024.05 – 2024.08"
+            }
+        },
+        {
+            "en": {
+                "name": "개신대학원대학교 (Korean language school)",
+                "detail": "Korean Studies",
+                "period": "2018 – 2020"
+            },
+            "ko": {
+                "name": "개신대학원대학교",
+                "detail": "한국학",
+                "period": "2018 – 2020"
+            }
+        }
+    ],
+    "skills": [
+        {
+            "en": {
+                "title": "Research & UX design",
+                "items": [
+                    "User interviewing",
+                    "User research",
+                    "Usability testing",
+                    "A/B testing",
+                    "User flow",
+                    "Design styles"
+                ]
+            },
+            "ko": {
+                "title": "리서치 & UX 디자인",
+                "items": [
+                    "사용자 인터뷰",
+                    "사용자 리서치",
+                    "사용성 테스트",
+                    "A/B 테스트",
+                    "사용자 플로우",
+                    "디자인 스타일"
+                ]
+            }
+        },
+        {
+            "en": {
+                "title": "Tools & tech",
+                "items": [
+                    "Figma",
+                    "Sketch",
+                    "Adobe XD",
+                    "Webflow",
+                    "Framer",
+                    "Vibe coding",
+                    "Claude Code",
+                    "Notion",
+                    "AI tools"
+                ]
+            },
+            "ko": {
+                "title": "도구 & 기술",
+                "items": [
+                    "Figma",
+                    "Sketch",
+                    "Adobe XD",
+                    "Webflow",
+                    "Framer",
+                    "바이브 코딩",
+                    "Claude Code",
+                    "Notion",
+                    "AI 도구"
+                ]
+            }
+        }
+    ],
+    "languages": [
+        {
+            "en": {
+                "name": "English",
+                "level": ""
+            },
+            "ko": {
+                "name": "영어",
+                "level": ""
+            }
+        },
+        {
+            "en": {
+                "name": "Uzbek",
+                "level": ""
+            },
+            "ko": {
+                "name": "우즈벡어",
+                "level": ""
+            }
+        },
+        {
+            "en": {
+                "name": "Korean",
+                "level": "TOPIK Level 6"
+            },
+            "ko": {
+                "name": "한국어",
+                "level": "TOPIK 6급"
+            }
+        }
+    ],
+    "activities": [
+        "우수자비 장학생 2020~2022",
+        "방축도 플러깅 (봉사활동)",
+        "제21회 새벽강변마라톤대회 (봉사활동)",
+        "2024 Global Trade Academy Enrollment Intensive Program"
+    ],
+    "hobbies": [
+        {
+            "en": "Running",
+            "ko": "러닝"
+        },
+        {
+            "en": "Reading",
+            "ko": "독서"
+        },
+        {
+            "en": "Drawing",
+            "ko": "그림 그리기"
+        },
+        {
+            "en": "Basketball",
+            "ko": "농구"
+        },
+        {
+            "en": "Cycling",
+            "ko": "자전거"
+        },
+        {
+            "en": "Hiking",
+            "ko": "등산"
+        }
+    ]
+}

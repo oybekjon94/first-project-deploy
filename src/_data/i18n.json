@@ -10,7 +10,6 @@
             "work": "Work",
             "blog": "Blog",
             "about": "About",
-            "soon": "Soon",
             "cta": "Get in touch",
             "menuOpen": "Open menu",
             "menuClose": "Close menu",
@@ -21,7 +20,7 @@
             "title": "Designing clear, <mark>human-centered</mark> digital products.",
             "desc": "I'm Oybek, a UI/UX and product designer based in Seoul. I turn complex problems into simple, intuitive experiences for web and mobile — from research to polished UI.",
             "cta": "Get in touch",
-            "cv": "Download CV",
+            "cv": "View My CV",
             "photoAlt": "Portrait of Oybek Kholikov",
             "badge": "Hey, I'm Oybek 👋",
             "facts": [
@@ -38,18 +37,29 @@
         "work": {
             "label": "Selected work",
             "title": "Products I've designed",
-            "seeAll": "See all projects"
+            "seeAll": "See all projects",
+            "viewCase": "View case study"
         },
         "blog": {
             "label": "Blog",
             "title": "Notes on design and process",
-            "seeAll": "See all posts",
+            "seeAll": "See all blog",
             "topics": {
                 "research": "UX Research",
                 "systems": "Design Systems",
                 "process": "Process",
                 "ai": "AI"
             }
+        },
+        "blogPage": {
+            "metaTitle": "Blog — Oybek Kholikov",
+            "metaDescription": "Notes on UI/UX design, research and the design process by Oybek Kholikov, a product designer in Seoul.",
+            "label": "Blog",
+            "title": "Notes on design and process",
+            "desc": "Short notes on how I work: research, ideas and the steps between a messy whiteboard and a finished product."
+        },
+        "post": {
+            "back": "Back"
         },
         "workPage": {
             "metaTitle": "Work — Oybek Kholikov",
@@ -61,8 +71,7 @@
             "filters": {
                 "all": "All",
                 "mobile": "Mobile app",
-                "web": "Website",
-                "ai": "AI"
+                "web": "Website"
             }
         },
         "contact": {
@@ -99,6 +108,62 @@
             "tagline": "UI/UX & product designer based in Seoul.",
             "contact": "Contact",
             "label": "Footer"
+        },
+        "about": {
+            "metaTitle": "About — Oybek Kholikov",
+            "metaDescription": "Oybek Kholikov is a UI/UX and product designer in Seoul. Experience, education, skills and languages.",
+            "label": "About",
+            "title": "Products that are understandable, useful and built to last.",
+            "paragraphs": [
+                "Hi, I'm Oybek, a UI/UX and product designer based in Seoul. I focus on creating a great user experience that also meets the needs of the business, and I design mobile apps, websites and AI products for teams in Korea and abroad.",
+                "I studied Computer Science at Seoul National University of Science and Technology and learned UX design at Express UX Academy, so I design with an understanding of how products are actually built. I enjoy working closely with developers, from research and user flows to polished UI and a clean handoff.",
+                "My philosophy is simple: make products understandable, useful and long-lasting, while accepting that they are never finished and keep changing. I'm always excited to face new challenges and problems. Outside of work I run, cycle, hike, draw and read, and I speak English, Uzbek and Korean (TOPIK 6)."
+            ],
+            "photoAlt": "Portrait of Oybek Kholikov",
+            "facts": [
+                {
+                    "label": "Based in",
+                    "value": "Seoul, South Korea"
+                },
+                {
+                    "label": "Focus",
+                    "value": "Mobile, web & AI products"
+                },
+                {
+                    "label": "Tools",
+                    "value": "Figma, Sketch, Adobe XD"
+                },
+                {
+                    "label": "Languages",
+                    "value": "English, Uzbek, Korean"
+                }
+            ],
+            "sections": {
+                "experience": "Experience",
+                "skills": "Skills",
+                "education": "Education",
+                "languages": "Languages",
+                "activities": "Activities",
+                "hobbies": "Hobbies",
+                "links": "Links"
+            },
+            "cta": {
+                "title": "Want to see if we'd work well together?",
+                "text": "Tell me a little about your team or project, and we'll take it from there."
+            }
+        },
+        "case": {
+            "metaSuffix": "Case study",
+            "back": "Back",
+            "product": "The product",
+            "process": "How I worked",
+            "links": "Links",
+            "linkLabels": {
+                "website": "View website",
+                "appstore": "App Store",
+                "googleplay": "Google Play",
+                "behance": "Behance"
+            }
         }
     },
     "ko": {
@@ -112,7 +177,6 @@
             "work": "작업",
             "blog": "블로그",
             "about": "소개",
-            "soon": "준비 중",
             "cta": "연락하기",
             "menuOpen": "메뉴 열기",
             "menuClose": "메뉴 닫기",
@@ -123,7 +187,7 @@
             "title": "명확하고 <mark>사람 중심적인</mark> 디지털 제품을 디자인합니다.",
             "desc": "안녕하세요, 서울에서 활동하는 UI/UX·프로덕트 디자이너 오이벡입니다. 복잡한 문제를 웹과 모바일에서 단순하고 직관적인 경험으로 풀어냅니다. 리서치부터 완성도 높은 UI까지 함께합니다.",
             "cta": "연락하기",
-            "cv": "이력서 다운로드",
+            "cv": "이력서 보기",
             "photoAlt": "Oybek Kholikov 프로필 사진",
             "badge": "안녕하세요, 오이벡입니다 👋",
             "facts": [
@@ -140,7 +204,8 @@
         "work": {
             "label": "주요 프로젝트",
             "title": "직접 디자인한 제품들",
-            "seeAll": "전체 프로젝트 보기"
+            "seeAll": "전체 프로젝트 보기",
+            "viewCase": "케이스 스터디 보기"
         },
         "blog": {
             "label": "블로그",
@@ -153,6 +218,16 @@
                 "ai": "AI"
             }
         },
+        "blogPage": {
+            "metaTitle": "블로그 — Oybek Kholikov",
+            "metaDescription": "서울에서 활동하는 프로덕트 디자이너 Oybek Kholikov의 UI/UX 디자인, 리서치, 디자인 프로세스에 대한 기록입니다.",
+            "label": "블로그",
+            "title": "디자인과 작업 과정에 대한 기록",
+            "desc": "리서치, 아이디어, 그리고 정리되지 않은 화이트보드에서 완성된 제품까지의 과정을 짧게 기록합니다."
+        },
+        "post": {
+            "back": "뒤로"
+        },
         "workPage": {
             "metaTitle": "프로젝트 — Oybek Kholikov",
             "metaDescription": "서울에서 활동하는 UI/UX·프로덕트 디자이너 Oybek Kholikov가 디자인한 모바일 앱, 웹사이트, AI 제품입니다.",
@@ -163,8 +238,7 @@
             "filters": {
                 "all": "전체",
                 "mobile": "모바일 앱",
-                "web": "웹사이트",
-                "ai": "AI"
+                "web": "웹사이트"
             }
         },
         "contact": {
@@ -201,6 +275,62 @@
             "tagline": "서울에서 활동하는 UI/UX·프로덕트 디자이너.",
             "contact": "연락",
             "label": "푸터"
+        },
+        "about": {
+            "metaTitle": "소개 — Oybek Kholikov",
+            "metaDescription": "서울에서 활동하는 UI/UX·프로덕트 디자이너 Oybek Kholikov의 경력, 학력, 기술, 언어를 소개합니다.",
+            "label": "소개",
+            "title": "이해하기 쉽고, 쓸모 있고, 오래가는 제품을 만듭니다.",
+            "paragraphs": [
+                "안녕하세요, 서울에서 활동하는 UI/UX·프로덕트 디자이너 오이벡입니다. 훌륭한 사용자 경험과 비즈니스 요구를 함께 충족하는 제품을 만드는 데 집중하며, 한국과 해외 팀을 위해 모바일 앱, 웹사이트, AI 제품을 디자인합니다.",
+                "서울과학기술대학교에서 컴퓨터공학을 공부했고 Express UX 아카데미에서 UX 디자인을 배웠습니다. 그래서 제품이 실제로 어떻게 만들어지는지 이해하며 디자인합니다. 리서치와 사용자 플로우부터 완성도 높은 UI, 깔끔한 핸드오프까지 개발자와 가까이 협업하는 것을 좋아합니다.",
+                "저의 철학은 단순합니다. 제품은 이해하기 쉽고, 쓸모 있고, 오래가야 합니다. 동시에 제품은 끝나지 않고 계속 변한다는 것도 받아들입니다. 새로운 도전과 문제를 마주하는 일은 언제나 즐겁습니다. 일 밖에서는 달리기, 자전거, 등산, 그림, 독서를 즐기고, 영어·우즈벡어·한국어(TOPIK 6급)를 사용합니다."
+            ],
+            "photoAlt": "Oybek Kholikov 프로필 사진",
+            "facts": [
+                {
+                    "label": "거주지",
+                    "value": "서울, 대한민국"
+                },
+                {
+                    "label": "전문 분야",
+                    "value": "모바일·웹·AI 제품"
+                },
+                {
+                    "label": "도구",
+                    "value": "Figma, Sketch, Adobe XD"
+                },
+                {
+                    "label": "언어",
+                    "value": "영어, 우즈벡어, 한국어"
+                }
+            ],
+            "sections": {
+                "experience": "경력",
+                "skills": "기술",
+                "education": "학력",
+                "languages": "언어",
+                "activities": "활동",
+                "hobbies": "취미",
+                "links": "링크"
+            },
+            "cta": {
+                "title": "함께 일하면 잘 맞을지 궁금하신가요?",
+                "text": "팀이나 프로젝트에 대해 간단히 알려 주세요. 그다음은 함께 이야기해요."
+            }
+        },
+        "case": {
+            "metaSuffix": "케이스 스터디",
+            "back": "뒤로",
+            "product": "프로덕트",
+            "process": "작업 방식",
+            "links": "링크",
+            "linkLabels": {
+                "website": "웹사이트 보기",
+                "appstore": "App Store",
+                "googleplay": "Google Play",
+                "behance": "Behance"
+            }
         }
     }
 }

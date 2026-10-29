@@ -2,7 +2,7 @@
 order: 5
 featured: false
 image: uzbrainai.png
-categories: [web, ai]
+categories: [web]
 link: https://www.uzbrainai.uz/
 en:
   name: "UzbrainAI"

@@ -1,0 +1,45 @@
+---
+layout: layouts/base.njk
+pagination:
+    data: collections.postPages
+    size: 1
+    alias: entry
+permalink: "{{ i18n[entry.lang].home }}blog/{{ entry.post.fileSlug }}/"
+eleventyComputed:
+    lang: "{{ entry.lang }}"
+    title: "{{ entry.post.data[entry.lang].title }} | Oybek Kholikov"
+    description: "{{ entry.post.data[entry.lang].excerpt }}"
+---
+{#- One blog post page. All content comes from the post's Markdown file (src/blog/<slug>.md). -#}
+{%- set t = i18n[lang] -%}
+{%- set post = entry.post -%}
+{%- set p = post.data[lang] -%}
+<main class="container post-page">
+    <a href="{{ t.home }}blog/" class="back-btn" data-back>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        {{ t.post.back }}
+    </a>
+
+    <article>
+        <header class="post-head">
+            <p class="post-meta reveal">
+                {{ t.blog.topics[post.data.topic] }} · <time datetime="{{ post.date.toISOString().slice(0, 10) }}">{{ post.date | formatDate(lang) }}</time>
+            </p>
+            <h1 class="post-page-title reveal">{{ p.title }}</h1>
+        </header>
+
+        <div class="post-page-cover reveal">
+            {% image "src/assets/images/blog/" + post.data.cover, p.coverAlt or p.title, "(min-width: 1140px) 1092px, 100vw" %}
+        </div>
+
+        <div class="post-body on-scroll">
+            {{ p.body | markdown | safe }}
+        </div>
+
+        <ul class="chips post-hashtags on-scroll">
+            {%- for tag in post.data.hashtags %}
+            <li>#{{ tag }}</li>
+            {%- endfor %}
+        </ul>
+    </article>
+</main>

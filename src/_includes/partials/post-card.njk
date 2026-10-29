@@ -1,7 +1,8 @@
-{#- One blog post card. Needs `post` (a page from collections.posts) and `lang`. -#}
+{#- One blog post card. Needs `post` (a page from collections.posts) and `lang`. The whole card links to the post page. -#}
 {%- set p = post.data[lang] -%}
 {%- set topic = post.data.topic -%}
 <article class="post-card on-scroll">
+    <a class="post-link" href="{{ t.home }}blog/{{ post.fileSlug }}/">
     <p class="post-meta">
         {{ t.blog.topics[topic] }} · <time datetime="{{ post.date.toISOString().slice(0, 10) }}">{{ post.date | formatDate(lang) }}</time>
     </p>
@@ -19,6 +20,7 @@
             {%- endif %}
             </svg>
         </span>
-        {% image "src/assets/images/blog/" + post.data.cover, p.title, "(min-width: 900px) 540px, 100vw" %}
+        {% image "src/assets/images/blog/" + post.data.cover, p.coverAlt or p.title, "(min-width: 900px) 540px, 100vw" %}
     </div>
+    </a>
 </article>

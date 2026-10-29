@@ -47,6 +47,7 @@
 - `old-index.html` — eski saytning nusxasi (telefon raqami olib tashlangan). Faqat solishtirish uchun; deploydan oldin o'chiriladi.
 - Qarorlar: fon/ranglar behzodhalil.com palitrasi (light `#FAF7F0`, dark `#191816`), accent `#B8461F` / dark `#E07A4F`;
   shrift Plus Jakarta Sans; loyiha kartalari burchagi 12px; matnlar ingliz tilida.
+  Yon bo'shliq (`--gutter`) ekranga qarab: `clamp(20px, 5vw, 48px)`; kontent kengligi maks. 1140px (`--container`).
   Har bir bo'lim sarlavhasi ustida **Section Label** — yumaloq pill (`.section-label`: ingichka chegara, surface fon, oddiy harflar).
 - Bo'limlar tartibi (har biri alohida qadam, Oybek tasdig'i bilan):
   1. Top bar: logo `oybeKholikov.` (`site.json` → `brand`; to'liq ism `site.name` sarlavha/©/alt'da qoladi) · Work · Blog (Soon) · About · [Get in touch] — ✅ tayyor
@@ -57,19 +58,24 @@
   3. ~~Trusted by~~ — olib tashlandi (2026-10-29, Oybek: hozircha kerak emas)
   4. What I do — ✅ tayyor (edjreige uslubi: qorong'i to'liq kenglikdagi polosa `.section-dark`, 4 ustun 01–04).
      Matnlar `src/_data/services.json` da. Pastga aylantirganda paydo bo'lish: `.on-scroll` (JS yo'q bo'lsa ham matn ko'rinadi).
-     Nav'dagi "About" vaqtincha shu bo'limga (`#about`) olib boradi.
+     Bo'lim id'si `#services` (avval `#about` edi).
   5. Selected Work — ✅ tayyor (2026-10-29). Bosh sahifa tartibi: **Hero → Selected Work → What I do**.
      Bosh sahifada 4 ta `featured: true` loyiha (Mockchi bola, Halal Compass, GoStans, 반장수첩), 2×2 grid,
-     [See all projects] → **Work sahifasi** `/work/` va `/ko/work/` (11 loyiha, filtr tablari: All/Mobile app/Website/AI).
+     [See all projects] → **Work sahifasi** `/work/` va `/ko/work/` (10 loyiha, filtr tablari: All/Mobile app/Website — AI tabi va NotedAI olib tashlandi, 2026-10-29).
      Har loyiha = `src/projects/<slug>.md` (front matter: order, featured, image, categories, link, `en`/`ko`: name, role, title, labels).
      `projects.11tydata.json` → `permalink: false` (detail sahifalar KEYINROQ — Oybek). Kartalar hozircha bosilmaydi (Oybek qarori).
      Rasmlar: Eleventy Image 6.0.4 (`{% image %}` shortcode → webp+jpeg, 640/1024/1600) → `_site/assets/img/`.
      DIQQAT: async shortcode bo'lgani uchun kartalar siklida `for` emas `asyncEach` ishlat, ichida `if` ishlatma (filtr bilan oldindan saralash: `featured`, `inCategory`).
      Crewbe loyihasi rasmi yo'qligi uchun qo'shilmagan.
-  6. Blog (bosh sahifada What I do'dan keyin) — ✅ (2026-10-29). Oxirgi 4 post, 2×2, bej kartalar (`--card`), pastda rasm joyi
-     (`cover` bo'sh bo'lsa mavzu ikonkasi). Har post = `src/blog/<slug>.md` (date, topic, cover, `en`/`ko`: title, excerpt).
-     Mavzular: `i18n.json` → `blog.topics`. [See all posts] hozircha "Soon" (bosilmaydi) — Blog sahifasi va post sahifalari KEYINROQ.
-     Nav "Blog" → bosh sahifadagi `#blog`. **4 ta post — NAMUNA (`example: true`)! Deploydan oldin haqiqiy postlar bilan almashtirish yoki o'chirish kerak.**
+  6. Blog (bosh sahifada What I do'dan keyin) — ✅ (2026-10-29). Oxirgi 4 post, 2×2, bej kartalar (`--card`), pastda rasm
+     (`cover` bo'sh bo'lsa mavzu ikonkasi). Butun karta post sahifasiga havola.
+     **Blog sahifasi** `/blog/` va `/ko/blog/` (`src/blog.njk`, barcha postlar, yangisi tepada). Nav/footer "Blog" va [See all posts] → shu sahifa.
+     **Post sahifasi** `/blog/<slug>/` (`src/post.njk`, pagination: `collections.postPages`, har til uchun bittadan): Back → mavzu · sana →
+     sarlavha → asosiy rasm → matn → hashtaglar. Butun post (Back ham) sahifa markazidagi 720px ustunda (Oybek so'rovi; rasmlar kichik bo'lishi mumkin).
+     Har post = `src/blog/<slug>.md` (Decap CMS'ga mos): `date`, `topic` (research | systems | process | ai — `i18n.json` → `blog.topics`),
+     `cover` (fayl nomi, `src/assets/images/blog/` ichida), `hashtags: []`, har tilda `en`/`ko`: `title`, `excerpt`, `coverAlt`, `body` (Markdown, `|` bilan).
+     `body` → HTML `markdown` filtri bilan (markdown-it 14.3.3, aniq versiya). `blog.11tydata.json` → `permalink: false` (sahifalarni `post.njk` yasaydi).
+     4 ta namuna post o'chirildi (2026-10-29). Haqiqiy postlar (Oybek matni, o'zbekchadan EN/KO ga tarjima): 1) "From chaos to clarity", 2) "Design Sprint" (`### ` kichik sarlavhalar bilan). Bir kunda 2 post bo'lsa, tartib uchun vaqt qo'shiladi (`2026-10-29T09:00:00Z`).
   7. Let's talk (`#contact`, sahifa oxirida) — ✅ (2026-10-29). Chapda 3 qadam, o'ngda forma (Name, Email, Message).
      Forma xizmat ISHLATMAYDI (Oybek qarori): JS foydalanuvchining email dasturini mavzu+matn bilan ochadi (`mailto:`),
      JS bo'lmasa oddiy `action="mailto:"`. Ostida email manzili ham ko'rsatilgan. Matnlar: `i18n.json` → `contact` (ish + loyiha uchun).
@@ -77,7 +83,23 @@
   8. Footer — ✅ (2026-10-29), barcha sahifalarda (`partials/footer.njk`, `base.njk` da). Ism + qisqa tavsif, havolalar
      (Work · Blog · About · Contact · LinkedIn · Behance), © yil (build vaqtida: `src/_data/year.js`). Ijtimoiy havolalar: `site.json`
      (`linkedin`, `behance`). Eski saytda yana GitHub, Telegram (t.me/oybeKholikov), Instagram (kh_oybee), X (kh_oybee) bor edi — kerak bo'lsa qo'shish mumkin.
-  - Download CV → Google Drive linki (`site.json` → `cv`), yangi tabda ochiladi.
+  9. About sahifasi — ✅ (2026-10-29): `/about/` va `/ko/about/` (nav va footer "About" shu yerga). abdulahiroble.com/about uslubi:
+     sarlavha, 3 abzats (Claude yozgan, Oybek tekshiradi), doira rasm + faktlar jadvali, so'ng chiziqli bloklar:
+     Experience, Skills, Education, Languages, Activities, Hobbies, Links, oxirida "birga ishlaymizmi?" CTA.
+     Matnlar: `i18n.json` → `about`; ro'yxatlar: `src/_data/about.json`. Experience = faqat KOMPANIYADAGI ish joylari (LinkedIn'dan: Jiwoo Interior film — Product Designer,
+     주식회사 아스(크루비) — UX Designer, Freelance); loyihalar ro'yxati olib tashlandi (Oybek). Tools'ga Claude Code qo'shildi.
+     Activities (4 ta) ikkala tilda ham asl koreyscha (tarjima qilinmadi). Links: LinkedIn, Behance, X (`site.json` → `x`).
+  10. Loyiha detail sahifasi (case study) — ✅ faqat **Mockchi bola** uchun (2026-10-29): `/work/mockchi-bola/` va `/ko/work/mockchi-bola/`.
+     Reference: edjreige.com/work/mirakl-payout. Tuzilma: Back tugmasi (tarixga qaytaradi, to'g'ridan-to'g'ri kirilgan bo'lsa /work/ ga) →
+     pill + sarlavha (bir qismi `<mark>` bilan) + teglar + asosiy rasm → The product (chapda meta jadval — "Client" YO'Q, o'ngda lead/body/3 stat karta) →
+     How I worked (sarlavha, matn, "nimalar dizayn qilindi" kartalari, N qadamli jarayon) → Links. ("Selected screens" galereyasi Oybek so'rovi bilan olib tashlandi.)
+     **Hammasi `src/projects/<slug>.md` front matter'dan** (Decap CMS'ga mos, JS-siz tayyor HTML): `detail: true`, `cover`, `links: [{type, url}]`
+     (type: website | appstore | googleplay | behance), va har tilda `case:` {category, heading, highlight, meta[{label,value}],
+     lead, body, stats[{title,text}], process{title,text,cardsTitle,cards[],steps[]}}. Shablon: `src/project.njk` (pagination: `collections.projectPages`,
+     har til uchun bittadan). Yangi loyiha detail sahifasi = shu maydonlarni to'ldirib `detail: true` qo'yish. Detail'i bor kartalar bosiladi
+     ("View case study →"), qolganlari oddiy karta. Matn manbai: eski `src/mockchi-bola.html` + sayt tavsifi (taxmin qilinmagan; jamoa/natijalar yozilmagan).
+     Eski `src/mockchi-bola.html`/`uzbrainai.html` hali bor (eski dizayn) — keyin o'chirish/almashtirish kerak. UzbrainAI va boshqalar uchun detail hali qilinmagan.
+  - View My CV (avval "Download CV"; tashqi havola ikonkasi ↗) → Google Drive linki (`site.json` → `cv`), yangi tabda ochiladi.
 - **Ikki til: EN (default) / KO** (2026-10-29). Alohida manzillar: `/` = English, `/ko/` = 한국어 (JS bilan almashtirish EMAS — SEO/HR uchun).
   `src/index.njk` Eleventy pagination bilan `languages.json` dagi har til uchun bir marta yasaladi (`lang` o'zgaruvchisi).
   Barcha matnlar: `src/_data/i18n.json` (`en` / `ko`), xizmatlar: `services.json` (har birida `en`/`ko`).

@@ -55,3 +55,18 @@ if (contactForm) {
         window.location.href = `mailto:${contactForm.dataset.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     });
 }
+
+// Case study "Back" button: go back to where the visitor came from (e.g. the home page or the Work page);
+// the link itself points to the Work page for visitors who arrived directly
+const backButton = document.querySelector('[data-back]');
+
+if (backButton) {
+    backButton.addEventListener('click', e => {
+        const cameFromSite = document.referrer && new URL(document.referrer).origin === location.origin;
+
+        if (cameFromSite && history.length > 1) {
+            e.preventDefault();
+            history.back();
+        }
+    });
+}

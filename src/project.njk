@@ -1,0 +1,111 @@
+---
+layout: layouts/base.njk
+pagination:
+    data: collections.projectPages
+    size: 1
+    alias: entry
+permalink: "{{ i18n[entry.lang].home }}work/{{ entry.project.fileSlug }}/"
+eleventyComputed:
+    lang: "{{ entry.lang }}"
+    title: "{{ entry.project.data[entry.lang].name }} — {{ i18n[entry.lang].case.metaSuffix }} | Oybek Kholikov"
+    description: "{{ entry.project.data[entry.lang].title }}"
+---
+{#- One case study page. All content comes from the project's Markdown file (src/projects/<slug>.md). -#}
+{%- set t = i18n[lang] -%}
+{%- set project = entry.project -%}
+{%- set p = project.data[lang] -%}
+{%- set c = p.case -%}
+<main>
+    <!-- Back, title, chips, main image -->
+    <div class="container case-top">
+        <a href="{{ t.home }}work/" class="back-btn" data-back>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+            {{ t.case.back }}
+        </a>
+
+        <p class="section-label reveal">{{ p.name }} · {{ c.category }}</p>
+        <h1 class="hero-title reveal">{{ c.heading | highlight(c.highlight) | safe }}</h1>
+
+        <ul class="chips case-chips reveal">
+            {%- for label in p.labels %}
+            <li>{{ label }}</li>
+            {%- endfor %}
+        </ul>
+
+        <div class="case-cover reveal">
+            {% image "src/assets/images/" + project.data.cover, p.title, "(min-width: 1140px) 1092px, 100vw" %}
+        </div>
+    </div>
+
+    <!-- The product -->
+    <section class="container case-product">
+        <dl class="case-meta on-scroll">
+            {%- for row in c.meta %}
+            <div>
+                <dt>{{ row.label }}</dt>
+                <dd>{{ row.value }}</dd>
+            </div>
+            {%- endfor %}
+        </dl>
+
+        <div class="case-product-text">
+            <p class="section-label on-scroll">{{ t.case.product }}</p>
+            <p class="case-lead on-scroll">{{ c.lead }}</p>
+            <p class="case-body on-scroll">{{ c.body }}</p>
+
+            <div class="stat-cards on-scroll">
+                {%- for stat in c.stats %}
+                <div class="stat-card">
+                    <h3>{{ stat.title }}</h3>
+                    <p>{{ stat.text }}</p>
+                </div>
+                {%- endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- How I worked -->
+    <section class="container case-process">
+        <div class="case-process-head">
+            <div>
+                <p class="section-label on-scroll">{{ t.case.process }}</p>
+                <h2 class="section-title on-scroll">{{ c.process.title }}</h2>
+            </div>
+            <div class="case-process-body on-scroll">
+                <p class="case-body">{{ c.process.text }}</p>
+                <h3 class="case-subtitle">{{ c.process.cardsTitle }}</h3>
+                <div class="case-cards">
+                    {%- for card in c.process.cards %}
+                    <div class="case-card">
+                        <h3>{{ card.title }}</h3>
+                        <p>{{ card.text }}</p>
+                    </div>
+                    {%- endfor %}
+                </div>
+            </div>
+        </div>
+
+        <ol class="steps on-scroll" style="--steps: {{ c.process.steps | length }}">
+            {%- for step in c.process.steps %}
+            <li>
+                <span class="step-num">0{{ loop.index }}</span>
+                <h3>{{ step.title }}</h3>
+                <p>{{ step.text }}</p>
+            </li>
+            {%- endfor %}
+        </ol>
+    </section>
+
+    <!-- Links: website / App Store / Google Play / Behance, depending on the project -->
+    <section class="container case-links">
+        <p class="section-label on-scroll">{{ t.case.links }}</p>
+        <div class="case-links-row on-scroll">
+            {%- for link in project.data.links %}
+            <a href="{{ link.url }}" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">
+                {{ t.case.linkLabels[link.type] }}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+            {%- endfor %}
+        </div>
+    </section>
+</main>

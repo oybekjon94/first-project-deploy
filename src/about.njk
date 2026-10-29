@@ -1,0 +1,158 @@
+---
+layout: layouts/base.njk
+pagination:
+    data: languages
+    size: 1
+    alias: lang
+permalink: "{{ i18n[lang].home }}about/"
+eleventyComputed:
+    title: "{{ i18n[lang].about.metaTitle }}"
+    description: "{{ i18n[lang].about.metaDescription }}"
+---
+{%- set t = i18n[lang] -%}
+{%- set a = t.about -%}
+<main>
+    <!-- Intro -->
+    <section class="container about-hero">
+        <p class="section-label reveal">{{ a.label }}</p>
+        <h1 class="section-title reveal">{{ a.title }}</h1>
+
+        <div class="about-intro">
+            <div class="about-text reveal">
+                {%- for paragraph in a.paragraphs %}
+                <p>{{ paragraph }}</p>
+                {%- endfor %}
+            </div>
+
+            <div class="about-photo reveal">
+                <img src="/assets/images/profile.jpg" alt="{{ a.photoAlt }}" width="460" height="460">
+            </div>
+
+            <dl class="about-facts reveal">
+                {%- for fact in a.facts %}
+                <div>
+                    <dt>{{ fact.label }}</dt>
+                    <dd>{{ fact.value }}</dd>
+                </div>
+                {%- endfor %}
+            </dl>
+        </div>
+    </section>
+
+    <div class="container about-blocks">
+        <!-- Experience -->
+        <section class="about-block on-scroll">
+            <h2>{{ a.sections.experience }}</h2>
+            <ul class="jobs">
+                {%- for job in about.experience %}
+                {%- set j = job[lang] %}
+                <li>
+                    <div class="job-head">
+                        <h3>{{ j.role }}</h3>
+                        <span class="row-meta">{{ j.period }}</span>
+                    </div>
+                    <p class="job-company">{{ j.company }} · {{ j.type }}</p>
+                    <p class="job-meta">{{ j.location }}</p>
+                    {%- if j.text %}
+                    <p class="job-text">{{ j.text }}</p>
+                    {%- endif %}
+                    {%- if j.skills | length %}
+                    <ul class="chips chips-sm">
+                        {%- for skill in j.skills %}
+                        <li>{{ skill }}</li>
+                        {%- endfor %}
+                    </ul>
+                    {%- endif %}
+                </li>
+                {%- endfor %}
+            </ul>
+        </section>
+
+        <!-- Skills -->
+        <section class="about-block on-scroll">
+            <h2>{{ a.sections.skills }}</h2>
+            <div class="skill-groups">
+                {%- for group in about.skills %}
+                <div>
+                    <h3>{{ group[lang].title }}</h3>
+                    <ul class="chips">
+                        {%- for item in group[lang].items %}
+                        <li>{{ item }}</li>
+                        {%- endfor %}
+                    </ul>
+                </div>
+                {%- endfor %}
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="about-block on-scroll">
+            <h2>{{ a.sections.education }}</h2>
+            <ul class="rows">
+                {%- for school in about.education %}
+                <li>
+                    <span class="row-main">{{ school[lang].name }}</span>
+                    <span class="row-side"><span>{{ school[lang].detail }}</span><span class="row-meta">{{ school[lang].period }}</span></span>
+                </li>
+                {%- endfor %}
+            </ul>
+        </section>
+
+        <!-- Languages -->
+        <section class="about-block on-scroll">
+            <h2>{{ a.sections.languages }}</h2>
+            <ul class="rows">
+                {%- for language in about.languages %}
+                <li>
+                    <span class="row-main">{{ language[lang].name }}</span>
+                    {%- if language[lang].level %}
+                    <span class="row-side"><span class="row-meta">{{ language[lang].level }}</span></span>
+                    {%- endif %}
+                </li>
+                {%- endfor %}
+            </ul>
+        </section>
+
+        <!-- Activities -->
+        <section class="about-block on-scroll">
+            <h2>{{ a.sections.activities }}</h2>
+            <ul class="rows">
+                {%- for activity in about.activities %}
+                <li><span class="row-main row-plain">{{ activity }}</span></li>
+                {%- endfor %}
+            </ul>
+        </section>
+
+        <!-- Hobbies -->
+        <section class="about-block on-scroll">
+            <h2>{{ a.sections.hobbies }}</h2>
+            <ul class="chips">
+                {%- for hobby in about.hobbies %}
+                <li>{{ hobby[lang] }}</li>
+                {%- endfor %}
+            </ul>
+        </section>
+
+        <!-- Links -->
+        <section class="about-block on-scroll">
+            <h2>{{ a.sections.links }}</h2>
+            <ul class="rows">
+                <li><a class="row-link" href="{{ site.linkedin }}" target="_blank" rel="noopener"><span class="row-main">LinkedIn</span><span aria-hidden="true">↗</span></a></li>
+                <li><a class="row-link" href="{{ site.behance }}" target="_blank" rel="noopener"><span class="row-main">Behance</span><span aria-hidden="true">↗</span></a></li>
+                <li><a class="row-link" href="{{ site.x }}" target="_blank" rel="noopener"><span class="row-main">X (Twitter)</span><span aria-hidden="true">↗</span></a></li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Closing call to action -->
+    <section class="container">
+        <div class="about-cta">
+        <h2 class="on-scroll">{{ a.cta.title }}</h2>
+        <p class="on-scroll">{{ a.cta.text }}</p>
+        <a href="{{ t.home }}#contact" class="btn btn-primary btn-lg on-scroll">
+            {{ t.nav.cta }}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        </div>
+    </section>
+</main>

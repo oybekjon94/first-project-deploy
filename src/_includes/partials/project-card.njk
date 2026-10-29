@@ -1,6 +1,12 @@
 {#- One project card. Needs `project` (a page from collections.projects) and `lang`. -#}
+{#- Projects with `detail: true` link to their case study page; the others stay plain cards. -#}
 {%- set p = project.data[lang] -%}
-<article class="project-card on-scroll"data-categories="{{ project.data.categories | join(' ') }}">
+{%- set detailUrl = t.home ~ "work/" ~ project.fileSlug ~ "/" -%}
+{%- set open = ('<a class="project-link" href="' ~ detailUrl ~ '">') if project.data.detail else '<div class="project-link">' -%}
+{%- set close = '</a>' if project.data.detail else '</div>' -%}
+{%- set more = ('<span class="view-case">' ~ t.work.viewCase ~ ' →</span>') if project.data.detail else '' -%}
+<article class="project-card on-scroll" data-categories="{{ project.data.categories | join(' ') }}">
+    {{ open | safe }}
     <div class="project-media">
         {% image "src/assets/images/projects/" + project.data.image, p.title, "(min-width: 900px) 540px, 100vw" %}
         <ul class="project-labels">
@@ -11,4 +17,6 @@
     </div>
     <p class="project-meta">{{ p.name }} · {{ p.role }}</p>
     <h3 class="project-title">{{ p.title }}</h3>
+    {{ more | safe }}
+    {{ close | safe }}
 </article>

@@ -21,7 +21,7 @@ permalink: "{{ i18n[lang].home }}"
                 </a>
                 <a href="{{ site.cv }}" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">
                     {{ t.hero.cv }}
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
                 </a>
             </div>
         </div>
@@ -60,7 +60,7 @@ permalink: "{{ i18n[lang].home }}"
     </section>
 
     <!-- What I do -->
-    <section class="services section-dark" id="about">
+    <section class="services section-dark" id="services">
         <div class="container">
             <p class="section-label on-scroll">{{ t.services.label }}</p>
             <h2 class="section-title on-scroll">{{ t.services.title }}</h2>
@@ -89,10 +89,7 @@ permalink: "{{ i18n[lang].home }}"
             {%- endeach %}
         </div>
 
-        {#- Blog page comes later — the button stays disabled until then -#}
-        <span class="btn btn-secondary btn-lg see-all is-disabled on-scroll" aria-disabled="true">
-            {{ t.blog.seeAll }}<span class="soon">{{ t.nav.soon }}</span>
-        </span>
+        <a href="{{ t.home }}blog/" class="btn btn-secondary btn-lg see-all on-scroll">{{ t.blog.seeAll }}</a>
     </section>
 
     <!-- Let's talk -->

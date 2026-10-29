@@ -1,0 +1,24 @@
+---
+layout: layouts/base.njk
+pagination:
+    data: languages
+    size: 1
+    alias: lang
+permalink: "{{ i18n[lang].home }}blog/"
+eleventyComputed:
+    title: "{{ i18n[lang].blogPage.metaTitle }}"
+    description: "{{ i18n[lang].blogPage.metaDescription }}"
+---
+{%- set t = i18n[lang] -%}
+<main class="container blog blog-page">
+    <p class="section-label reveal">{{ t.blogPage.label }} — {{ collections.posts | length }}</p>
+    <h1 class="section-title reveal">{{ t.blogPage.title }}</h1>
+    <p class="section-desc reveal">{{ t.blogPage.desc }}</p>
+
+    <div class="posts-grid">
+        {#- asyncEach (not for): the card's image shortcode is async -#}
+        {%- asyncEach post in collections.posts %}
+        {% include "partials/post-card.njk" %}
+        {%- endeach %}
+    </div>
+</main>

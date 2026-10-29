@@ -5,8 +5,8 @@
 
         <ul class="nav-links" id="nav-links">
             <li><a href="{{ t.home }}work/" {% if "/work/" in page.url %}aria-current="page"{% endif %}>{{ t.nav.work }}</a></li>
-            <li><a href="{{ t.home }}#blog">{{ t.nav.blog }}</a></li>
-            <li><a href="{{ t.home }}#about">{{ t.nav.about }}</a></li>
+            <li><a href="{{ t.home }}blog/" {% if "/blog/" in page.url %}aria-current="page"{% endif %}>{{ t.nav.blog }}</a></li>
+            <li><a href="{{ t.home }}about/" {% if "/about/" in page.url %}aria-current="page"{% endif %}>{{ t.nav.about }}</a></li>
             <li class="nav-cta-mobile"><a href="{{ t.home }}#contact" class="btn btn-primary">{{ t.nav.cta }}</a></li>
         </ul>
 

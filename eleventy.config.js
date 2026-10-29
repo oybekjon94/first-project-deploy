@@ -1,4 +1,7 @@
 import Image from "@11ty/eleventy-img";
+import markdownIt from "markdown-it";
+
+const markdown = markdownIt();
 
 export default function (eleventyConfig) {
     // Files copied to the site as-is (no processing)
@@ -23,6 +26,17 @@ export default function (eleventyConfig) {
         collectionApi.getFilteredByGlob("src/blog/*.md").sort((a, b) => b.date - a.date)
     );
 
+    // One post page per language for every blog post
+    eleventyConfig.addCollection("postPages", (collectionApi) =>
+        collectionApi
+            .getFilteredByGlob("src/blog/*.md")
+            .sort((a, b) => b.date - a.date)
+            .flatMap((post) => ["en", "ko"].map((lang) => ({ lang, post })))
+    );
+
+    // Markdown text from front matter (e.g. a post body) → HTML
+    eleventyConfig.addFilter("markdown", (text) => markdown.render(text || ""));
+
     // "18 Oct 2026" / "2026년 10월 18일"
     eleventyConfig.addFilter("formatDate", (date, lang) => {
         if (lang === "ko") {
@@ -34,6 +48,23 @@ export default function (eleventyConfig) {
 
     // First n items of a list
     eleventyConfig.addFilter("limit", (items, n) => items.slice(0, n));
+
+    // One detail page per language for every project with `detail: true`
+    eleventyConfig.addCollection("projectPages", (collectionApi) =>
+        collectionApi
+            .getFilteredByGlob("src/projects/*.md")
+            .filter((project) => project.data.detail)
+            .flatMap((project) => ["en", "ko"].map((lang) => ({ lang, project })))
+    );
+
+    // Wraps `phrase` inside `text` with <mark> (for the highlighted part of a title)
+    const escapeHtml = (text) =>
+        String(text).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    eleventyConfig.addFilter("highlight", (text, phrase) => {
+        const safeText = escapeHtml(text);
+        if (!phrase || !text.includes(phrase)) return safeText;
+        return safeText.replace(escapeHtml(phrase), `<mark>${escapeHtml(phrase)}</mark>`);
+    });
 
     // Projects shown on the home page (`featured: true`)
     eleventyConfig.addFilter("featured", (projects) => projects.filter((p) => p.data.featured));
