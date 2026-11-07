@@ -1,7 +1,7 @@
 ---
 order: 3
 featured: true
-image: gostans.png
+image: "mockchi images/hero gostans.png"
 categories: [web]
 link: https://gostans.com/
 en:

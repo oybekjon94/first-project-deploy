@@ -1,7 +1,7 @@
 ---
 order: 10
 featured: false
-image: mizan.png
+image: "mockchi images/hero mizan.png"
 categories: [web]
 link: https://www.behance.net/gallery/211569235/UIUX-Case-Study-Qr-code-menu
 en:

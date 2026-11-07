@@ -1,7 +1,7 @@
 ---
 order: 4
 featured: true
-image: banjang.png
+image: "mockchi images/hero banzang.png"
 categories: [mobile]
 link: ""
 en:

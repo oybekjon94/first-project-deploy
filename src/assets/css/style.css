@@ -170,7 +170,8 @@ a {
     letter-spacing: -0.035em;
 }
 
-.hero-title mark {
+.hero-title mark,
+.framing-title mark {
     color: inherit;
     background: linear-gradient(transparent 58%, var(--accent-tint) 58%, var(--accent-tint) 92%, transparent 92%);
 }
@@ -637,29 +638,30 @@ a {
 
 .project-labels {
     position: absolute;
-    top: 16px;
-    left: 16px;
-    right: 16px;
+    top: 12px;
+    left: 12px;
+    right: 12px;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
 .project-labels li {
-    padding: 6px 12px;
+    padding: 4px 9px;
     border-radius: 999px;
     background: rgba(255, 255, 255, .92);
     color: #1c1b19;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: .06em;
+    letter-spacing: .05em;
     text-transform: uppercase;
 }
 
 html[lang="ko"] .project-labels li {
+    font-size: 11px;
     letter-spacing: 0;
 }
 
@@ -1233,12 +1235,58 @@ a.project-link:hover .project-media img {
     max-width: 900px;
 }
 
-.case-top .case-chips {
-    margin-top: 28px;
+.case-intro {
+    max-width: 760px;
+    margin: 32px 0 0;
+    color: var(--ink-2);
+    font-size: clamp(18px, 1.7vw, 21px);
+    line-height: 1.6;
+}
+
+/* Role, duration, scope, platform: one row of columns, a line underneath */
+.case-meta {
+    display: grid;
+    grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr));
+    gap: 24px;
+    margin: 48px 0 0;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--line);
+}
+
+/* Small uppercase labels: meta, finding/response, step numbers */
+.case-meta dt,
+.case-kicker {
+    margin: 0 0 6px;
+    color: var(--ink-3);
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+html[lang="ko"] .case-meta dt,
+html[lang="ko"] .case-kicker {
+    font-family: var(--font-ko);
+    font-size: 13px;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.case-meta dd {
+    margin: 0;
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+.case-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
 }
 
 .case-cover {
-    margin-top: 48px;
+    margin-top: 64px;
     overflow: hidden;
     border-radius: var(--radius);
     background: var(--line);
@@ -1251,32 +1299,23 @@ a.project-link:hover .project-media img {
     height: auto;
 }
 
-.case-product,
-.case-process-head {
+/* Contents on the left, sections on the right */
+.case-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr);
-    gap: 64px;
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: 72px;
+    padding-top: 96px;
+    padding-bottom: 120px;
 }
 
-.case-product {
-    padding-top: 80px;
+.case-toc {
+    position: sticky;
+    top: 112px;
+    align-self: start;
 }
 
-.case-meta {
-    margin: 0;
-}
-
-.case-meta > div {
-    padding: 14px 0;
-    border-top: 1px solid var(--line);
-}
-
-.case-meta > div:last-child {
-    border-bottom: 1px solid var(--line);
-}
-
-.case-meta dt {
-    margin-bottom: 4px;
+.case-toc-title {
+    margin: 0 0 16px;
     color: var(--ink-3);
     font-family: ui-monospace, "SF Mono", Menlo, monospace;
     font-size: 12px;
@@ -1284,74 +1323,79 @@ a.project-link:hover .project-media img {
     text-transform: uppercase;
 }
 
-.case-meta dd {
-    margin: 0;
-    font-weight: 600;
-}
-
-html[lang="ko"] .case-meta dt {
+html[lang="ko"] .case-toc-title {
     font-family: var(--font-ko);
     font-size: 13px;
     letter-spacing: 0;
     text-transform: none;
 }
 
+.case-toc ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.case-toc a {
+    display: block;
+    padding: 8px 0 8px 16px;
+    border-left: 2px solid var(--line);
+    color: var(--ink-3);
+    font-size: 15px;
+    transition: color .2s, border-color .2s;
+}
+
+.case-toc a:hover {
+    color: var(--ink);
+}
+
+/* The section being read (set by main.js) */
+.case-toc a[aria-current="true"] {
+    border-left-color: var(--ink);
+    color: var(--ink);
+    font-weight: 600;
+}
+
+/* Lets wide content (the comparison table) scroll inside instead of widening the page */
+.case-content {
+    min-width: 0;
+}
+
+.case-section {
+    scroll-margin-top: 104px;
+}
+
+.case-section + .case-section {
+    margin-top: 72px;
+    padding-top: 72px;
+    border-top: 1px solid var(--line);
+}
+
 .case-lead {
-    margin: 0 0 20px;
-    font-size: clamp(22px, 2.6vw, 30px);
+    margin: 0;
+    font-size: clamp(20px, 2.2vw, 26px);
     font-weight: 500;
-    line-height: 1.4;
+    line-height: 1.45;
     letter-spacing: -0.02em;
+}
+
+.case-section-title {
+    margin: 0 0 16px;
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
 }
 
 .case-body {
     max-width: 62ch;
     margin: 0;
     color: var(--ink-2);
+    font-size: 17px;
     line-height: 1.7;
 }
 
-.stat-cards {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-    margin-top: 40px;
-}
-
-.stat-card,
-.case-card {
-    padding: 20px;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    background: var(--surface);
-}
-
-.stat-card h3,
-.case-card h3 {
-    margin: 0 0 8px;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 1.25;
-    letter-spacing: -0.02em;
-}
-
-.stat-card p,
-.case-card p {
-    margin: 0;
-    color: var(--ink-2);
-    font-size: 14px;
-    line-height: 1.55;
-}
-
-.case-process {
-    padding-top: 96px;
-    padding-bottom: 120px;
-}
-
-.case-process .section-title {
-    font-size: clamp(28px, 3.4vw, 44px);
-}
-
+/* Small heading above the cards ("What I designed") */
 .case-subtitle {
     margin: 40px 0 16px;
     color: var(--ink-3);
@@ -1359,83 +1403,788 @@ html[lang="ko"] .case-meta dt {
     font-weight: 600;
 }
 
-.case-cards {
+/* Problem: big numbers in cards */
+.problem-stats {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 16px;
+    margin-top: 32px;
 }
 
-.steps {
+.problem-stats .stat-card {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+}
+
+.problem-stats .problem-value {
+    margin: 0 0 32px;
+    color: var(--ink);
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.problem-body {
+    margin-top: 40px;
+}
+
+/* Problem framing: problems on the left, responses on the right, arrows between */
+.framing {
+    margin-top: 56px;
+}
+
+.framing-title {
+    margin: 0 0 12px;
+    font-size: clamp(22px, 2.4vw, 28px);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+}
+
+.framing-head,
+.framing-list li {
     display: grid;
-    grid-template-columns: repeat(var(--steps, 4), minmax(0, 1fr));
-    gap: 24px;
-    margin: 64px 0 0;
+    grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr);
+    align-items: stretch;
+}
+
+.framing-head {
+    margin-top: 40px;
+}
+
+/* "5 problems" sits above the right edge of the problem cards */
+.framing-head span:first-child {
+    text-align: right;
+}
+
+.framing-head span:last-child {
+    grid-column: 3;
+}
+
+.framing-list {
+    display: grid;
+    gap: 12px;
+    margin: 4px 0 0;
     padding: 0;
     list-style: none;
 }
 
-.steps li {
-    padding-top: 16px;
-    border-top: 3px solid var(--line);
+.framing-problem,
+.framing-response {
+    padding: 18px 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
 }
 
-.steps li:first-child {
-    border-top-color: var(--ink);
+.framing-problem {
+    text-align: right;
 }
 
-.step-num {
-    display: block;
-    margin-bottom: 12px;
+.framing-response {
+    border-color: var(--ink);
+}
+
+.framing-list h4 {
+    margin: 0 0 6px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.framing-list h4 span {
+    margin: 0 4px;
     color: var(--ink-3);
     font-family: ui-monospace, "SF Mono", Menlo, monospace;
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: 600;
 }
 
-.steps h3 {
-    margin: 0 0 6px;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-}
-
-.steps p {
+.framing-list p {
     margin: 0;
     color: var(--ink-2);
     font-size: 14px;
     line-height: 1.55;
 }
 
-/* Website / App Store / Google Play / Behance: underlined links under the meta table */
-.case-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px 24px;
-    margin: 24px 0 0;
+.framing-arrow {
+    display: grid;
+    place-items: center;
+    color: var(--ink-3);
+}
+
+.stat-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.stat-card {
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+}
+
+.stat-card h3 {
+    margin: 0 0 8px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+}
+
+.stat-card p {
+    margin: 0;
+    color: var(--ink-2);
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+/* "What I designed": sticky notes in pastel colours with a handwriting font */
+.notes-label {
+    margin: 40px 0 12px;
+    color: var(--ink-2);
+    font-family: "Caveat", cursive;
+    font-size: 24px;
+    transform: rotate(-2deg);
+    transform-origin: left;
+}
+
+.notes {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.note {
+    padding: 22px 20px 28px;
+    border-radius: 2px;
+    background: var(--note, #f7ebc3);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .06), 0 10px 24px rgba(0, 0, 0, .06);
+    color: #1f1d1a;
+    font-family: "Caveat", cursive;
+    transition: transform .3s var(--ease);
+}
+
+.note:nth-child(4n + 1) { --note: #d6e4f5; }
+.note:nth-child(4n + 2) { --note: #f7ebc3; }
+.note:nth-child(4n + 3) { --note: #d8ead5; }
+.note:nth-child(4n + 4) { --note: #f3dbdf; transform: rotate(1.5deg); }
+
+.note:hover {
+    transform: rotate(-1deg) translateY(-3px);
+}
+
+.note h3 {
+    margin: 0 0 10px;
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 1.05;
+}
+
+.note p {
+    margin: 0;
+    color: #3a3632;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+html[lang="ko"] .notes-label,
+html[lang="ko"] .note {
+    font-family: "Gaegu", cursive;
+}
+
+html[lang="ko"] .note h3 {
+    font-size: 23px;
+}
+
+html[lang="ko"] .note p {
+    font-size: 17px;
+    font-weight: 400;
+}
+
+@media (max-width: 1100px) {
+    .notes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* The Outcome: key results in large type, goals list */
+.outcome-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+    padding: 32px;
+    border-radius: 16px;
+    background: var(--card);
+}
+
+.outcome-stats p {
+    margin: 0;
+    color: var(--ink-2);
+    font-size: 15px;
+    line-height: 1.55;
+}
+
+.outcome-stats .outcome-value {
+    margin-bottom: 12px;
+    color: var(--ink);
+    font-size: clamp(32px, 3.6vw, 44px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+}
+
+.goals {
+    margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.case-links a {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding-bottom: 2px;
-    border-bottom: 1px solid var(--ink);
+.goals li {
+    display: grid;
+    grid-template-columns: 80px minmax(0, 1fr);
+    gap: 16px;
+    padding: 24px 0;
+    border-top: 1px solid var(--line);
+}
+
+.goals li:last-child {
+    border-bottom: 1px solid var(--line);
+}
+
+.goals h4 {
+    margin: 0 0 8px;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.goals p {
+    margin: 0;
+    color: var(--ink-2);
+    line-height: 1.65;
+}
+
+/* What I learned: intro, then a list with a star in front of every line */
+.learned-intro {
+    max-width: 62ch;
+    margin: 0;
+    color: var(--ink-2);
+    font-size: clamp(18px, 1.8vw, 21px);
+    line-height: 1.6;
+}
+
+.learned {
+    margin: 32px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.learned li {
+    display: grid;
+    grid-template-columns: 20px minmax(0, 1fr);
+    gap: 16px;
+    padding: 24px 0;
+    border-top: 1px solid var(--line);
+}
+
+.learned li:last-child {
+    border-bottom: 1px solid var(--line);
+}
+
+.learned-icon {
+    margin-top: 4px;
     color: var(--ink);
+}
+
+.learned h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+}
+
+.learned p {
+    margin: 8px 0 0;
+    color: var(--ink-2);
+    line-height: 1.65;
+}
+
+/* Competitive analysis table */
+.competitors {
+    margin-top: 56px;
+}
+
+.table-scroll {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+}
+
+.compare {
+    width: 100%;
+    min-width: 560px;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+.compare th,
+.compare td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--line);
+    text-align: center;
+}
+
+.compare tbody tr:last-child th,
+.compare tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.compare th:first-child {
+    text-align: left;
+}
+
+.compare thead th {
+    background: var(--card);
     font-weight: 600;
 }
 
-.case-links a:hover {
-    color: var(--accent);
-    border-color: var(--accent);
+.compare tbody th {
+    font-weight: 500;
 }
 
-.case-links svg {
+/* Our product's column stands out */
+.compare .is-ours {
+    background: var(--accent-tint);
+}
+
+.compare thead .is-ours {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.mark-yes {
+    display: inline-grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: var(--ink);
+    color: var(--page);
+    vertical-align: middle;
+}
+
+.mark-no {
+    display: inline-block;
+    width: 14px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--ink-3);
+    vertical-align: middle;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* User personas: avatar on the left, bio, goals / pain points and motivations on the right */
+.personas {
+    margin-top: 56px;
+}
+
+.persona {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 28px;
+    margin-top: 24px;
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+}
+
+.persona-avatar {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 8px;
+    background: var(--accent-tint);
+}
+
+/* The photo covers the whole avatar box */
+.persona-avatar picture,
+.persona-avatar img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 30%;
+}
+
+.persona-initial {
+    color: var(--accent);
+    font-size: 96px;
+    font-weight: 800;
+    line-height: 1;
+    opacity: .5;
+}
+
+.persona-tag {
+    position: absolute;
+    z-index: 1;
+    inset: auto 0 0;
+    padding: 14px 16px;
+    background: rgba(31, 29, 26, .72);
+    color: #fff;
+}
+
+.persona-tag strong,
+.persona-tag span {
+    display: block;
+}
+
+.persona-tag strong {
+    font-size: 18px;
+}
+
+.persona-tag span {
+    font-size: 14px;
+    opacity: .8;
+}
+
+.persona-bio {
+    margin: 0 0 24px;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.persona-lists {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.persona-lists ul {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--ink-2);
+    font-size: 15px;
+    line-height: 1.75;
+}
+
+/* Pain points label in the accent colour */
+.persona-lists .is-pains .case-kicker {
+    color: var(--accent);
+}
+
+.persona .chips li {
+    font-size: 14px;
+}
+
+/* Selected screens: a board image with numbered pins; the notes line up with the pins */
+.breakdown {
+    margin-top: 32px;
+}
+
+.breakdown + .breakdown {
+    margin-top: 64px;
+}
+
+.breakdown-title {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin: 0 0 24px;
+    font-size: clamp(22px, 2.4vw, 28px);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+}
+
+.breakdown-title .case-kicker {
+    margin: 0;
+}
+
+.breakdown-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.breakdown-grid.has-notes {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    column-gap: 40px;
+}
+
+.breakdown-figure {
+    position: relative;
+    margin: 0;
+}
+
+.breakdown-figure picture,
+.breakdown-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.breakdown-figure img {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+/* Click to enlarge */
+.zoom {
+    position: relative;
+    display: block;
+    cursor: zoom-in;
+}
+
+.zoom-icon {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(31, 29, 26, .8);
+    color: #fff;
     transition: transform .2s var(--ease);
 }
 
-.case-links a:hover svg {
+.zoom:hover .zoom-icon {
+    transform: scale(1.1);
+}
+
+/* Full-size image overlay (opened by main.js) */
+.lightbox {
+    width: 100vw;
+    max-width: none;
+    height: 100vh;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    border: 0;
+    background: transparent;
+    overscroll-behavior: contain;
+}
+
+.lightbox::backdrop {
+    background: rgba(20, 19, 17, .9);
+}
+
+.lightbox img {
+    display: block;
+    width: max(100%, 1000px);
+    height: auto;
+    margin: 0 auto;
+    background: #fff;
+}
+
+.lightbox-close {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    color: #1f1d1a;
+    font: inherit;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+/* Pin on the image, dotted line to the note on the right */
+.pin-line {
+    pointer-events: none;
+    position: absolute;
+    top: calc(var(--y) * 1%);
+    left: calc(var(--x) * 1%);
+    right: -40px;
+    border-top: 1.5px dotted var(--ink);
+}
+
+.pin,
+.note-num {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--page);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.pin {
+    pointer-events: none;
+    position: absolute;
+    top: calc(var(--y) * 1%);
+    left: calc(var(--x) * 1%);
+    z-index: 1;
+    border: 2px solid var(--page);
+    transform: translate(-50%, -50%);
+}
+
+.breakdown-notes {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.breakdown-notes li {
+    position: absolute;
+    top: calc(var(--y) * 1%);
+    right: 0;
+    left: 0;
+    display: flex;
+    gap: 14px;
+    transform: translateY(-14px);
+}
+
+.breakdown-notes h4 {
+    margin: 3px 0 6px;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+}
+
+.breakdown-notes p {
+    margin: 0;
+    color: var(--ink-2);
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+/* Tablet and phone: image first, notes in a list underneath, no dotted lines */
+@media (max-width: 1100px) {
+    .breakdown-grid {
+        display: block;
+    }
+
+    .pin-line {
+        display: none;
+    }
+
+    .breakdown-notes {
+        display: grid;
+        gap: 20px;
+        margin-top: 24px;
+    }
+
+    .breakdown-notes li {
+        position: static;
+        transform: none;
+    }
+}
+
+/* Process: phases in a 3 × 2 grid, list at the bottom, arrow to the next phase */
+.phases {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.phases > li {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 240px;
+    padding: 22px 22px 24px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+}
+
+.phases h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.phases ul {
+    margin: auto 0 0;
+    padding: 24px 32px 0 18px;
+    list-style: disc;
+    color: var(--ink-2);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.phase-arrow {
+    position: absolute;
+    right: 20px;
+    bottom: 22px;
+    color: var(--ink-3);
+}
+
+/* Highlighted phase: dark card */
+.phases > li.is-highlight {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--page);
+}
+
+.phases > li.is-highlight .case-kicker,
+.phases > li.is-highlight ul,
+.phases > li.is-highlight .phase-arrow {
+    color: var(--page);
+    opacity: .8;
+}
+
+.case-links .btn:hover svg {
     transform: translate(2px, -2px);
+}
+
+@media (max-width: 1100px) {
+    .phases {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 960px) {
+    .case-layout {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 64px;
+        padding-bottom: 80px;
+    }
+
+    /* Phones and tablets: no contents menu, sections one after another */
+    .case-toc {
+        display: none;
+    }
 }
 
 @media (max-width: 860px) {
@@ -1447,39 +2196,81 @@ html[lang="ko"] .case-meta dt {
         margin-bottom: 28px;
     }
 
-    .case-cover {
-        margin-top: 32px;
-    }
-
-    .case-product,
-    .case-process-head {
-        grid-template-columns: 1fr;
-        gap: 32px;
-    }
-
-    .case-product {
-        padding-top: 56px;
-    }
-
-    .case-process {
-        padding-top: 64px;
-        padding-bottom: 80px;
-    }
-
-    .steps {
+    .case-meta {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        margin-top: 48px;
+    }
+
+    .case-cover {
+        margin-top: 40px;
+    }
+
+    .case-section + .case-section {
+        margin-top: 56px;
+        padding-top: 56px;
     }
 }
 
 @media (max-width: 640px) {
     .stat-cards,
-    .case-cards {
+    .problem-stats,
+    .notes,
+    .persona,
+    .persona-lists {
         grid-template-columns: 1fr;
     }
 
-    .steps {
+    /* One column: problem, arrow down, response */
+    .framing-head {
+        display: none;
+    }
+
+    .framing-list {
+        gap: 24px;
+    }
+
+    .framing-list li {
         grid-template-columns: 1fr;
+    }
+
+    .framing-problem {
+        text-align: left;
+    }
+
+    .framing-problem h4 span {
+        display: none;
+    }
+
+    .framing-arrow {
+        padding: 8px 0;
+        transform: rotate(90deg);
+    }
+
+    .outcome-stats {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 24px 20px;
+    }
+
+    .goals li {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .phases {
+        grid-template-columns: 1fr;
+    }
+
+    .phases > li {
+        min-height: 0;
+    }
+
+    .persona-avatar {
+        aspect-ratio: 4 / 3;
+    }
+
+    .case-links .btn {
+        width: 100%;
+        justify-content: center;
     }
 }
 

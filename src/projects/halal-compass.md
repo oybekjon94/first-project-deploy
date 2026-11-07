@@ -1,7 +1,7 @@
 ---
 order: 2
 featured: true
-image: halal-compass.png
+image: "mockchi images/hero halal compass.png"
 categories: [mobile]
 link: https://apps.apple.com/kr/app/halal-compass/id6738576003
 en:

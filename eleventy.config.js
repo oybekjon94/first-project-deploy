@@ -94,6 +94,20 @@ export default function (eleventyConfig) {
         });
     });
 
+    // URL of a large version of an image, for "click to enlarge": {% imageUrl "src/...png" %}
+    eleventyConfig.addAsyncShortcode("imageUrl", async (src) => {
+        if (!src || src.endsWith("/")) return "";
+
+        const metadata = await Image(src, {
+            widths: [2400],
+            formats: ["webp"],
+            outputDir: "_site/assets/img/",
+            urlPath: "/assets/img/",
+        });
+
+        return metadata.webp[0].url;
+    });
+
     return {
         dir: {
             input: "src",

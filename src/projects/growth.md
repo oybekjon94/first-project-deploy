@@ -1,7 +1,7 @@
 ---
 order: 7
 featured: false
-image: growth.png
+image: "mockchi images/hero growth.png"
 categories: [mobile]
 link: ""
 en:

@@ -1,7 +1,7 @@
 ---
 order: 5
 featured: false
-image: uzbrainai.png
+image: "mockchi images/hero uzbrainai.png"
 categories: [web]
 link: https://www.uzbrainai.uz/
 en:

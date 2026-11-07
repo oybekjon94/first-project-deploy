@@ -1,7 +1,7 @@
 ---
 order: 9
 featured: false
-image: kodj-web.png
+image: "mockchi images/hero kodj web.png"
 categories: [web]
 link: https://www.behance.net/gallery/214782365/KODJ-Website
 en:

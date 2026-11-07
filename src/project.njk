@@ -16,97 +16,345 @@ eleventyComputed:
 {%- set p = project.data[lang] -%}
 {%- set c = p.case -%}
 <main>
-    <!-- Back, title, chips, main image -->
+    <!-- Intro: title, chips, summary, meta row, links, main image -->
     <div class="container case-top">
         <a href="{{ t.home }}work/" class="back-btn" data-back>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
             {{ t.case.back }}
         </a>
 
-        <p class="section-label reveal">{{ p.name }} · {{ c.category }}</p>
         <h1 class="hero-title reveal">{{ c.heading | highlight(c.highlight) | safe }}</h1>
 
-        <ul class="chips case-chips reveal">
-            {%- for label in p.labels %}
-            <li>{{ label }}</li>
+        <p class="case-intro reveal">{{ p.title }}</p>
+
+        <dl class="case-meta reveal" style="--cols: {{ c.meta | length }}">
+            {%- for row in c.meta %}
+            <div>
+                <dt>{{ row.label }}</dt>
+                <dd>{{ row.value }}</dd>
+            </div>
             {%- endfor %}
-        </ul>
+        </dl>
+
+        {#- Website / App Store / Google Play / Behance, depending on the project -#}
+        <div class="case-links reveal">
+            {%- for link in project.data.links %}
+            <a href="{{ link.url }}" class="btn btn-secondary btn-lg" target="_blank" rel="noopener">
+                {{ t.case.linkLabels[link.type] }}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+            {%- endfor %}
+        </div>
 
         <div class="case-cover reveal">
             {% image "src/assets/images/" + project.data.cover, p.title, "(min-width: 1140px) 1092px, 100vw" %}
         </div>
     </div>
 
-    <!-- The product -->
-    <section class="container case-product">
-        <div class="case-aside on-scroll">
-            <dl class="case-meta">
-                {%- for row in c.meta %}
-                <div>
-                    <dt>{{ row.label }}</dt>
-                    <dd>{{ row.value }}</dd>
+    <!-- Story: contents on the left (sticky), sections on the right. Sections without text are left out. -->
+    <div class="container case-layout">
+        <nav class="case-toc" aria-label="{{ t.case.contents }}">
+            <p class="case-toc-title">{{ t.case.contents }}</p>
+            <ol>
+                <li><a href="#product">{{ t.case.product }}</a></li>
+                <li><a href="#problem">{{ t.case.problem }}</a></li>
+                <li><a href="#did">{{ t.case.did }}</a></li>
+                <li><a href="#steps">{{ t.case.steps }}</a></li>
+                {%- if project.data.screens %}<li><a href="#screens">{{ t.case.screens }}</a></li>{% endif %}
+                {%- if c.outcome %}<li><a href="#outcome">{{ t.case.outcome }}</a></li>{% endif %}
+                {%- if c.learned %}<li><a href="#learned">{{ t.case.learned }}</a></li>{% endif %}
+            </ol>
+        </nav>
+
+        <div class="case-content">
+            <section class="case-section" id="product">
+                <p class="section-label on-scroll">{{ t.case.product }}</p>
+                <p class="case-lead on-scroll">{{ c.lead }}</p>
+
+                <div class="stat-cards on-scroll">
+                    {%- for stat in c.stats %}
+                    <div class="stat-card">
+                        <h3>{{ stat.title }}</h3>
+                        <p>{{ stat.text }}</p>
+                    </div>
+                    {%- endfor %}
                 </div>
-                {%- endfor %}
-            </dl>
+            </section>
 
-            {#- Website / App Store / Google Play / Behance, depending on the project -#}
-            <ul class="case-links" aria-label="{{ t.case.links }}">
-                {%- for link in project.data.links %}
-                <li>
-                    <a href="{{ link.url }}" target="_blank" rel="noopener">
-                        {{ t.case.linkLabels[link.type] }}
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
-                    </a>
-                </li>
-                {%- endfor %}
-            </ul>
-        </div>
+            <section class="case-section" id="problem">
+                <p class="section-label on-scroll">{{ t.case.problem }}</p>
+                {%- if c.problem %}
+                <h2 class="case-section-title on-scroll">{{ c.problem.title }}</h2>
 
-        <div class="case-product-text">
-            <p class="section-label on-scroll">{{ t.case.product }}</p>
-            <p class="case-lead on-scroll">{{ c.lead }}</p>
-            <p class="case-body on-scroll">{{ c.body }}</p>
-
-            <div class="stat-cards on-scroll">
-                {%- for stat in c.stats %}
-                <div class="stat-card">
-                    <h3>{{ stat.title }}</h3>
-                    <p>{{ stat.text }}</p>
+                {#- Big numbers about the market -#}
+                <div class="problem-stats on-scroll">
+                    {%- for stat in c.problem.stats %}
+                    <div class="stat-card">
+                        <p class="problem-value">{{ stat.value }}</p>
+                        <p>{{ stat.text }}</p>
+                    </div>
+                    {%- endfor %}
                 </div>
-                {%- endfor %}
-            </div>
-        </div>
-    </section>
+                {%- endif %}
 
-    <!-- How I worked -->
-    <section class="container case-process">
-        <div class="case-process-head">
-            <div>
-                <p class="section-label on-scroll">{{ t.case.process }}</p>
-                <h2 class="section-title on-scroll">{{ c.process.title }}</h2>
-            </div>
-            <div class="case-process-body on-scroll">
-                <p class="case-body">{{ c.process.text }}</p>
-                <h3 class="case-subtitle">{{ c.process.cardsTitle }}</h3>
-                <div class="case-cards">
+                <p class="case-body problem-body on-scroll">{{ c.body }}</p>
+
+                {%- if c.problem.framing %}
+                {%- set f = c.problem.framing %}
+                {%- set n = f.pairs | length %}
+                <div class="framing">
+                    <p class="case-kicker on-scroll">{{ t.case.framing }}</p>
+                    <h3 class="framing-title on-scroll">{{ f.title }}</h3>
+                    <p class="case-body on-scroll">{{ f.text }}</p>
+
+                    {#- Each problem sits next to the response it led to -#}
+                    <div class="framing-head on-scroll" aria-hidden="true">
+                        <span class="case-kicker">{{ t.case.problemsCount | replace("{n}", n) }}</span>
+                        <span class="case-kicker">{{ t.case.responsesCount | replace("{n}", n) }}</span>
+                    </div>
+                    <ol class="framing-list on-scroll">
+                        {%- for pair in f.pairs %}
+                        <li>
+                            <div class="framing-problem">
+                                <h4>{{ pair.problem }} <span>0{{ loop.index }}</span></h4>
+                                <p>{{ pair.problemText }}</p>
+                            </div>
+                            <span class="framing-arrow" aria-hidden="true">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                            </span>
+                            <div class="framing-response">
+                                <h4><span>0{{ loop.index }}</span> {{ pair.response }}</h4>
+                                <p>{{ pair.responseText }}</p>
+                            </div>
+                        </li>
+                        {%- endfor %}
+                    </ol>
+                </div>
+                {%- endif %}
+            </section>
+
+            <section class="case-section" id="did">
+                <p class="section-label on-scroll">{{ t.case.did }}</p>
+                <h2 class="case-section-title on-scroll">{{ c.process.title }}</h2>
+                <p class="case-body on-scroll">{{ c.process.text }}</p>
+
+                {#- "What I designed" as handwritten sticky notes -#}
+                <p class="notes-label on-scroll">{{ c.process.cardsTitle }} <span aria-hidden="true">↘</span></p>
+                <div class="notes on-scroll">
                     {%- for card in c.process.cards %}
-                    <div class="case-card">
+                    <div class="note">
                         <h3>{{ card.title }}</h3>
                         <p>{{ card.text }}</p>
                     </div>
                     {%- endfor %}
                 </div>
-            </div>
-        </div>
+            </section>
 
-        <ol class="steps on-scroll" style="--steps: {{ c.process.steps | length }}">
-            {%- for step in c.process.steps %}
-            <li>
-                <span class="step-num">0{{ loop.index }}</span>
-                <h3>{{ step.title }}</h3>
-                <p>{{ step.text }}</p>
-            </li>
-            {%- endfor %}
-        </ol>
-    </section>
+            <section class="case-section" id="steps">
+                <p class="section-label on-scroll">{{ t.case.steps }}</p>
+                {#- Design process phases; a phase with `highlight: true` is filled dark -#}
+                <ol class="phases on-scroll">
+                    {%- for step in c.process.steps %}
+                    <li{% if step.highlight %} class="is-highlight"{% endif %}>
+                        <span class="case-kicker">0{{ loop.index }}</span>
+                        <h3>{{ step.title }}</h3>
+                        <ul>
+                            {%- for item in step.items %}
+                            <li>{{ item }}</li>
+                            {%- endfor %}
+                        </ul>
+                        {%- if not loop.last %}
+                        <svg class="phase-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        {%- endif %}
+                    </li>
+                    {%- endfor %}
+                </ol>
+
+                {%- if c.process.competitors %}
+                {%- set comp = c.process.competitors %}
+                <div class="competitors">
+                    <p class="case-kicker on-scroll">{{ t.case.competitive }}</p>
+                    <h3 class="framing-title on-scroll">{{ comp.title }}</h3>
+
+                    {#- Wide table: scrolls sideways on small screens; the first column (our product) is highlighted -#}
+                    <div class="table-scroll on-scroll">
+                        <table class="compare">
+                            <thead>
+                                <tr>
+                                    <th scope="col">{{ t.case.feature }}</th>
+                                    {%- for col in comp.columns %}
+                                    <th scope="col"{% if loop.first %} class="is-ours"{% endif %}>{{ col }}</th>
+                                    {%- endfor %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {%- for row in comp.rows %}
+                                <tr>
+                                    <th scope="row">{{ row.feature }}</th>
+                                    {%- for value in row.values %}
+                                    <td{% if loop.first %} class="is-ours"{% endif %}>
+                                        {%- if value %}
+                                        <span class="mark-yes"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span class="sr-only">{{ t.case.yes }}</span></span>
+                                        {%- else %}
+                                        <span class="mark-no" aria-hidden="true"></span><span class="sr-only">{{ t.case.no }}</span>
+                                        {%- endif %}
+                                    </td>
+                                    {%- endfor %}
+                                </tr>
+                                {%- endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {%- endif %}
+
+                {#- User personas. The image shortcode is async, so the loop uses asyncEach and the
+                    optional wrapper is set as text (an async loop can't sit inside an `if`). -#}
+                {%- set pers = c.process.personas %}
+                {%- set personasOpen = ('<div class="personas"><p class="case-kicker on-scroll">' ~ t.case.personas ~ '</p><h3 class="framing-title on-scroll">' ~ (pers.title | highlight(pers.highlight)) ~ '</h3>') if pers else '' %}
+                {{ personasOpen | safe }}
+                {%- asyncEach person in (pers.items if pers else []) %}
+                    <article class="persona on-scroll">
+                        {#- Photo if there is one; otherwise the first letter of the name shows -#}
+                        <div class="persona-avatar">
+                            <span class="persona-initial" aria-hidden="true">{{ person.name | first }}</span>
+                            {% image "src/assets/images/" + (person.photo or ""), person.name, "220px" %}
+                            <div class="persona-tag" aria-hidden="true">
+                                <strong>{{ person.name }}, {{ person.age }}</strong>
+                                <span>“{{ person.label }}”</span>
+                            </div>
+                        </div>
+
+                        <div class="persona-body">
+                            <h4 class="sr-only">{{ person.name }}, {{ person.age }} — {{ person.label }}</h4>
+                            <p class="persona-bio">{{ person.bio }}</p>
+
+                            <div class="persona-lists">
+                                <div>
+                                    <p class="case-kicker">{{ t.case.personaGoals }}</p>
+                                    <ul>
+                                        {%- for item in person.goals %}
+                                        <li>{{ item }}</li>
+                                        {%- endfor %}
+                                    </ul>
+                                </div>
+                                <div class="is-pains">
+                                    <p class="case-kicker">{{ t.case.pains }}</p>
+                                    <ul>
+                                        {%- for item in person.pains %}
+                                        <li>{{ item }}</li>
+                                        {%- endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <p class="case-kicker">{{ t.case.motivations }}</p>
+                            <ul class="chips">
+                                {%- for item in person.motivations %}
+                                <li>#{{ item }}</li>
+                                {%- endfor %}
+                            </ul>
+                        </div>
+                    </article>
+                {%- endeach %}
+                {{ ('</div>' if pers else '') | safe }}
+            </section>
+
+            {#- Selected screens: shown only when the project has `screens`. Each block is a board image with
+                numbered pins and notes that line up with the pins. The image shortcode is async, so the loop uses
+                asyncEach and the section wrapper is set as text (an async loop can't sit inside an `if`). -#}
+            {%- set screensOpen = ('<section class="case-section" id="screens"><p class="section-label on-scroll">' ~ t.case.screens ~ '</p>') if project.data.screens else '' %}
+            {%- set screensClose = '</section>' if project.data.screens else '' %}
+            {{ screensOpen | safe }}
+            {%- asyncEach block in (project.data.screens or []) %}
+            {%- set b = block[lang] %}
+            <div class="breakdown">
+                <h3 class="breakdown-title on-scroll"><span class="case-kicker">0{{ loop.index }}</span> {{ b.title }}</h3>
+                {#- With pins and notes: image on the left, notes on the right. Without: the image alone, full width. -#}
+                <div class="breakdown-grid{% if block.pins %} has-notes{% endif %} on-scroll">
+                    <figure class="breakdown-figure">
+                        {#- Click opens the large version (an overlay, see main.js; without JS it opens the file) -#}
+                        <a class="zoom" href="{% imageUrl "src/assets/images/" + block.image %}" target="_blank" rel="noopener" aria-label="{{ t.case.zoom }}" data-alt="{{ b.alt or b.title }}" data-close="{{ t.case.close }}">
+                            {% image "src/assets/images/" + block.image, b.alt or b.title, ("(min-width: 1101px) 400px, 100vw" if block.pins else "(min-width: 1101px) 770px, 100vw") %}
+                            <span class="zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+                        </a>
+                        {%- for pin in block.pins %}
+                        <span class="pin-line" style="--x: {{ pin.x }}; --y: {{ pin.y }}" aria-hidden="true"></span>
+                        <span class="pin" style="--x: {{ pin.x }}; --y: {{ pin.y }}" aria-hidden="true">{{ loop.index }}</span>
+                        {%- endfor %}
+                    </figure>
+                    {%- if b.notes %}
+                    <ol class="breakdown-notes">
+                        {%- for note in b.notes %}
+                        <li style="--y: {{ block.pins[loop.index0].y }}">
+                            <span class="note-num" aria-hidden="true">{{ loop.index }}</span>
+                            <div>
+                                <h4>{{ note.title }}</h4>
+                                <p>{{ note.text }}</p>
+                            </div>
+                        </li>
+                        {%- endfor %}
+                    </ol>
+                    {%- endif %}
+                </div>
+            </div>
+            {%- endeach %}
+            {{ screensClose | safe }}
+
+            {%- if c.outcome %}
+            <section class="case-section" id="outcome">
+                <p class="section-label on-scroll">{{ t.case.outcome }}</p>
+
+                {#- Key results in large type -#}
+                <div class="outcome-stats on-scroll">
+                    {%- for stat in c.outcome.stats %}
+                    <div>
+                        <p class="outcome-value">{{ stat.value }}</p>
+                        <p>{{ stat.text }}</p>
+                    </div>
+                    {%- endfor %}
+                </div>
+
+                <h3 class="case-subtitle on-scroll">{{ t.case.goals }}</h3>
+                <ol class="goals on-scroll">
+                    {%- for goal in c.outcome.goals %}
+                    <li>
+                        <span class="case-kicker">0{{ loop.index }}</span>
+                        <div>
+                            <h4>{{ goal.title }}</h4>
+                            <p>{{ goal.text }}</p>
+                        </div>
+                    </li>
+                    {%- endfor %}
+                </ol>
+
+                {%- if c.outcome.ahead %}
+                <h3 class="case-subtitle on-scroll">{{ t.case.ahead }}</h3>
+                <p class="case-body on-scroll">{{ c.outcome.ahead }}</p>
+                {%- endif %}
+            </section>
+            {%- endif %}
+
+
+            {%- if c.learned %}
+            <section class="case-section" id="learned">
+                <p class="section-label on-scroll">{{ t.case.learned }}</p>
+                <p class="learned-intro on-scroll">{{ c.learned.intro }}</p>
+
+                {#- Reflection list: a star, a bold line and (optional) a short explanation per item -#}
+                <ul class="learned on-scroll">
+                    {%- for item in c.learned.items %}
+                    <li>
+                        <svg class="learned-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+                        <div>
+                            <h3>{{ item.title }}</h3>
+                            {%- if item.text %}<p>{{ item.text }}</p>{% endif %}
+                        </div>
+                    </li>
+                    {%- endfor %}
+                </ul>
+            </section>
+            {%- endif %}
+        </div>
+    </div>
 </main>

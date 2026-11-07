@@ -1,7 +1,7 @@
 ---
 order: 8
 featured: false
-image: kodj.png
+image: "mockchi images/hero ko'dj app.png"
 categories: [mobile]
 link: https://www.behance.net/gallery/229552261/KODJ-app
 en:

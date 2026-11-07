@@ -1,7 +1,7 @@
 ---
 order: 11
 featured: false
-image: helpforeigner.png
+image: "mockchi images/hero helpforeigner.png"
 categories: [mobile]
 link: https://www.behance.net/gallery/210842143/helpForeigner
 en:

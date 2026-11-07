@@ -1,6 +1,8 @@
 {#- One project card. Needs `project` (a page from collections.projects) and `lang`. -#}
 {#- Projects with `detail: true` link to their case study page; the others stay plain cards. -#}
 {%- set p = project.data[lang] -%}
+{#- `image`: a file name inside images/projects/, or a path inside images/ when it contains a "/" (e.g. "mockchi images/hero.png") -#}
+{%- set cardImage = ("src/assets/images/" + project.data.image) if "/" in project.data.image else ("src/assets/images/projects/" + project.data.image) -%}
 {%- set detailUrl = t.home ~ "work/" ~ project.fileSlug ~ "/" -%}
 {%- set open = ('<a class="project-link" href="' ~ detailUrl ~ '">') if project.data.detail else '<div class="project-link">' -%}
 {%- set close = '</a>' if project.data.detail else '</div>' -%}
@@ -8,7 +10,7 @@
 <article class="project-card on-scroll" data-categories="{{ project.data.categories | join(' ') }}">
     {{ open | safe }}
     <div class="project-media">
-        {% image "src/assets/images/projects/" + project.data.image, p.title, "(min-width: 900px) 540px, 100vw" %}
+        {% image cardImage, p.title, "(min-width: 900px) 540px, 100vw" %}
         <ul class="project-labels">
             {%- for label in p.labels %}
             <li>{{ label }}</li>

@@ -70,3 +70,43 @@ if (backButton) {
         }
     });
 }
+
+// Case study "Contents": mark the section that is currently being read
+const tocLinks = document.querySelectorAll('.case-toc a');
+
+if (tocLinks.length && 'IntersectionObserver' in window) {
+    const setActive = id => tocLinks.forEach(link => {
+        if (link.getAttribute('href') === `#${id}`) link.setAttribute('aria-current', 'true');
+        else link.removeAttribute('aria-current');
+    });
+
+    // A section counts as "being read" when it crosses the upper part of the screen
+    const sectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => { if (entry.isIntersecting) setActive(entry.target.id); });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+
+    document.querySelectorAll('.case-section').forEach(section => sectionObserver.observe(section));
+    setActive(tocLinks[0].getAttribute('href').slice(1));
+}
+
+// Case study images: click to see the full-size image in an overlay (without JS the link opens the image file)
+const zoomLinks = document.querySelectorAll('a.zoom');
+
+if (zoomLinks.length && typeof HTMLDialogElement === 'function') {
+    const lightbox = document.createElement('dialog');
+    lightbox.className = 'lightbox';
+    lightbox.innerHTML = '<button type="button" class="lightbox-close" aria-label="' + zoomLinks[0].dataset.close + '">×</button><img alt="">';
+    document.body.append(lightbox);
+
+    const lightboxImage = lightbox.querySelector('img');
+
+    zoomLinks.forEach(link => link.addEventListener('click', e => {
+        e.preventDefault();
+        lightboxImage.src = link.href;
+        lightboxImage.alt = link.dataset.alt;
+        lightbox.showModal();
+    }));
+
+    // A click anywhere (or Esc) closes it
+    lightbox.addEventListener('click', () => lightbox.close());
+}
