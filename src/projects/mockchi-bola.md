@@ -36,6 +36,13 @@ screens:
           text: "레퍼런스 화면, 랜딩 페이지 리디자인을 위한 EPIC 문서(목표, 범위, 가정, 성공 지표, 유저 스토리), 디자인 아이디어를 얻기 위해 살펴본 경쟁사 랜딩 페이지."
         - title: "기능 기획"
           text: "랜딩 페이지, 온보딩, 레벨 테스트·AI 분석, 대시보드, 캘린더, 학습·연습, 모의고사 분석, 진도, 무료·프리미엄 요금제를 표로 정리했습니다."
+  - image: "mockchi images/Mock bola_FigJam.png"
+    en:
+      title: "Sitemap"
+      alt: "FigJam sitemap board: the structure of the Personal and Business landing pages, and the student flow from the landing page to the personal plan"
+    ko:
+      title: "사이트맵"
+      alt: "FigJam 사이트맵 보드: 개인용·비즈니스용 랜딩 페이지 구조와, 랜딩 페이지에서 개인 학습 계획까지 이어지는 학생 플로우"
   - image: "mockchi images/admin dashboard.png"
     en:
       title: "Admin dashboard"
@@ -112,6 +119,15 @@ en:
         value: "Web, tablet and mobile"
     lead: "Mockchi bola is a platform for realistic IELTS, Goethe and Multilevel mock tests, with instant scoring, AI feedback on writing and speaking, and progress tracking over time."
     body: "Students preparing for international exams often feel anxious and have nowhere realistic to practise. Traditional study methods don't recreate the pressure and format of the real tests, which leads to lower confidence and unpredictable results. My job was to make realistic practice clear, judgment-free and easy to follow."
+    tldr:
+      - question: "What problem did I solve?"
+        answer: "Students preparing for international exams often feel anxious and have nowhere realistic to practise. Traditional study methods don't recreate the pressure and format of the real tests, which leads to lower confidence and unpredictable results."
+      - question: "What was my role?"
+        answer: "UI/UX Designer on the Mockchi bola team since Jan 2026, working with the CEO, CTO, PM and 5 developers. I designed the landing page, the student workspace, the real exam interfaces and the admin dashboard."
+      - question: "What decisions did I make?"
+        answer: "Realistic, timed exam interfaces that mirror real testing conditions. One workspace for sectional practice and full simulations. A centralized admin dashboard for sessions and results, with AI-assisted grading that an admin can verify and adjust."
+      - question: "What was the outcome?"
+        answer: "The platform is live and used by multiple learning centers to run their exams, and the company secured $15,000 in investment to support product development and growth."
     problem:
       title: "Millions of learners worldwide are preparing for international certifications with tools built for another era."
       stats:
@@ -257,6 +273,15 @@ ko:
         value: "웹, 태블릿, 모바일"
     lead: "Mockchi bola는 IELTS, Goethe, Multilevel 실전 모의고사를 제공하는 플랫폼입니다. 즉각적인 채점, 쓰기·말하기에 대한 AI 피드백, 시간에 따른 학습 진도 추적을 지원합니다."
     body: "국제 시험을 준비하는 학생들은 불안감을 느끼기 쉽고, 실전처럼 연습할 곳이 마땅치 않습니다. 기존 학습 방식은 실제 시험의 긴장감과 형식을 재현하지 못해 자신감이 떨어지고 결과를 예측하기 어렵게 만듭니다. 제 역할은 실전 같은 연습이 명확하고, 평가받는다는 부담 없이, 따라가기 쉽도록 디자인하는 것이었습니다."
+    tldr:
+      - question: "어떤 문제를 해결했나요?"
+        answer: "국제 시험을 준비하는 학생들은 불안감을 느끼기 쉽고, 실전처럼 연습할 곳이 마땅치 않습니다. 기존 학습 방식은 실제 시험의 긴장감과 형식을 재현하지 못해 자신감이 떨어지고 결과를 예측하기 어렵게 만듭니다."
+      - question: "제 역할은 무엇이었나요?"
+        answer: "2026년 1월부터 Mockchi bola 팀의 UI/UX 디자이너로 CEO, CTO, PM, 개발자 5명과 함께 일했습니다. 랜딩 페이지, 학생 워크스페이스, 실제 시험 화면, 관리자 대시보드를 디자인했습니다."
+      - question: "어떤 결정을 내렸나요?"
+        answer: "실제 시험 조건을 그대로 재현한 시간 제한형 시험 화면. 영역별 연습과 실전 모의고사를 하나의 워크스페이스에서. 세션과 결과를 한곳에서 관리하는 통합 관리자 대시보드와, 관리자가 검증하고 조정할 수 있는 AI 보조 채점."
+      - question: "결과는 어땠나요?"
+        answer: "플랫폼은 운영 중이며 여러 교육 기관이 시험 운영에 사용하고 있습니다. 회사는 제품 개발과 성장을 위해 $15,000 투자를 유치했습니다."
     problem:
       title: "전 세계 수백만 명의 학습자가 지난 시대에 만들어진 도구로 국제 자격 시험을 준비하고 있습니다."
       stats:

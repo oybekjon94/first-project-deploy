@@ -1,0 +1,68 @@
+---
+layout: layouts/base.njk
+pagination:
+    data: languages
+    size: 1
+    alias: lang
+permalink: "{{ i18n[lang].home }}journal/"
+eleventyComputed:
+    title: "{{ i18n[lang].journalPage.metaTitle }}"
+    description: "{{ i18n[lang].journalPage.metaDescription }}"
+---
+{%- set t = i18n[lang] -%}
+<main class="container journal">
+    <p class="section-label reveal">{{ t.journalPage.label }}</p>
+    <h1 class="section-title reveal">{{ t.journalPage.title }}</h1>
+    <p class="section-desc reveal">{{ t.journalPage.desc }}</p>
+
+    {#- Chapters: tilted polaroid photos on the left, number + title + text on the right.
+        asyncEach (twice) because of the image shortcode; the "no chapters" text is set as text for the same reason. -#}
+    {%- set journalEmpty = ('<p class="journal-empty">' ~ t.journalPage.empty ~ '</p>') if (collections.journal | length) == 0 else '' %}
+    {{ journalEmpty | safe }}
+    <div class="journal-chapters">
+        {%- asyncEach entry in collections.journal %}
+        {%- set e = entry.data[lang] %}
+        {%- set num = ("0" ~ loop.index) if loop.index < 10 else loop.index %}
+        <section class="journal-chapter on-scroll">
+            <div class="journal-photos">
+                {%- asyncEach photo in entry.data.photos %}
+                <div class="journal-photo">
+                    {% image "src/assets/images/" + photo, e.title, "(min-width: 900px) 260px, 45vw" %}
+                </div>
+                {%- endeach %}
+            </div>
+            <div class="journal-text">
+                <p class="journal-chapter-no">{{ t.journalPage.chapter }} {{ num }}</p>
+                <h2>{{ e.title }}</h2>
+                {{ e.text | markdown | safe }}
+            </div>
+        </section>
+
+        {#- Optional record block under the chapter (e.g. a running record): stats on the left,
+            full (not cropped) app screenshots on the right. ifAsync: the image shortcode is async. -#}
+        {%- ifAsync entry.data.record %}
+        {%- set r = entry.data.record[lang] %}
+        <section class="journal-record on-scroll">
+            <div class="journal-record-text">
+                <p class="journal-chapter-no">{{ r.eyebrow }}</p>
+                <p class="journal-record-value">{{ r.value }}<span>{{ r.unit }}</span></p>
+                <h3>{{ r.title }}</h3>
+                <dl class="journal-record-stats">
+                    {%- for st in r.stats %}
+                    <div><dt>{{ st.label }}</dt><dd>{{ st.value }}</dd></div>
+                    {%- endfor %}
+                </dl>
+                <p class="journal-record-desc">{{ r.text }}</p>
+            </div>
+            <div class="journal-record-photos">
+                {%- asyncEach photo in entry.data.record.photos %}
+                <div class="journal-photo">
+                    {% image "src/assets/images/" + photo, r.title, "(min-width: 900px) 240px, 45vw" %}
+                </div>
+                {%- endeach %}
+            </div>
+        </section>
+        {%- endif %}
+        {%- endeach %}
+    </div>
+</main>

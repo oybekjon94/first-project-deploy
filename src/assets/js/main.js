@@ -110,3 +110,43 @@ if (zoomLinks.length && typeof HTMLDialogElement === 'function') {
     // A click anywhere (or Esc) closes it
     lightbox.addEventListener('click', () => lightbox.close());
 }
+
+// Case study TLDR: show one question card at a time, with a counter and previous / next buttons
+document.querySelectorAll('[data-tldr]').forEach(box => {
+    const slides = [...box.querySelectorAll('.tldr-slide')];
+    const prev = box.querySelector('[data-tldr-prev]');
+    const next = box.querySelector('[data-tldr-next]');
+    const current = box.querySelector('[data-tldr-current]');
+    let index = 0;
+
+    function show(i) {
+        index = Math.max(0, Math.min(slides.length - 1, i));
+        slides.forEach((slide, n) => slide.classList.toggle('is-active', n === index));
+        current.textContent = String(index + 1).padStart(2, '0');
+        prev.disabled = index === 0;
+        next.disabled = index === slides.length - 1;
+    }
+
+    prev.addEventListener('click', () => show(index - 1));
+    next.addEventListener('click', () => show(index + 1));
+    show(0);
+});
+
+// Back to top button: shows once the page reaches the section named in data-show-at (e.g. "outcome"),
+// or after 700px of scrolling when that section doesn't exist; jumps (smoothly) to the top of the page
+const toTop = document.querySelector('[data-to-top]');
+
+if (toTop) {
+    const showAt = document.getElementById(toTop.dataset.showAt);
+    const update = () => {
+        const reached = showAt
+            ? showAt.getBoundingClientRect().top < window.innerHeight * 0.6
+            : window.scrollY > 700;
+
+        toTop.classList.toggle('is-visible', reached);
+    };
+
+    window.addEventListener('scroll', update, { passive: true });
+    toTop.addEventListener('click', () => window.scrollTo(0, 0));
+    update();
+}

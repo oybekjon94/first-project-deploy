@@ -7,8 +7,9 @@
             "description": "Oybek Kholikov is a UI/UX and product designer based in Seoul, designing clear, human-centered web and mobile products."
         },
         "nav": {
-            "work": "Work",
+            "work": "Projects",
             "blog": "Blog",
+            "journal": "Journal",
             "about": "About",
             "cta": "Get in touch",
             "menuOpen": "Open menu",
@@ -22,7 +23,6 @@
             "cta": "Get in touch",
             "cv": "View My CV",
             "photoAlt": "Portrait of Oybek Kholikov",
-            "badge": "Hey, I'm Oybek 👋",
             "facts": [
                 "<strong>2.5+ years</strong> in UI/UX &amp; Product Design",
                 "Mobile, web & AI products",
@@ -50,6 +50,15 @@
                 "process": "Process",
                 "ai": "AI"
             }
+        },
+        "journalPage": {
+            "metaTitle": "Journal — Oybek Kholikov",
+            "metaDescription": "Moments beyond design: activities and photos from the life of Oybek Kholikov, a product designer in Seoul.",
+            "label": "Journal",
+            "title": "Moments beyond design",
+            "desc": "A few photos and notes from life outside of work.",
+            "chapter": "Chapter",
+        "empty": "New moments are coming soon."
         },
         "blogPage": {
             "metaTitle": "Blog — Oybek Kholikov",
@@ -172,6 +181,9 @@
             "competitive": "Competitive analysis",
             "personas": "User personas",
             "personaGoals": "Goals",
+            "frustrations": "Frustrations",
+            "background": "Background",
+            "problemStatement": "Problem statement",
             "pains": "Pain points",
             "motivations": "Motivations",
             "feature": "Feature",
@@ -179,6 +191,13 @@
             "no": "No",
             "learned": "What I Learned",
             "contents": "Contents",
+            "nextStudies": "Next case studies",
+            "viewAll": "View all",
+            "ctaText": "Always up for a conversation about UX, product design or AI-powered products.",
+            "backToTop": "Back to top",
+            "tldr": "TLDR",
+            "prev": "Previous",
+            "next": "Next",
             "framing": "Problem framing",
             "problemsCount": "{n} problems",
             "responsesCount": "{n} responses",
@@ -199,8 +218,9 @@
             "description": "서울에서 활동하는 UI/UX·프로덕트 디자이너 Oybek Kholikov의 포트폴리오입니다. 명확하고 사람 중심적인 웹·모바일 제품을 디자인합니다."
         },
         "nav": {
-            "work": "작업",
+            "work": "프로젝트",
             "blog": "블로그",
+            "journal": "저널",
             "about": "소개",
             "cta": "연락하기",
             "menuOpen": "메뉴 열기",
@@ -214,7 +234,6 @@
             "cta": "연락하기",
             "cv": "이력서 보기",
             "photoAlt": "Oybek Kholikov 프로필 사진",
-            "badge": "안녕하세요, 오이벡입니다 👋",
             "facts": [
                 "<strong>2.5년+</strong> UI/UX·프로덕트 디자인 경력",
                 "모바일·웹·AI 제품 디자인",
@@ -242,6 +261,15 @@
                 "process": "작업 과정",
                 "ai": "AI"
             }
+        },
+        "journalPage": {
+            "metaTitle": "저널 — Oybek Kholikov",
+            "metaDescription": "디자인 밖의 순간들: 서울에서 활동하는 프로덕트 디자이너 Oybek Kholikov의 활동과 사진입니다.",
+            "label": "저널",
+            "title": "디자인 밖의 순간들",
+            "desc": "일 밖의 일상에서 담은 사진과 기록입니다.",
+            "chapter": "챕터",
+        "empty": "새로운 순간이 곧 올라옵니다."
         },
         "blogPage": {
             "metaTitle": "블로그 — Oybek Kholikov",
@@ -364,6 +392,9 @@
             "competitive": "경쟁사 분석",
             "personas": "사용자 페르소나",
             "personaGoals": "목표",
+            "frustrations": "불만 사항",
+            "background": "배경",
+            "problemStatement": "문제 정의",
             "pains": "불편 사항",
             "motivations": "동기",
             "feature": "기능",
@@ -371,6 +402,13 @@
             "no": "없음",
             "learned": "배운 점",
             "contents": "목차",
+            "nextStudies": "다음 케이스 스터디",
+            "viewAll": "전체 보기",
+            "ctaText": "UX, 프로덕트 디자인, AI 기반 제품 이야기라면 언제든 환영입니다.",
+            "backToTop": "맨 위로",
+            "tldr": "TLDR",
+            "prev": "이전",
+            "next": "다음",
             "framing": "문제 정의",
             "problemsCount": "{n}가지 문제",
             "responsesCount": "{n}가지 해결책",

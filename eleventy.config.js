@@ -26,6 +26,11 @@ export default function (eleventyConfig) {
         collectionApi.getFilteredByGlob("src/blog/*.md").sort((a, b) => b.date - a.date)
     );
 
+    // Journal chapters (photos + text): one Markdown file each in src/journal, by "order" (1 = first chapter on top)
+    eleventyConfig.addCollection("journal", (collectionApi) =>
+        collectionApi.getFilteredByGlob("src/journal/*.md").sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
+    );
+
     // One post page per language for every blog post
     eleventyConfig.addCollection("postPages", (collectionApi) =>
         collectionApi
@@ -66,6 +71,12 @@ export default function (eleventyConfig) {
         return safeText.replace(escapeHtml(phrase), `<mark>${escapeHtml(phrase)}</mark>`);
     });
 
+    // The next n projects after the current one (in `order`), wrapping around; for "Next case studies"
+    eleventyConfig.addFilter("nextProjects", (projects, slug, n) => {
+        const i = projects.findIndex((p) => p.fileSlug === slug);
+        return [...projects.slice(i + 1), ...projects.slice(0, Math.max(i, 0))].slice(0, n);
+    });
+
     // Projects shown on the home page (`featured: true`)
     eleventyConfig.addFilter("featured", (projects) => projects.filter((p) => p.data.featured));
 
@@ -84,6 +95,7 @@ export default function (eleventyConfig) {
             formats: ["webp", "jpeg"],
             outputDir: "_site/assets/img/",
             urlPath: "/assets/img/",
+            fixOrientation: true, // phone photos: apply the EXIF rotation (e.g. upside-down shots)
         });
 
         return Image.generateHTML(metadata, {
@@ -103,6 +115,7 @@ export default function (eleventyConfig) {
             formats: ["webp"],
             outputDir: "_site/assets/img/",
             urlPath: "/assets/img/",
+            fixOrientation: true, // phone photos: apply the EXIF rotation (e.g. upside-down shots)
         });
 
         return metadata.webp[0].url;

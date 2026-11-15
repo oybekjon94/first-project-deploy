@@ -56,10 +56,11 @@ eleventyComputed:
         <nav class="case-toc" aria-label="{{ t.case.contents }}">
             <p class="case-toc-title">{{ t.case.contents }}</p>
             <ol>
-                <li><a href="#product">{{ t.case.product }}</a></li>
-                <li><a href="#problem">{{ t.case.problem }}</a></li>
-                <li><a href="#did">{{ t.case.did }}</a></li>
-                <li><a href="#steps">{{ t.case.steps }}</a></li>
+                {%- if c.tldr %}<li><a href="#tldr">{{ t.case.tldr }}</a></li>{% endif %}
+                {%- if c.lead %}<li><a href="#product">{{ t.case.product }}</a></li>{% endif %}
+                {%- if c.body or c.problem %}<li><a href="#problem">{{ t.case.problem }}</a></li>{% endif %}
+                {%- if c.process.cards %}<li><a href="#did">{{ t.case.did }}</a></li>{% endif %}
+                {%- if c.process.steps %}<li><a href="#steps">{{ t.case.steps }}</a></li>{% endif %}
                 {%- if project.data.screens %}<li><a href="#screens">{{ t.case.screens }}</a></li>{% endif %}
                 {%- if c.outcome %}<li><a href="#outcome">{{ t.case.outcome }}</a></li>{% endif %}
                 {%- if c.learned %}<li><a href="#learned">{{ t.case.learned }}</a></li>{% endif %}
@@ -67,10 +68,42 @@ eleventyComputed:
         </nav>
 
         <div class="case-content">
+            {%- if c.tldr %}
+            <section class="case-section" id="tldr">
+                <p class="section-label on-scroll">{{ t.case.tldr }}</p>
+
+                {#- Four short question and answer cards. With JS they become a slider (one card at a time);
+                    without JS all four are simply listed one under the other. -#}
+                <div class="tldr on-scroll" data-tldr data-prev="{{ t.case.prev }}" data-next="{{ t.case.next }}">
+                    <ol class="tldr-slides">
+                        {%- for item in c.tldr %}
+                        <li class="tldr-slide">
+                            <h3>{{ item.question }}</h3>
+                            <p>{{ item.answer }}</p>
+                        </li>
+                        {%- endfor %}
+                    </ol>
+                    <div class="tldr-bar">
+                        <p class="tldr-count" aria-live="polite"><strong data-tldr-current>01</strong> / 0{{ c.tldr | length }}</p>
+                        <div class="tldr-nav">
+                            <button type="button" data-tldr-prev aria-label="{{ t.case.prev }}">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+                            </button>
+                            <button type="button" data-tldr-next aria-label="{{ t.case.next }}">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            {%- endif %}
+
+            {%- if c.lead %}
             <section class="case-section" id="product">
                 <p class="section-label on-scroll">{{ t.case.product }}</p>
                 <p class="case-lead on-scroll">{{ c.lead }}</p>
 
+                {%- if c.stats %}
                 <div class="stat-cards on-scroll">
                     {%- for stat in c.stats %}
                     <div class="stat-card">
@@ -79,14 +112,19 @@ eleventyComputed:
                     </div>
                     {%- endfor %}
                 </div>
+                {%- endif %}
             </section>
+            {%- endif %}
 
+            {%- if c.body or c.problem %}
             <section class="case-section" id="problem">
                 <p class="section-label on-scroll">{{ t.case.problem }}</p>
-                {%- if c.problem %}
+                {%- if c.problem.title %}
                 <h2 class="case-section-title on-scroll">{{ c.problem.title }}</h2>
+                {%- endif %}
 
-                {#- Big numbers about the market -#}
+                {#- Big numbers about the market (optional) -#}
+                {%- if c.problem.stats %}
                 <div class="problem-stats on-scroll">
                     {%- for stat in c.problem.stats %}
                     <div class="stat-card">
@@ -97,7 +135,9 @@ eleventyComputed:
                 </div>
                 {%- endif %}
 
+                {%- if c.body %}
                 <p class="case-body problem-body on-scroll">{{ c.body }}</p>
+                {%- endif %}
 
                 {%- if c.problem.framing %}
                 {%- set f = c.problem.framing %}
@@ -132,11 +172,13 @@ eleventyComputed:
                 </div>
                 {%- endif %}
             </section>
+            {%- endif %}
 
+            {%- if c.process.cards %}
             <section class="case-section" id="did">
                 <p class="section-label on-scroll">{{ t.case.did }}</p>
-                <h2 class="case-section-title on-scroll">{{ c.process.title }}</h2>
-                <p class="case-body on-scroll">{{ c.process.text }}</p>
+                {%- if c.process.title %}<h2 class="case-section-title on-scroll">{{ c.process.title }}</h2>{% endif %}
+                {%- if c.process.text %}<p class="case-body on-scroll">{{ c.process.text }}</p>{% endif %}
 
                 {#- "What I designed" as handwritten sticky notes -#}
                 <p class="notes-label on-scroll">{{ c.process.cardsTitle }} <span aria-hidden="true">↘</span></p>
@@ -149,26 +191,177 @@ eleventyComputed:
                     {%- endfor %}
                 </div>
             </section>
+            {%- endif %}
 
-            <section class="case-section" id="steps">
-                <p class="section-label on-scroll">{{ t.case.steps }}</p>
-                {#- Design process phases; a phase with `highlight: true` is filled dark -#}
+            {#- Process: the section tags are set as text, because the personas loop inside is async -#}
+            {%- set stepsOpen = ('<section class="case-section" id="steps"><p class="section-label on-scroll">' ~ t.case.steps ~ '</p>') if c.process.steps else '' %}
+            {%- set stepsClose = '</section>' if c.process.steps else '' %}
+            {{ stepsOpen | safe }}
+                {%- if c.process.steps %}
+                {#- Design process phases. A card can have a list (`items`) and/or a short `text`; a card with
+                    neither stays compact (details are added later). `highlight: true` fills a card dark. -#}
+                {%- if c.process.phaseTitle %}<h3 class="case-subtitle on-scroll">{{ c.process.phaseTitle }}</h3>{% endif %}
                 <ol class="phases on-scroll">
                     {%- for step in c.process.steps %}
-                    <li{% if step.highlight %} class="is-highlight"{% endif %}>
-                        <span class="case-kicker">0{{ loop.index }}</span>
+                    <li class="{{ 'is-highlight ' if step.highlight }}{{ 'is-compact' if not (step.items or step.text) }}">
+                        <span class="case-kicker">{{ "0" ~ loop.index if loop.index < 10 else loop.index }}</span>
                         <h3>{{ step.title }}</h3>
+                        {%- if step.text %}<p>{{ step.text }}</p>{% endif %}
+                        {%- if step.items %}
                         <ul>
                             {%- for item in step.items %}
                             <li>{{ item }}</li>
                             {%- endfor %}
                         </ul>
-                        {%- if not loop.last %}
-                        <svg class="phase-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                         {%- endif %}
                     </li>
                     {%- endfor %}
                 </ol>
+                {%- endif %}
+
+                {#- Detail blocks for single process steps (e.g. "User research: Summary"): label, title, then a text card
+                    (markdown `body`, optional icon) and/or numbered `points`; an optional photo sits next to the title.
+                    asyncEach because of the image shortcode (it returns nothing when `image` is empty). -#}
+                {%- asyncEach d in (c.process.details or []) %}
+                <div class="detail">
+                    <div class="detail-head">
+                        <div>
+                            <p class="case-kicker on-scroll">{{ d.label }}</p>
+                            <h3 class="framing-title on-scroll">{{ d.title }}</h3>
+                        </div>
+                        {%- if d.description %}<p class="detail-desc on-scroll">{{ d.description }}</p>{% endif %}
+                        <div class="detail-photo on-scroll">{% image "src/assets/images/" + (d.image or ""), d.imageAlt or d.title, "112px" %}</div>
+                    </div>
+
+                    {#- A wide picture (e.g. a journey map) under the title; click opens the large version -#}
+                    {%- ifAsync d.wideImage %}
+                    <figure class="breakdown-figure detail-figure on-scroll">
+                        <a class="zoom" href="{% imageUrl "src/assets/images/" + d.wideImage %}" target="_blank" rel="noopener" aria-label="{{ t.case.zoom }}" data-alt="{{ d.imageAlt or d.title }}" data-close="{{ t.case.close }}">
+                            {% image "src/assets/images/" + d.wideImage, d.imageAlt or d.title, "(min-width: 1101px) 770px, 100vw" %}
+                            <span class="zoom-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+                        </a>
+                    </figure>
+                    {%- endif %}
+
+                    {%- if d.body %}
+                    <div class="detail-card on-scroll">
+                        {%- if d.icon %}
+                        <span class="detail-icon" aria-hidden="true">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="12" width="4" height="8" rx="1"/><rect x="10" y="7" width="4" height="13" rx="1"/><rect x="16" y="3" width="4" height="17" rx="1"/></svg>
+                        </span>
+                        {%- endif %}
+                        <div class="detail-text">{{ d.body | markdown | safe }}</div>
+                    </div>
+                    {%- endif %}
+
+                    {#- A persona card (same look as the personas below). ifAsync: the photo shortcode is async. -#}
+                    {%- ifAsync d.persona %}
+                    {%- set pr = d.persona %}
+                    <article class="persona persona-single on-scroll">
+                        <div class="persona-avatar">
+                            <span class="persona-initial" aria-hidden="true">{{ pr.name | first }}</span>
+                            {% image "src/assets/images/" + (pr.photo or ""), pr.name, "220px" %}
+                            <div class="persona-tag" aria-hidden="true">
+                                <strong>{{ pr.name }}{% if pr.age %}, {{ pr.age }}{% endif %}</strong>
+                                {%- if pr.label %}<span>“{{ pr.label }}”</span>{% endif %}
+                            </div>
+                        </div>
+
+                        <div class="persona-body">
+                            {%- if pr.problem %}
+                            <p class="case-kicker">{{ t.case.problemStatement }}</p>
+                            <p class="persona-bio">{{ pr.problem }}</p>
+                            {%- endif %}
+
+                            {%- if pr.facts %}
+                            <dl class="persona-facts">
+                                {%- for fact in pr.facts %}
+                                <div><dt>{{ fact.label }}</dt><dd>{{ fact.value }}</dd></div>
+                                {%- endfor %}
+                            </dl>
+                            {%- endif %}
+
+                            {%- if pr.background %}
+                            <p class="case-kicker">{{ t.case.background }}</p>
+                            <div class="persona-text">{{ pr.background | markdown | safe }}</div>
+                            {%- endif %}
+
+                            <div class="persona-lists">
+                                <div>
+                                    <p class="case-kicker">{{ t.case.personaGoals }}</p>
+                                    <ul>
+                                        {%- for item in pr.goals %}
+                                        <li>{{ item }}</li>
+                                        {%- endfor %}
+                                    </ul>
+                                </div>
+                                <div class="is-pains">
+                                    <p class="case-kicker">{{ t.case.frustrations }}</p>
+                                    <ul>
+                                        {%- for item in pr.frustrations %}
+                                        <li>{{ item }}</li>
+                                        {%- endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            {%- if pr.quote %}
+                            <blockquote class="persona-quote">“{{ pr.quote }}”</blockquote>
+                            {%- endif %}
+                        </div>
+                    </article>
+                    {%- endif %}
+
+                    {#- Empathy map: four boxes in a 2 x 2 grid, a round photo in the middle -#}
+                    {%- ifAsync d.quadrants %}
+                    <div class="empathy on-scroll">
+                        {%- for q in d.quadrants %}
+                        <section class="empathy-cell">
+                            <h4>{{ q.title }}</h4>
+                            <div class="empathy-text">{{ q.body | markdown | safe }}</div>
+                        </section>
+                        {%- endfor %}
+                        <span class="empathy-center">{% image "src/assets/images/" + (d.centerImage or ""), d.imageAlt or d.title, "80px" %}</span>
+                    </div>
+                    {%- endif %}
+
+                    {%- if d.notes %}
+                    <div class="notes notes-wide on-scroll">
+                        {%- for note in d.notes %}
+                        <div class="note">
+                            <h3>{{ note.title }}</h3>
+                            <p>{{ note.text }}</p>
+                        </div>
+                        {%- endfor %}
+                    </div>
+                    {%- endif %}
+
+                    {%- if d.cards %}
+                    <div class="detail-cards on-scroll">
+                        {%- for card in d.cards %}
+                        <div>
+                            <p class="case-kicker">{{ card.label }}</p>
+                            <p class="detail-card-text">{{ card.text }}</p>
+                        </div>
+                        {%- endfor %}
+                    </div>
+                    {%- endif %}
+
+                    {%- if d.points %}
+                    <ol class="goals detail-points on-scroll">
+                        {%- for point in d.points %}
+                        <li>
+                            <span class="case-kicker">{{ "0" ~ loop.index if loop.index < 10 else loop.index }}</span>
+                            <div>
+                                <h4>{{ point.title }}</h4>
+                                <p>{{ point.text }}</p>
+                            </div>
+                        </li>
+                        {%- endfor %}
+                    </ol>
+                    {%- endif %}
+                </div>
+                {%- endeach %}
 
                 {%- if c.process.competitors %}
                 {%- set comp = c.process.competitors %}
@@ -258,7 +451,7 @@ eleventyComputed:
                     </article>
                 {%- endeach %}
                 {{ ('</div>' if pers else '') | safe }}
-            </section>
+            {{ stepsClose | safe }}
 
             {#- Selected screens: shown only when the project has `screens`. Each block is a board image with
                 numbered pins and notes that line up with the pins. The image shortcode is async, so the loop uses
@@ -268,8 +461,9 @@ eleventyComputed:
             {{ screensOpen | safe }}
             {%- asyncEach block in (project.data.screens or []) %}
             {%- set b = block[lang] %}
+            {%- if b.group %}<h3 class="breakdown-group on-scroll">{{ b.group }}</h3>{% endif %}
             <div class="breakdown">
-                <h3 class="breakdown-title on-scroll"><span class="case-kicker">0{{ loop.index }}</span> {{ b.title }}</h3>
+                <h3 class="breakdown-title on-scroll"><span class="case-kicker">{{ "0" ~ loop.index if loop.index < 10 else loop.index }}</span> {{ b.title }}</h3>
                 {#- With pins and notes: image on the left, notes on the right. Without: the image alone, full width. -#}
                 <div class="breakdown-grid{% if block.pins %} has-notes{% endif %} on-scroll">
                     <figure class="breakdown-figure">
@@ -303,35 +497,39 @@ eleventyComputed:
 
             {%- if c.outcome %}
             <section class="case-section" id="outcome">
-                <p class="section-label on-scroll">{{ t.case.outcome }}</p>
+                {#- One grey panel with a green line on top: results as rows, goals, then the closing text -#}
+                <div class="outcome-panel on-scroll">
+                    <p class="section-label">{{ t.case.outcome }}</p>
 
-                {#- Key results in large type -#}
-                <div class="outcome-stats on-scroll">
-                    {%- for stat in c.outcome.stats %}
-                    <div>
-                        <p class="outcome-value">{{ stat.value }}</p>
-                        <p>{{ stat.text }}</p>
-                    </div>
-                    {%- endfor %}
-                </div>
-
-                <h3 class="case-subtitle on-scroll">{{ t.case.goals }}</h3>
-                <ol class="goals on-scroll">
-                    {%- for goal in c.outcome.goals %}
-                    <li>
-                        <span class="case-kicker">0{{ loop.index }}</span>
-                        <div>
-                            <h4>{{ goal.title }}</h4>
-                            <p>{{ goal.text }}</p>
+                    <div class="outcome-rows">
+                        {%- for stat in c.outcome.stats %}
+                        <div class="outcome-row">
+                            <p>{{ stat.text }}</p>
+                            <p class="outcome-value">{{ stat.value }}</p>
                         </div>
-                    </li>
-                    {%- endfor %}
-                </ol>
+                        {%- endfor %}
+                    </div>
 
-                {%- if c.outcome.ahead %}
-                <h3 class="case-subtitle on-scroll">{{ t.case.ahead }}</h3>
-                <p class="case-body on-scroll">{{ c.outcome.ahead }}</p>
-                {%- endif %}
+                    {%- if c.outcome.goals %}
+                    <h3 class="outcome-sub">{{ t.case.goals }}</h3>
+                    <ol class="goals">
+                        {%- for goal in c.outcome.goals %}
+                        <li>
+                            <span class="case-kicker">0{{ loop.index }}</span>
+                            <div>
+                                <h4>{{ goal.title }}</h4>
+                                <p>{{ goal.text }}</p>
+                            </div>
+                        </li>
+                        {%- endfor %}
+                    </ol>
+                    {%- endif %}
+
+                    {%- if c.outcome.ahead %}
+                    <h3 class="outcome-sub">{{ t.case.ahead }}</h3>
+                    <p class="outcome-ahead">{{ c.outcome.ahead }}</p>
+                    {%- endif %}
+                </div>
             </section>
             {%- endif %}
 
@@ -357,4 +555,27 @@ eleventyComputed:
             {%- endif %}
         </div>
     </div>
+
+    {#- Next case studies: the next two projects. The image shortcode is async, so the loop is asyncEach
+        and the wrapper is set as text (an async loop can't sit inside an `if`). -#}
+    {%- set nextList = collections.projects | nextProjects(entry.project.fileSlug, 2) %}
+    {%- set nextOpen = ('<section class="container case-next"><div class="case-next-head"><h2 class="case-next-title on-scroll">' ~ t.case.nextStudies ~ '</h2><a class="view-all on-scroll" href="' ~ t.home ~ 'work/">' ~ t.case.viewAll ~ ' ↗</a></div><div class="projects-grid">') if nextList | length else '' %}
+    {{ nextOpen | safe }}
+    {%- asyncEach project in nextList %}
+    {% include "partials/project-card.njk" %}
+    {%- endeach %}
+    {{ ('</div></section>' if nextList | length else '') | safe }}
+
+    <!-- Invitation to talk -->
+    <section class="container case-cta">
+        <p class="case-cta-text on-scroll">{{ t.case.ctaText }}</p>
+        <div class="case-cta-buttons on-scroll">
+            <a href="{{ t.home }}#contact">{{ t.nav.cta }}</a>
+            <a href="{{ site.cv }}" target="_blank" rel="noopener">{{ t.hero.cv }} ↗</a>
+        </div>
+    </section>
+
+    <button type="button" class="to-top" data-to-top data-show-at="outcome" aria-label="{{ t.case.backToTop }}" title="{{ t.case.backToTop }}">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+    </button>
 </main>
