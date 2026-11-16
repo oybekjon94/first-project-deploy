@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import Image from "@11ty/eleventy-img";
 import markdownIt from "markdown-it";
 
@@ -104,6 +105,41 @@ export default function (eleventyConfig) {
             loading: "lazy",
             decoding: "async",
         });
+    });
+
+    // Small icon, built into the HTML (no extra file to load): {% icon "l:mic" %}
+    //   l:<name> = Lucide line icon (lucide-static), s:<slug> = Simple Icons brand logo (simple-icons),
+    //   c:<name> = our own drawing (below), for icons the packages do not have.
+    const ownIcons = {
+        // LinkedIn (older Lucide brand icon, ISC)
+        linkedin: '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>',
+        // Adobe XD: rounded square with "Xd"
+        adobexd: '<rect x="2" y="3" width="20" height="18" rx="3"/><path d="m6 8 4 8"/><path d="m10 8-4 8"/><circle cx="15" cy="13.5" r="2.5"/><path d="M17.5 8v8"/>',
+        // Basketball
+        basketball: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2v20"/><path d="M4.9 4.9a10 10 0 0 1 0 14.2"/><path d="M19.1 4.9a10 10 0 0 0 0 14.2"/>',
+    };
+    const lineSvg = (inner) =>
+        `<svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${inner}</svg>`;
+
+    eleventyConfig.addShortcode("icon", (name = "") => {
+        const [set, id] = name.split(":");
+        if (!id) return "";
+        try {
+            if (set === "c") return ownIcons[id] ? lineSvg(ownIcons[id]) : "";
+            if (set === "l") {
+                const svg = fs.readFileSync(`node_modules/lucide-static/icons/${id}.svg`, "utf8");
+                const inner = svg.slice(svg.indexOf(">", svg.indexOf("<svg")) + 1, svg.lastIndexOf("</svg>")).trim();
+                return lineSvg(inner);
+            }
+            if (set === "s") {
+                const svg = fs.readFileSync(`node_modules/simple-icons/icons/${id}.svg`, "utf8");
+                const inner = svg.replace(/^.*?<\/title>/, "").replace(/<\/svg>\s*$/, "");
+                return `<svg class="icon icon-brand" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">${inner}</svg>`;
+            }
+        } catch (e) {
+            console.warn(`[icon] not found: ${name}`);
+        }
+        return "";
     });
 
     // URL of a large version of an image, for "click to enlarge": {% imageUrl "src/...png" %}

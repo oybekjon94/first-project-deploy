@@ -111,7 +111,9 @@
                     "Usability testing",
                     "A/B testing",
                     "User flow",
-                    "Design styles"
+                    "Design styles",
+                    "Design Systems",
+                    "Prototyping"
                 ]
             },
             "ko": {
@@ -122,9 +124,21 @@
                     "사용성 테스트",
                     "A/B 테스트",
                     "사용자 플로우",
-                    "디자인 스타일"
+                    "디자인 스타일",
+                    "디자인 시스템",
+                    "프로토타이핑"
                 ]
-            }
+            },
+            "icons": [
+                "l:mic",
+                "l:user-search",
+                "l:mouse-pointer-click",
+                "l:split-square-horizontal",
+                "l:workflow",
+                "l:swatch-book",
+                "l:component",
+                "l:square-dashed-mouse-pointer"
+            ]
         },
         {
             "en": {
@@ -135,6 +149,8 @@
                     "Adobe XD",
                     "Webflow",
                     "Framer",
+                    "Miro",
+                    "Jira",
                     "Vibe coding",
                     "Claude Code",
                     "Notion",
@@ -149,12 +165,27 @@
                     "Adobe XD",
                     "Webflow",
                     "Framer",
+                    "Miro",
+                    "Jira",
                     "바이브 코딩",
                     "Claude Code",
                     "Notion",
                     "AI 도구"
                 ]
-            }
+            },
+            "icons": [
+                "s:figma",
+                "s:sketch",
+                "c:adobexd",
+                "s:webflow",
+                "s:framer",
+                "s:miro",
+                "s:jira",
+                "l:code-xml",
+                "s:claude",
+                "s:notion",
+                "l:sparkles"
+            ]
         }
     ],
     "languages": [
@@ -197,26 +228,32 @@
     ],
     "hobbies": [
         {
+            "icon": "l:footprints",
             "en": "Running",
             "ko": "러닝"
         },
         {
+            "icon": "l:book-open",
             "en": "Reading",
             "ko": "독서"
         },
         {
+            "icon": "l:pen-tool",
             "en": "Drawing",
             "ko": "그림 그리기"
         },
         {
+            "icon": "c:basketball",
             "en": "Basketball",
             "ko": "농구"
         },
         {
+            "icon": "l:bike",
             "en": "Cycling",
             "ko": "자전거"
         },
         {
+            "icon": "l:mountain",
             "en": "Hiking",
             "ko": "등산"
         }

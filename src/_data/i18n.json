@@ -122,6 +122,7 @@
             "metaTitle": "About — Oybek Kholikov",
             "metaDescription": "Oybek Kholikov is a UI/UX and product designer in Seoul. Experience, education, skills and languages.",
             "label": "About",
+            "journalCta": "Explore my Journal",
             "title": "Products that are understandable, useful and built to last.",
             "paragraphs": [
                 "Hi, I'm Oybek, a UI/UX and product designer based in Seoul. I focus on creating a great user experience that also meets the needs of the business, and I design mobile apps, websites and AI products for teams in Korea and abroad.",
@@ -144,7 +145,7 @@
                 },
                 {
                     "label": "Tools",
-                    "value": "Figma, Sketch, Adobe XD"
+                    "value": "Figma, FigJam, Claude Code"
                 },
                 {
                     "label": "Languages",
@@ -333,6 +334,7 @@
             "metaTitle": "소개 — Oybek Kholikov",
             "metaDescription": "서울에서 활동하는 UI/UX·프로덕트 디자이너 Oybek Kholikov의 경력, 학력, 기술, 언어를 소개합니다.",
             "label": "소개",
+            "journalCta": "저널 보기",
             "title": "이해하기 쉽고, 쓸모 있고, 오래가는 제품을 만듭니다.",
             "paragraphs": [
                 "안녕하세요, 서울에서 활동하는 UI/UX·프로덕트 디자이너 오이벡입니다. 훌륭한 사용자 경험과 비즈니스 요구를 함께 충족하는 제품을 만드는 데 집중하며, 한국과 해외 팀을 위해 모바일 앱, 웹사이트, AI 제품을 디자인합니다.",
@@ -355,7 +357,7 @@
                 },
                 {
                     "label": "도구",
-                    "value": "Figma, Sketch, Adobe XD"
+                    "value": "Figma, FigJam, Claude Code"
                 },
                 {
                     "label": "언어",

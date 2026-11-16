@@ -3446,6 +3446,54 @@ html[lang="ko"] .persona-facts dt {
     font-size: 15px;
 }
 
+/* Buttons under the About intro text: Journal (outline) + View My CV (primary) */
+.about-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+/* Small icons (About: skills, hobbies, links) — same colour as the text */
+.icon {
+    flex: none;
+    width: 16px;
+    height: 16px;
+}
+
+/* Brand logos are filled shapes, so they look a little bigger: make them smaller */
+.icon-brand {
+    width: 14px;
+    height: 14px;
+}
+
+.chips li:has(.icon) {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding-left: 12px;
+}
+
+.chips li .icon {
+    color: var(--ink-2);
+}
+
+.row-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.row-icon .icon {
+    width: 18px;
+    height: 18px;
+}
+
+.row-icon .icon-brand {
+    width: 16px;
+    height: 16px;
+}
+
 .about-cta {
     padding-top: 64px;
     padding-bottom: 96px;
