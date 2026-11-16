@@ -40,6 +40,11 @@
     {% include "partials/footer.njk" %}
 
     <script src="/assets/js/main.js"></script>
+    {%- if env.vercel %}
+    {#- Vercel Web Analytics (visits, pages, countries). Only on the live site, not on localhost. -#}
+    <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    {%- endif %}
 </body>
 
 </html>
